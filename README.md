@@ -1,2 +1,2 @@
 # meet-mania-jam
- Our game for Meet Mania Horror Jam 2025 
+ Our game for Meat Mania Horror Jam 2025 
