@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd5nwfg25bfty"]
+
+[ext_resource type="PackedScene" uid="uid://b2tmq0jv6qci4" path="res://scenes/player.tscn" id="1_xyfms"]
+[ext_resource type="Texture2D" uid="uid://c64xokejyjlw8" path="res://assets/sprites/rui_not_bestgirl.jpg" id="2_8asdu"]
+[ext_resource type="Texture2D" uid="uid://cv5aegsrld6en" path="res://assets/sprites/hina_bestgirl.jpg" id="3_gvdpr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rum8c"]
+texture = ExtResource("2_8asdu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ri1c"]
+texture = ExtResource("3_gvdpr")
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -209.0
+offset_right = 77.5
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Who is the best girl?"
+
+[node name="Rui" type="Panel" parent="."]
+offset_left = 127.0
+offset_top = -171.0
+offset_right = 269.0
+offset_bottom = -29.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rum8c")
+
+[node name="Hina" type="Panel" parent="."]
+offset_left = -258.0
+offset_top = -171.0
+offset_right = -116.0
+offset_bottom = -29.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6ri1c")
+
+[node name="Player" parent="." instance=ExtResource("1_xyfms")]
+position = Vector2(3, 2)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
