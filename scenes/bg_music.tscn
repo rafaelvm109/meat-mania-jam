@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dysxcgximhha8"]
+
+[ext_resource type="AudioStream" uid="uid://cl4vhe7fj6dw0" path="res://assets/music/KaikiTheme.mp3" id="1_0brjs"]
+
+[node name="BGMusic" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_0brjs")
+autoplay = true
+bus = &"Music"
