@@ -3,10 +3,11 @@ extends Control
 
 const MAIN_SCENE = "res://scenes/main.tscn"
 const OPTIONS = "res://scenes/menu/options.tscn"
+const GAME = "res://scenes/press_machine.tscn"
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file(MAIN_SCENE)
+	get_tree().change_scene_to_file(GAME)
 
 
 func _on_settings_pressed() -> void:
