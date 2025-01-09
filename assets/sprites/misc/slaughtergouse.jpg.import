@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k7viqecmiv0a"
-path="res://.godot/imported/slaughtergouse.jpg-8cd289994aa094715a532e677a8379c3.ctex"
+path="res://.godot/imported/slaughtergouse.jpg-d3f8c2b4c9d8214db1951502148ef770.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/slaughtergouse.jpg"
-dest_files=["res://.godot/imported/slaughtergouse.jpg-8cd289994aa094715a532e677a8379c3.ctex"]
+source_file="res://assets/sprites/misc/slaughtergouse.jpg"
+dest_files=["res://.godot/imported/slaughtergouse.jpg-d3f8c2b4c9d8214db1951502148ef770.ctex"]
 
 [params]
 

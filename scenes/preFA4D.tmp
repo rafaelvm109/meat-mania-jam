@@ -83,6 +83,9 @@ position = Vector2(0, -27)
 [node name="OutputPos" type="Marker2D" parent="."]
 position = Vector2(0, -27)
 
+[node name="Chicken" parent="." instance=ExtResource("9_k1iey")]
+position = Vector2(348, 46)
+
 [node name="PressMachineBody2" type="Sprite2D" parent="."]
 position = Vector2(795, 0)
 texture = ExtResource("1_rhsqy")
@@ -104,6 +107,3 @@ frame_progress = 0.749985
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Press2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Press2/AnimatableBody2D"]
-
-[node name="Chicken" parent="." instance=ExtResource("9_k1iey")]
-position = Vector2(348, 46)

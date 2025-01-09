@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu2xdif32ltl"
-path="res://.godot/imported/cherry.jpg-aa98ea436dbd11caec1f0f07cc44b205.ctex"
+uid="uid://c64xokejyjlw8"
+path="res://.godot/imported/rui_not_bestgirl.jpg-12d62605674353a7fdae23773e5712f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cherry.jpg"
-dest_files=["res://.godot/imported/cherry.jpg-aa98ea436dbd11caec1f0f07cc44b205.ctex"]
+source_file="res://assets/sprites/misc/rui_not_bestgirl.jpg"
+dest_files=["res://.godot/imported/rui_not_bestgirl.jpg-12d62605674353a7fdae23773e5712f0.ctex"]
 
 [params]
 

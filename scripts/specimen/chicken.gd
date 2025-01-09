@@ -2,7 +2,8 @@ extends Node2D
 
 var is_dragging: bool = false
 var offset: Vector2
-@onready var chicken_collision: CollisionShape2D = $Subject/StaticBody2D/CollisionShape2D
+@onready var subject: Area2D = $Subject
+@onready var chicken_collision: CollisionShape2D = $Subject/CollisionShape2D
 
 
 func _input(event: InputEvent) -> void:
@@ -15,6 +16,7 @@ func _input(event: InputEvent) -> void:
 		# stop dragging when MB is released
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_dragging = false
+			# TODO: add Marker2D to the inventory and make the chicken snap into place if released outside of machine range
 
 
 func _process(delta: float) -> void:

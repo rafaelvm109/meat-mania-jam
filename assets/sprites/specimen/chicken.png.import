@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl4gbymstaiyt"
-path="res://.godot/imported/lever_down.png-710047dd01ff33bc1f32c8d8f8b044f0.ctex"
+uid="uid://bb82gkpws2s5u"
+path="res://.godot/imported/chicken.png-a8a9b9e78f0553b693e377dcd52ebdd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/lever_down.png"
-dest_files=["res://.godot/imported/lever_down.png-710047dd01ff33bc1f32c8d8f8b044f0.ctex"]
+source_file="res://assets/sprites/specimen/chicken.png"
+dest_files=["res://.godot/imported/chicken.png-a8a9b9e78f0553b693e377dcd52ebdd0.ctex"]
 
 [params]
 

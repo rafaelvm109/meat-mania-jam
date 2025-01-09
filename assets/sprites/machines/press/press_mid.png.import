@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t2km5lwuv3e1"
-path="res://.godot/imported/press_down.png-99817a3ce88770739f4b3de66069c48c.ctex"
+uid="uid://se81ng63ns4s"
+path="res://.godot/imported/press_mid.png-792f95d9f47e98f54a8d40d8c5745566.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/press_down.png"
-dest_files=["res://.godot/imported/press_down.png-99817a3ce88770739f4b3de66069c48c.ctex"]
+source_file="res://assets/sprites/machines/press/press_mid.png"
+dest_files=["res://.godot/imported/press_mid.png-792f95d9f47e98f54a8d40d8c5745566.ctex"]
 
 [params]
 

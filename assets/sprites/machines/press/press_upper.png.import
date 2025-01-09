@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb82gkpws2s5u"
-path="res://.godot/imported/chicken.png-59f7714ae4e7458c39776c690183085d.ctex"
+uid="uid://c4ww66cv5jdnm"
+path="res://.godot/imported/press_upper.png-78fe8d61e3723ec839f2fce87f32d326.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/chicken.png"
-dest_files=["res://.godot/imported/chicken.png-59f7714ae4e7458c39776c690183085d.ctex"]
+source_file="res://assets/sprites/machines/press/press_upper.png"
+dest_files=["res://.godot/imported/press_upper.png-78fe8d61e3723ec839f2fce87f32d326.ctex"]
 
 [params]
 

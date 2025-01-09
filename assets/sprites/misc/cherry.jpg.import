@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tbgg0tr7okgr"
-path="res://.godot/imported/lever_mid.png-7824bfa9a7364daf0a02cd645b993c38.ctex"
+uid="uid://cu2xdif32ltl"
+path="res://.godot/imported/cherry.jpg-9233de1dbc1ee69cd871789eea23f80e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/lever_mid.png"
-dest_files=["res://.godot/imported/lever_mid.png-7824bfa9a7364daf0a02cd645b993c38.ctex"]
+source_file="res://assets/sprites/misc/cherry.jpg"
+dest_files=["res://.godot/imported/cherry.jpg-9233de1dbc1ee69cd871789eea23f80e.ctex"]
 
 [params]
 
