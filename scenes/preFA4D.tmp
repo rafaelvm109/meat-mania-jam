@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://c36au6a2n2ydq"]
+
+[ext_resource type="Script" path="res://scripts/press_machine.gd" id="1_7ir5l"]
+[ext_resource type="Texture2D" uid="uid://c0k7seh473gem" path="res://assets/sprites/press_machine.png" id="1_rhsqy"]
+[ext_resource type="Texture2D" uid="uid://tbgg0tr7okgr" path="res://assets/sprites/lever_mid.png" id="2_htbme"]
+[ext_resource type="Texture2D" uid="uid://uv6iqig1qcey" path="res://assets/sprites/lever_up.png" id="2_qfw4m"]
+[ext_resource type="Texture2D" uid="uid://dkxt6xfxx0h6g" path="res://assets/sprites/press_up.png" id="3_5mien"]
+[ext_resource type="Texture2D" uid="uid://cl4gbymstaiyt" path="res://assets/sprites/lever_down.png" id="5_61edy"]
+[ext_resource type="Texture2D" uid="uid://se81ng63ns4s" path="res://assets/sprites/press_mid.png" id="6_80chs"]
+[ext_resource type="Texture2D" uid="uid://t2km5lwuv3e1" path="res://assets/sprites/press_down.png" id="7_7awts"]
+[ext_resource type="PackedScene" uid="uid://bgbx8g7acgq2l" path="res://scenes/chicken.tscn" id="9_k1iey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_077jk"]
+size = Vector2(99, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j228y"]
+size = Vector2(126, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y5c7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qfw4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_htbme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_61edy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgm4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5mien")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_80chs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7awts")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PressMachine" type="Node2D"]
+position = Vector2(177, 249)
+script = ExtResource("1_7ir5l")
+
+[node name="PressMachineBody" type="Sprite2D" parent="."]
+texture = ExtResource("1_rhsqy")
+
+[node name="Lever" type="Sprite2D" parent="."]
+position = Vector2(-1, 100)
+texture = ExtResource("2_htbme")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lever"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lever/StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_077jk")
+
+[node name="Press" type="Sprite2D" parent="."]
+position = Vector2(0, -101)
+texture = ExtResource("3_5mien")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Press"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Press/StaticBody2D"]
+position = Vector2(0, 54)
+shape = SubResource("RectangleShape2D_j228y")
+
+[node name="InputPos" type="Marker2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="OutputPos" type="Marker2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="Chicken" parent="." instance=ExtResource("9_k1iey")]
+position = Vector2(348, 46)
+
+[node name="PressMachineBody2" type="Sprite2D" parent="."]
+position = Vector2(795, 0)
+texture = ExtResource("1_rhsqy")
+
+[node name="Lever2" type="AnimatedSprite2D" parent="."]
+position = Vector2(797, 113)
+sprite_frames = SubResource("SpriteFrames_5y5c7")
+frame_progress = 0.892418
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Lever2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lever2/AnimatableBody2D"]
+
+[node name="Press2" type="AnimatedSprite2D" parent="."]
+position = Vector2(798, -100)
+sprite_frames = SubResource("SpriteFrames_rgm4m")
+frame_progress = 0.749985
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Press2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Press2/AnimatableBody2D"]

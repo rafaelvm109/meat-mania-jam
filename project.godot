@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-BgMusic="*res://scenes/bg_music.tscn"
+BgMusic="*res://scenes/autoload/bg_music.tscn"
 
 [input]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c64xokejyjlw8"
-path="res://.godot/imported/rui_not_bestgirl.jpg-4e0034adb103d74344345c9252760437.ctex"
+uid="uid://dkxt6xfxx0h6g"
+path="res://.godot/imported/press_up.png-6b1bbb1d38d9337936e856d16297b36b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rui_not_bestgirl.jpg"
-dest_files=["res://.godot/imported/rui_not_bestgirl.jpg-4e0034adb103d74344345c9252760437.ctex"]
+source_file="res://assets/sprites/machines/press/press_up.png"
+dest_files=["res://.godot/imported/press_up.png-6b1bbb1d38d9337936e856d16297b36b.ctex"]
 
 [params]
 

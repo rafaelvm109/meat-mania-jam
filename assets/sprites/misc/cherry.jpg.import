@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5aegsrld6en"
-path="res://.godot/imported/hina_bestgirl.jpg-9d1ee9fe0f78016cdf31afe8c5b40ce8.ctex"
+uid="uid://cu2xdif32ltl"
+path="res://.godot/imported/cherry.jpg-9233de1dbc1ee69cd871789eea23f80e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/hina_bestgirl.jpg"
-dest_files=["res://.godot/imported/hina_bestgirl.jpg-9d1ee9fe0f78016cdf31afe8c5b40ce8.ctex"]
+source_file="res://assets/sprites/misc/cherry.jpg"
+dest_files=["res://.godot/imported/cherry.jpg-9233de1dbc1ee69cd871789eea23f80e.ctex"]
 
 [params]
 

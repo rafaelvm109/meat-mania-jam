@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgbx8g7acgq2l"]
+
+[ext_resource type="Texture2D" uid="uid://bb82gkpws2s5u" path="res://assets/sprites/specimen/chicken.png" id="1_6atqe"]
+[ext_resource type="Script" path="res://scripts/chicken.gd" id="1_yvtj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q7h4"]
+size = Vector2(255.939, 255.939)
+
+[node name="Chicken" type="Node2D"]
+script = ExtResource("1_yvtj6")
+
+[node name="Subject" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Subject"]
+position = Vector2(-1, 0)
+scale = Vector2(0.257874, 0.257874)
+texture = ExtResource("1_6atqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Subject"]
+position = Vector2(-1, 0)
+scale = Vector2(0.257874, 0.257874)
+shape = SubResource("RectangleShape2D_1q7h4")
