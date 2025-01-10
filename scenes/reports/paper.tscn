@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://djydj4cx1f6o2"]
+
+[ext_resource type="Texture2D" uid="uid://dd55yis0ib2mk" path="res://assets/sprites/reports/paper.png" id="1_xwp4y"]
+[ext_resource type="Script" path="res://scripts/reports/paper.gd" id="2_lsdco"]
+
+[node name="Paper" type="Sprite2D"]
+position = Vector2(576, 324)
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("1_xwp4y")
+script = ExtResource("2_lsdco")
