@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c36au6a2n2ydq"]
+[gd_scene load_steps=10 format=3 uid="uid://c36au6a2n2ydq"]
 
 [ext_resource type="Script" path="res://scripts/machines/press_machine.gd" id="1_54isr"]
 [ext_resource type="Texture2D" uid="uid://c0k7seh473gem" path="res://assets/sprites/machines/press/press_machine.png" id="2_370oi"]
@@ -6,24 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dec2jv16l0xyk" path="res://assets/sprites/machines/press/lever_handle.png" id="4_fb3yp"]
 [ext_resource type="Texture2D" uid="uid://rc3nr0klt7yl" path="res://assets/sprites/machines/press/press_lower.png" id="5_o8lk5"]
 [ext_resource type="Texture2D" uid="uid://c4ww66cv5jdnm" path="res://assets/sprites/machines/press/press_upper.png" id="6_mwqab"]
-[ext_resource type="PackedScene" uid="uid://bgbx8g7acgq2l" path="res://scenes/specimen/chicken.tscn" id="7_ple26"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_077jk"]
 size = Vector2(96, 24)
-
-[sub_resource type="GDScript" id="GDScript_rgbxf"]
-script/source = "extends Area2D
-
-var snap_subject = true
-
-# I spent more than an hour trying to figure this shit out, so you better work
-func _on_area_entered(area: Area2D) -> void:
-	print(\"345\") # Replace with function body.
-
-
-func _on_area_exited(area: Area2D) -> void:
-	print(\"456\") # Replace with function body.
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eq6qf"]
 size = Vector2(226, 95)
@@ -32,7 +17,7 @@ size = Vector2(226, 95)
 size = Vector2(126, 82)
 
 [node name="PressMachine" type="Node2D"]
-position = Vector2(152, 224)
+position = Vector2(2, -1)
 script = ExtResource("1_54isr")
 
 [node name="PressMachineBody" type="Sprite2D" parent="."]
@@ -52,9 +37,6 @@ texture = ExtResource("4_fb3yp")
 shape = SubResource("RectangleShape2D_077jk")
 
 [node name="PressLower" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-script = SubResource("GDScript_rgbxf")
 
 [node name="Sprite2D" type="Sprite2D" parent="PressLower"]
 position = Vector2(0, -21)
@@ -74,17 +56,3 @@ texture = ExtResource("6_mwqab")
 visible = false
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_j228y")
-
-[node name="InputPos" type="Marker2D" parent="."]
-position = Vector2(1, -41)
-
-[node name="OutputPos" type="Marker2D" parent="."]
-position = Vector2(1, -41)
-
-[node name="Chicken" parent="." instance=ExtResource("7_ple26")]
-position = Vector2(343, -41)
-
-[connection signal="mouse_entered" from="LeverHandle" to="." method="_on_lever_handle_mouse_entered"]
-[connection signal="mouse_exited" from="LeverHandle" to="." method="_on_lever_handle_mouse_exited"]
-[connection signal="area_entered" from="PressLower" to="." method="_on_press_lower_area_entered"]
-[connection signal="area_exited" from="PressLower" to="." method="_on_press_lower_area_exited"]

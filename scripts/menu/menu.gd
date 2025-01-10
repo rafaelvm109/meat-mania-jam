@@ -6,7 +6,7 @@ const OPTIONS = "res://scenes/menu/options.tscn"
 const GAME = "res://scenes/machines/press_machine.tscn"
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file(GAME)
+	get_tree().change_scene_to_file(MAIN_SCENE)
 
 
 func _on_settings_pressed() -> void:

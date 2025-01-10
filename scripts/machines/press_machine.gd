@@ -5,9 +5,17 @@ extends Node2D
 @onready var lever_back: Sprite2D = $LeverBack
 @onready var press_upper: Sprite2D = $PressUpper
 @onready var press_lower: Area2D = $PressLower
-@onready var input_pos: Marker2D = $InputPos
-@onready var output_pos: Marker2D = $OutputPos
-@onready var chicken: Node2D = $Chicken
+@onready var chicken: Node2D = $"../../Specimen/Chicken"
+@onready var press_snap_pos: Marker2D = $"../PressSnapPos"
+@onready var inv_1: Panel = $"../../Inventory/CanvasLayer/Control/Inv1"
+@onready var inv_2: Panel = $"../../Inventory/CanvasLayer/Control/Inv2"
+@onready var inv_3: Panel = $"../../Inventory/CanvasLayer/Control/Inv3"
+@onready var inv_4: Panel = $"../../Inventory/CanvasLayer/Control/Inv4"
+@onready var collision_shape_2d: CollisionShape2D = $LeverHandle/CollisionShape2D
+@onready var chicken_collison: CollisionShape2D = $Subject/CollisionShape2D
+@onready var invi_colli: CollisionShape2D = $"../../Specimen/CollisionShape2D"
+@onready var chicken_sprite: Sprite2D = $Subject/Sprite2D
+@onready var chicken_animation_player: AnimationPlayer = $Subject/AnimationPlayer
 
 
 var subject: Node2D = null # might delete later
@@ -21,6 +29,9 @@ var press_start_pos: Vector2
 var press_end_pos: Vector2
 var lever_travel_distance: int = 74 # this should be a const later on
 var press_travel_distance: int = 100 # this should be a const later on
+var smashed_count: int = 0
+var can_drag_chicken: bool = true  # Determines whether the chicken can be dragged
+
 
 # TODO: setup inventory snap (just need to set a Marker and add an if statement)
 # TODO: add a counter for # of time chicken has been smashed
@@ -35,20 +46,28 @@ func _ready() -> void:
 	lever_end_pos = lever_handle.position + Vector2(0, lever_travel_distance)
 	press_start_pos = press_upper.position
 	press_end_pos = press_upper.position + Vector2(0, press_travel_distance)
+	chicken.position = inv_1.global_position + (inv_1.size / 2)
+	
+	lever_handle.connect("mouse_entered", Callable(self, "_on_lever_handle_mouse_entered"))
+	lever_handle.connect("mouse_exited", Callable(self, "_on_lever_handle_mouse_exited"))
+	press_lower.connect("area_entered", Callable(self, "_on_press_lower_area_entered"))
+	press_lower.connect("area_exited", Callable(self, "_on_press_lower_area_exited"))
+	print("LeverHandle global position:", lever_handle.global_position)
+
 
 # detect mouse over lever 
 func _on_lever_handle_mouse_entered() -> void:
-	mouse_over = true
+	mouse_over = true  # this doesnt work
 
 # detect mouse off lever
 func _on_lever_handle_mouse_exited() -> void:
-	mouse_over = false
+	mouse_over = false  # this doesnt work
 
-# detects if specimen is entering machine range
+# detects if specimen is entering press lower
 func _on_press_lower_area_entered(area: Area2D) -> void:
 	snap_subject = true
 	
-# detects if specimen is leaving machine range
+# detects if specimen is exiting press lower
 func _on_press_lower_area_exited(area: Area2D) -> void:
 	snap_subject = false
 
@@ -63,13 +82,23 @@ func _input(event: InputEvent) -> void:
 		# release mouse click
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_dragging = false
-			# checks bottom position
-			if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0.9):
-				print("asdkjb")
+			# checks bottom position if chicken present and smash < x
 				#process_subject() 
-			# if there is a specimen in the press snap it into place
 			if snap_subject:
-				chicken.position = input_pos.position
+				chicken.position = press_snap_pos.position
+				if smashed_count < 3:
+					can_drag_chicken = false
+					if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0.9):
+						# add particles effec around here
+						chicken.smash()
+						smashed_count += 1
+						print("chicken smashed ", smashed_count, " times")
+				else:
+					can_drag_chicken = true
+				if smashed_count == 3:
+					chicken.change_chicken_sprite()
+			else:
+				chicken.position = inv_1.global_position + (inv_1.size / 2)
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging and event is InputEventMouseMotion:
 		drag_lever(event.relative.y)
@@ -114,3 +143,7 @@ func output_processed_subject() -> void:
 		#altered_subject.position = output_pos.global_position
 		#add_child(altered_subject)
 		#is_processing = false
+
+
+func is_chicken_draggable() -> bool:
+	return can_drag_chicken
