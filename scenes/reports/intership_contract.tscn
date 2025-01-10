@@ -1,0 +1,269 @@
+[gd_scene load_steps=17 format=3 uid="uid://bt3ha0l521hxt"]
+
+[ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_m3iu2"]
+[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/reports/paper.tscn" id="2_llil8"]
+[ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="3_b0m00"]
+[ext_resource type="Script" path="res://scripts/reports/choose_alternative.gd" id="4_p5k7p"]
+[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sfx/checkbox.png" id="5_hqwv5"]
+[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sfx/checkmark.png" id="6_jqrnb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju4oc"]
+size = Vector2(67.9999, 56)
+
+[sub_resource type="Animation" id="Animation_s2g41"]
+resource_name = "turn_next"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, -50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 1.1)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -414, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 1, 2)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.340339, 0.340339, 0.340339, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sfx:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.433333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ilfjn"]
+resource_name = "turn_previous"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yoeso"]
+_data = {
+"turn_next": SubResource("Animation_s2g41"),
+"turn_previous": SubResource("Animation_ilfjn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lavu6"]
+size = Vector2(38, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pax0i"]
+size = Vector2(67.9999, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hfv2"]
+size = Vector2(67.9999, 56)
+
+[sub_resource type="Animation" id="Animation_0jvv2"]
+resource_name = "turn_next"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 5, -55]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-414, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.341176, 0.341176, 0.341176, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sfx:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.433333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e70ae"]
+_data = {
+"turn_next": SubResource("Animation_0jvv2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucp3t"]
+size = Vector2(170, 34)
+
+[node name="IntershipContract" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_m3iu2")
+
+[node name="Paper 01" parent="." node_paths=PackedStringArray("next_page", "animator") instance=ExtResource("2_llil8")]
+z_index = 10
+position = Vector2(0, 0)
+next_page = NodePath("../Paper 02")
+animator = NodePath("Animator")
+
+[node name="Text" type="Label" parent="Paper 01"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -453.0
+offset_top = -342.0
+offset_right = -47.0
+offset_bottom = -408.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "COMPANY NAME
+
+\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ex ea commodo consequat. Duis reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
+label_settings = ExtResource("3_b0m00")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Flip Next Page" type="Area2D" parent="Paper 01"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper 01/Flip Next Page"]
+position = Vector2(211.055, 339.196)
+scale = Vector2(1.25628, 1.25628)
+shape = SubResource("RectangleShape2D_ju4oc")
+
+[node name="Animator" type="AnimationPlayer" parent="Paper 01"]
+libraries = {
+"": SubResource("AnimationLibrary_yoeso")
+}
+
+[node name="Paper 02" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+visible = false
+z_index = 5
+position = Vector2(0, 0)
+previous_page = NodePath("../Paper 01")
+next_page = NodePath("../Paper 09")
+animator = NodePath("Animator")
+
+[node name="Option 01" type="Area2D" parent="Paper 02" node_paths=PackedStringArray("checkmark")]
+position = Vector2(152.01, 95.4774)
+scale = Vector2(1.25628, 1.25628)
+script = ExtResource("4_p5k7p")
+checkmark = NodePath("Checkmark")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper 02/Option 01"]
+shape = SubResource("RectangleShape2D_lavu6")
+
+[node name="Checkbox" type="Sprite2D" parent="Paper 02/Option 01"]
+scale = Vector2(0.437501, 0.437501)
+texture = ExtResource("5_hqwv5")
+
+[node name="Checkmark" type="Sprite2D" parent="Paper 02/Option 01"]
+visible = false
+scale = Vector2(0.498892, 0.498892)
+texture = ExtResource("6_jqrnb")
+
+[node name="Flip Previous Page" type="Area2D" parent="Paper 02"]
+position = Vector2(-224.874, 351.759)
+scale = Vector2(1.25628, 1.25628)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper 02/Flip Previous Page"]
+shape = SubResource("RectangleShape2D_pax0i")
+
+[node name="Flip Next Page" type="Area2D" parent="Paper 02"]
+position = Vector2(224.874, 351.759)
+scale = Vector2(1.25628, 1.25628)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper 02/Flip Next Page"]
+shape = SubResource("RectangleShape2D_8hfv2")
+
+[node name="Animator" type="AnimationPlayer" parent="Paper 02"]
+libraries = {
+"": SubResource("AnimationLibrary_e70ae")
+}
+
+[node name="Paper 09" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_llil8")]
+visible = false
+position = Vector2(0, 0)
+previous_page = NodePath("../Paper 01")
+next_page = NodePath(".")
+
+[node name="Signature" type="Area2D" parent="Paper 09"]
+position = Vector2(-6.10352e-05, 290.201)
+scale = Vector2(1.25628, 1.25628)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper 09/Signature"]
+shape = SubResource("RectangleShape2D_ucp3t")
+
+[connection signal="input_event" from="Paper 01/Flip Next Page" to="Paper 01" method="turn_next"]
+[connection signal="input_event" from="Paper 02/Option 01" to="Paper 02/Option 01" method="choose_alternative"]
+[connection signal="input_event" from="Paper 02/Flip Previous Page" to="Paper 02" method="turn_previous"]
+[connection signal="input_event" from="Paper 02/Flip Next Page" to="Paper 02" method="turn_next"]

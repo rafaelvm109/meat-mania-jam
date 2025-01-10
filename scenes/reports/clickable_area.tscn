@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://b14nymb0c77fj"]
+
+[node name="Clickable Area" type="Area2D"]
+position = Vector2(24, -24)
