@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbugbkv210d4i"]
+
+[ext_resource type="Script" path="res://scripts/reports/choose_alternative.gd" id="1_muxs4"]
+[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sfx/checkbox.png" id="2_yyor2"]
+[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sfx/checkmark.png" id="3_vt4p7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lavu6"]
+size = Vector2(38, 34)
+
+[node name="Option 01" type="Area2D" node_paths=PackedStringArray("checkmark")]
+position = Vector2(-56.5326, 121.859)
+scale = Vector2(1.25628, 1.25628)
+script = ExtResource("1_muxs4")
+checkmark = NodePath("Checkmark")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lavu6")
+
+[node name="Checkbox" type="Sprite2D" parent="."]
+scale = Vector2(0.437501, 0.437501)
+texture = ExtResource("2_yyor2")
+
+[node name="Checkmark" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.498892, 0.498892)
+texture = ExtResource("3_vt4p7")
+
+[connection signal="input_event" from="." to="." method="choose_alternative"]
