@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2r6r0yberd1l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pax0i"]
+size = Vector2(67.9999, 56)
+
+[node name="Flip Previous Page" type="Area2D"]
+position = Vector2(-217.337, 350.503)
+scale = Vector2(1.25628, 1.25628)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pax0i")

@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scripts/reports/paper.gd" id="2_lsdco"]
 
 [node name="Paper" type="Sprite2D"]
-position = Vector2(576, 324)
 scale = Vector2(0.796, 0.796)
 texture = ExtResource("1_xwp4y")
 script = ExtResource("2_lsdco")
