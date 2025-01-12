@@ -9,6 +9,7 @@ var is_processed: bool = false
 @onready var press_snap_pos: Marker2D = $"../../Machines/PressSnapPos"
 @onready var press_machine: Node2D = $"../../Machines/PressMachine"
 @onready var animation_player: AnimationPlayer = $Subject/AnimationPlayer
+@onready var mangler_machine: Node2D = $"../../Machines/mangler_machine"
 
 
 func _input(event: InputEvent) -> void:
@@ -16,7 +17,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			if chicken_collision.shape and get_global_mouse_position().distance_to(global_position) < 45:
-				if press_machine.is_chicken_draggable():
+				if press_machine.is_chicken_draggable() and mangler_machine.is_chicken_draggable():
 					is_dragging = true
 					offset = global_position - get_global_mouse_position()
 		# stop dragging when MB is released

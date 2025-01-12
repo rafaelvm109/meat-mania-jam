@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd5nwfg25bfty"]
+[gd_scene load_steps=9 format=3 uid="uid://bd5nwfg25bfty"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_ro855"]
+[ext_resource type="PackedScene" uid="uid://dbc8qbdp6moww" path="res://scenes/machines/mangler_machine.tscn" id="3_7vni7"]
 [ext_resource type="PackedScene" uid="uid://c36au6a2n2ydq" path="res://scenes/machines/press_machine.tscn" id="3_76j7j"]
 [ext_resource type="PackedScene" uid="uid://bgbx8g7acgq2l" path="res://scenes/specimen/chicken.tscn" id="4_rp8v8"]
 [ext_resource type="Material" uid="uid://t8ek8x36aomn" path="res://shaders/pause.tres" id="5_4ku4w"]
-
-[sub_resource type="GDScript" id="GDScript_f4xk0"]
+[ext_resource type="PackedScene" uid="uid://etghli8183xh" path="res://scenes/machines/oven_machine.tscn" id="5_4pg23"]
+[ext_resource type="PackedScene" uid="uid://c6avlnb01vhue" path="res://scenes/machines/deliver_machine.tscn" id="6_n7u8f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne1mv"]
 bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
@@ -18,17 +19,23 @@ script = ExtResource("1_ro855")
 [node name="Inventory" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
-script = SubResource("GDScript_f4xk0")
 
 [node name="Control" type="Control" parent="Inventory/CanvasLayer"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 3
-anchors_preset = 0
-offset_left = 384.0
-offset_top = 528.0
-offset_right = 768.0
-offset_bottom = 624.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -147.0
+offset_right = 192.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
 mouse_filter = 2
 
 [node name="Inv1" type="Panel" parent="Inventory/CanvasLayer/Control"]
@@ -150,25 +157,34 @@ text = "Exit"
 
 [node name="Pause" type="Button" parent="Pause/PauseLayer/Control"]
 layout_mode = 0
-offset_left = 1108.0
-offset_top = 4.0
-offset_right = 1148.0
-offset_bottom = 44.0
+offset_left = 1856.0
+offset_top = 24.0
+offset_right = 1896.0
+offset_bottom = 64.0
 text = "||
 "
 
 [node name="Machines" type="Node" parent="."]
 
 [node name="PressMachine" parent="Machines" instance=ExtResource("3_76j7j")]
-position = Vector2(197, 272)
+position = Vector2(479, 544)
+
+[node name="mangler_machine" parent="Machines" instance=ExtResource("3_7vni7")]
+position = Vector2(799, 545)
+
+[node name="oven_machine" parent="Machines" instance=ExtResource("5_4pg23")]
+position = Vector2(1119, 545)
+
+[node name="deliver_machine" parent="Machines" instance=ExtResource("6_n7u8f")]
+position = Vector2(1455, 656)
 
 [node name="PressSnapPos" type="Marker2D" parent="Machines"]
-position = Vector2(196, 233)
+position = Vector2(524, 481)
 
 [node name="Specimen" type="Node" parent="."]
 
 [node name="Chicken" parent="Specimen" instance=ExtResource("4_rp8v8")]
-position = Vector2(573, 285)
+position = Vector2(818, 980)
 
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Settings" to="." method="_on_settings_pressed"]

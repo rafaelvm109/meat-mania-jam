@@ -3,11 +3,16 @@ extends Node2D
 @onready var pause_box: Panel = $Pause/PauseLayer/Control/PauseBox
 @onready var pause_button: Button = $Pause/PauseLayer/Control/Pause
 @onready var bg_blur: ColorRect = $Pause/PauseLayer/Control/BGBlur
+@onready var inv_1: Panel = $Inventory/CanvasLayer/Control/Inv1
+@onready var inv_2: Panel = $Inventory/CanvasLayer/Control/Inv2
+@onready var inv_3: Panel = $Inventory/CanvasLayer/Control/Inv3
+@onready var inv_4: Panel = $Inventory/CanvasLayer/Control/Inv4
+@onready var chicken: Node2D = $Specimen/Chicken
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	chicken.position = inv_1.global_position + (inv_1.size / 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
