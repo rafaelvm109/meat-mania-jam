@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbc8qbdp6moww"]
+
+[ext_resource type="Texture2D" uid="uid://bt4kvrfo163pb" path="res://assets/sprites/machines/mangler/mangler_body.png" id="1_mken5"]
+[ext_resource type="Script" path="res://scripts/machines/mangler_machine.gd" id="1_t3lln"]
+[ext_resource type="Texture2D" uid="uid://dneb1nu2vaihm" path="res://assets/sprites/machines/mangler/slider_back.png" id="2_snt7b"]
+[ext_resource type="Texture2D" uid="uid://emvmb84fr842" path="res://assets/sprites/machines/mangler/slider_handle.png" id="3_byw05"]
+[ext_resource type="Texture2D" uid="uid://b36ql223o3wu6" path="res://assets/sprites/machines/mangler/saw_blade.png" id="4_uqyc7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n06p4"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58hq6"]
+size = Vector2(250, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n64o1"]
+size = Vector2(126, 82)
+
+[node name="mangler_machine" type="Node2D"]
+script = ExtResource("1_t3lln")
+
+[node name="ManglerBody" type="Sprite2D" parent="."]
+texture = ExtResource("1_mken5")
+
+[node name="SliderBack" type="Sprite2D" parent="."]
+position = Vector2(0, 115)
+texture = ExtResource("2_snt7b")
+
+[node name="SliderHandle" type="Area2D" parent="."]
+position = Vector2(-49, 114)
+
+[node name="Sprite2D" type="Sprite2D" parent="SliderHandle"]
+position = Vector2(1, 0)
+texture = ExtResource("3_byw05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SliderHandle"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_n06p4")
+
+[node name="SpecimenArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecimenArea"]
+position = Vector2(1, -101.5)
+shape = SubResource("RectangleShape2D_58hq6")
+
+[node name="SawBlade" type="Sprite2D" parent="."]
+position = Vector2(-78, -25)
+texture = ExtResource("4_uqyc7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SawBlade"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SawBlade/StaticBody2D"]
+visible = false
+position = Vector2(17, 9)
+shape = SubResource("RectangleShape2D_n64o1")

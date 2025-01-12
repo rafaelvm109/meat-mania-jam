@@ -11,7 +11,7 @@
 size = Vector2(96, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eq6qf"]
-size = Vector2(226, 95)
+size = Vector2(250, 199.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j228y"]
 size = Vector2(126, 82)
@@ -43,7 +43,7 @@ position = Vector2(0, -21)
 texture = ExtResource("5_o8lk5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PressLower"]
-position = Vector2(0, -41)
+position = Vector2(1, -100.75)
 shape = SubResource("RectangleShape2D_eq6qf")
 
 [node name="PressUpper" type="Sprite2D" parent="."]
