@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd5nwfg25bfty"]
+[gd_scene load_steps=10 format=3 uid="uid://bd5nwfg25bfty"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_ro855"]
+[ext_resource type="Script" path="res://scripts/misc/game_manager.gd" id="2_xwam5"]
 [ext_resource type="PackedScene" uid="uid://dbc8qbdp6moww" path="res://scenes/machines/mangler_machine.tscn" id="3_7vni7"]
 [ext_resource type="PackedScene" uid="uid://c36au6a2n2ydq" path="res://scenes/machines/press_machine.tscn" id="3_76j7j"]
 [ext_resource type="PackedScene" uid="uid://bgbx8g7acgq2l" path="res://scenes/specimen/chicken.tscn" id="4_rp8v8"]
@@ -15,6 +16,7 @@ bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
 script = ExtResource("1_ro855")
 
 [node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_xwam5")
 
 [node name="Inventory" type="Node" parent="."]
 
@@ -167,19 +169,19 @@ text = "||
 [node name="Machines" type="Node" parent="."]
 
 [node name="PressMachine" parent="Machines" instance=ExtResource("3_76j7j")]
-position = Vector2(479, 544)
+position = Vector2(479, 353)
 
 [node name="mangler_machine" parent="Machines" instance=ExtResource("3_7vni7")]
-position = Vector2(799, 545)
+position = Vector2(799, 354)
 
 [node name="oven_machine" parent="Machines" instance=ExtResource("5_4pg23")]
-position = Vector2(1119, 545)
+position = Vector2(1119, 354)
 
 [node name="deliver_machine" parent="Machines" instance=ExtResource("6_n7u8f")]
-position = Vector2(1455, 656)
+position = Vector2(1455, 465)
 
 [node name="PressSnapPos" type="Marker2D" parent="Machines"]
-position = Vector2(524, 481)
+position = Vector2(524, 290)
 
 [node name="Specimen" type="Node" parent="."]
 

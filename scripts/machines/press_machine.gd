@@ -18,6 +18,8 @@ extends Node2D
 @onready var chicken_animation_player: AnimationPlayer = $Subject/AnimationPlayer
 @onready var press_lower_collision: CollisionShape2D = $PressLower/CollisionShape2D
 @onready var mangler_machine: Node2D = $"../mangler_machine"
+@onready var game_manager: Node = $"../../GameManager"
+@onready var oven_machine: Node2D = $"../oven_machine"
 
 
 var subject: Node2D = null # might delete later
@@ -60,23 +62,32 @@ func _input(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_dragging = false
 			# checks bottom position if chicken present and smash < x
-			if !mangler_machine.is_chicken_draggable():
+			if !mangler_machine.is_chicken_draggable() or !oven_machine.is_chicken_draggable():
 				pass
 			elif snap_subject:
 				chicken.position = press_lower_collision.global_position + Vector2(0, 60)
-				if smashed_count < 3:
-					can_drag_chicken_press = false
-					if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0.9):
+				if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 1):
 						# add particles effec around here
-						chicken.smash()
 						smashed_count += 1
 						print("chicken smashed ", smashed_count, " times")
+						
+				if smashed_count < 3:
+					can_drag_chicken_press = false
 				elif smashed_count == 3:
-					chicken.change_chicken_sprite()
 					can_drag_chicken_press = true
+					chicken.smash()
+					game_manager.append_machine_order(0)
 			else:
-				pass
-				#chicken.position = inv_1.global_position + (inv_1.size / 2)
+				game_manager.snap_chicken_to_inv()
+				
+			if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0):
+				var duration = (lever_handle.position.y - lever_start_pos.y) / (lever_end_pos.y - lever_start_pos.y)
+				var tween = create_tween()
+				var tween2 = create_tween()
+				tween.tween_property(lever_handle, "position", (lever_start_pos), duration)
+				tween2.tween_property(press_upper, "position", (press_start_pos), duration)
+				await tween.finished
+			
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging and event is InputEventMouseMotion:
 		drag_lever(event.relative.y)
