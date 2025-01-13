@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uv6iqig1qcey"
-path="res://.godot/imported/lever_up.png-20499921aab72849c13259cbafcf46cb.ctex"
+uid="uid://se81ng63ns4s"
+path="res://.godot/imported/press_mid.png-441f6cc8144273f33b5f61c812f6df80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machines/press/lever_up.png"
-dest_files=["res://.godot/imported/lever_up.png-20499921aab72849c13259cbafcf46cb.ctex"]
+source_file="res://assets/sprites/machines/press/Old/press_mid.png"
+dest_files=["res://.godot/imported/press_mid.png-441f6cc8144273f33b5f61c812f6df80.ctex"]
 
 [params]
 
