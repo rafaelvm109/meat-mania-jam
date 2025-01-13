@@ -13,7 +13,8 @@ extends Node2D
 @onready var inv_3: Panel = $"../../Inventory/CanvasLayer/Control/Inv3"
 @onready var inv_4: Panel = $"../../Inventory/CanvasLayer/Control/Inv4"
 @onready var press_machine: Node2D = $"../PressMachine"
-
+@onready var game_manager: Node = $"../../GameManager"
+@onready var oven_machine: Node2D = $"../oven_machine"
 
 var is_dragging_mangler: bool = false # detects lever dragging
 var mouse_over_slider: bool = false # detects mouse over lever
@@ -53,23 +54,27 @@ func _input(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_dragging_mangler = false
 			# checks bottom position if chicken present and smash < x
-			if !press_machine.is_chicken_draggable():
+			if !press_machine.is_chicken_draggable() or !oven_machine.is_chicken_draggable():
 				pass
 			elif snap_mangler_subject:
 				chicken.position = specimen_collision.global_position + Vector2(0, 60)
-				if mangled_count < 5:
-					can_drag_chicken_mangler = false
-					if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0.9):
+				if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0.9):
 						# add particles effec around here
-						chicken.smash()
 						mangled_count += 1
 						print("chicken mangled ", mangled_count, " times")
+				if mangled_count < 5:
+					can_drag_chicken_mangler = false
 				elif mangled_count == 5:
-					#chicken.change_chicken_sprite()
 					can_drag_chicken_mangler = true
-			else:
-				pass
-				#chicken.position = inv_1.global_position + (inv_1.size / 2)
+					chicken.dice()
+					game_manager.append_machine_order(1)
+			if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0):
+				var duration = (slider_handle.position.x - slider_start_pos.x) / (slider_end_pos.x - slider_start_pos.x)
+				var tween = create_tween()
+				var tween2 = create_tween()
+				tween.tween_property(slider_handle, "position", (slider_start_pos), duration)
+				tween2.tween_property(saw_blade, "position", (saw_start_pos), duration)
+				await tween.finished
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging_mangler and event is InputEventMouseMotion:
 		drag_slider(event.relative.x)

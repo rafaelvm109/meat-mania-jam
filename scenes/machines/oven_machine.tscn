@@ -27,9 +27,11 @@ shape = SubResource("CircleShape2D_2ndjv")
 
 [node name="SpecimenArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecimenArea"]
+[node name="SpecimenCollision" type="CollisionShape2D" parent="SpecimenArea"]
 position = Vector2(1, -102)
 shape = SubResource("RectangleShape2D_igid0")
 
 [connection signal="mouse_entered" from="OvenButton" to="." method="_on_oven_button_mouse_entered"]
 [connection signal="mouse_exited" from="OvenButton" to="." method="_on_oven_button_mouse_exited"]
+[connection signal="area_entered" from="SpecimenArea" to="." method="_on_specimen_area_entered"]
+[connection signal="area_exited" from="SpecimenArea" to="." method="_on_specimen_area_exited"]
