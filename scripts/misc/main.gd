@@ -11,28 +11,35 @@ extends Node2D
 @onready var game_manager: Node = $GameManager
 @onready var specimen: Node = $Specimen
 const CHICKEN_SCENE = preload("res://scenes/specimen/chicken.tscn")
-# Called when the node enters the scene tree for the first time.
+
+
+# starts by setting specimen position
 func _ready() -> void:
 	chicken.position = inv_1.global_position + (inv_1.size / 2)
 
 
+# checks if soultion result is true or false and calls every function needed to reset game state
+# TODO: now that I see this is very similar to game.is_subject_acceptable() I should merge them into one
 func check_solution() -> void:
 	if game_manager.is_subject_acceptable():
 		print("solution accepted")
 	else:
 		game_manager.clear_list()
+		game_manager.clear_machine_counter()
 		chicken.reset_sprite()
 		chicken.position = inv_1.global_position + (inv_1.size / 2)
 		print("chicken reset")
 
 
+# make pause menu and blur background visible
 func _on_pause_pressed() -> void:
 	get_tree().paused = true
 	pause_box.visible = true
 	pause_button.visible = false
 	bg_blur.visible = true
 	
-	
+
+# make pause menu and blur background notvisible
 func _on_resume_pressed() -> void:
 	get_tree().paused = false
 	pause_box.visible = false

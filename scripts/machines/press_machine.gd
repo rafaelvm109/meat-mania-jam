@@ -53,33 +53,40 @@ func _ready() -> void:
 
 # listen for mouse input and reacts accordingly
 func _input(event: InputEvent) -> void:
-	# checks mouse click on lever, turns drag to on
+	# on mouse event
 	if event is InputEventMouseButton:
+		# if LMB pressed
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			# and mouse is over the machine
 			if mouse_over:
 				is_dragging = true
 		# release mouse click
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_dragging = false
-			# checks bottom position if chicken present and smash < x
+			# if specimen is in another machine pass
 			if !mangler_machine.is_chicken_draggable() or !oven_machine.is_chicken_draggable():
 				pass
+			# if specimen over press snap it into place
 			elif snap_subject:
 				chicken.position = press_lower_collision.global_position + Vector2(0, 60)
-				if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 1):
-						# add particles effec around here
+				# if lever is moved 90% of the way register it as specimen smashed +1
+				if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0.9):
+						# TODO: add particles effec around here
 						smashed_count += 1
 						print("chicken smashed ", smashed_count, " times")
-						
+				# dont let specimen be moved while counter < 3
 				if smashed_count < 3:
 					can_drag_chicken_press = false
+				# allow specimen movemnt, change sprite, and add result to the list
 				elif smashed_count == 3:
 					can_drag_chicken_press = true
 					chicken.smash()
 					game_manager.append_machine_order(0)
 			else:
+				# will always listen for specimen dropped and snap it to the inventory
+				# TODO: I could probbably move this to someplace cleaner
 				game_manager.snap_chicken_to_inv()
-				
+			# if lever is moved slowly return it back to its starting position alongside the press
 			if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0):
 				var duration = (lever_handle.position.y - lever_start_pos.y) / (lever_end_pos.y - lever_start_pos.y)
 				var tween = create_tween()
@@ -87,7 +94,6 @@ func _input(event: InputEvent) -> void:
 				tween.tween_property(lever_handle, "position", (lever_start_pos), duration)
 				tween2.tween_property(press_upper, "position", (press_start_pos), duration)
 				await tween.finished
-			
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging and event is InputEventMouseMotion:
 		drag_lever(event.relative.y)
@@ -115,25 +121,6 @@ func drag_lever(delta_y) -> void:
 	press_upper.position.y = lerp(press_start_pos.y, press_end_pos.y, progress)
 
 
-# TODO: use this function for changing chicken sprite
-func process_subject() -> void:
-	if subject and !is_processing:
-		is_processing = true
-		output_processed_subject()
-
-
-# TODO: might merge with above function
-func output_processed_subject() -> void:
-	pass
-	#if subject:
-		## substitute subject for the output
-		##subject.queue_free() # remove original to replace with new sprite
-		##var altered_subject = PackedScene.new().instance()
-		#altered_subject.position = output_pos.global_position
-		#add_child(altered_subject)
-		#is_processing = false
-
-
 # detect mouse over lever 
 func _on_lever_handle_mouse_entered() -> void:
 	mouse_over = true  # this doesnt work
@@ -149,7 +136,6 @@ func _on_press_lower_area_entered(area: Area2D) -> void:
 # detects if specimen is exiting press lower
 func _on_press_lower_area_exited(area: Area2D) -> void:
 	snap_subject = false
-
 
 func is_chicken_draggable() -> bool:
 	return can_drag_chicken_press

@@ -10,36 +10,35 @@ extends Node2D
 @onready var game_manager: Node = $"../../GameManager"
 @onready var game: Node2D = $"../.."
 
-var snap_deliver_subject: bool = false
+var snap_deliver_subject: bool = false # tracks if specimen is over the machine
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	deliver_belt.connect("area_entered", Callable(self, "_on_deliver_belt_area_entered"))
 	deliver_belt.connect("area_exited", Callable(self, "_on_deliver_belt_area_exited"))
 
 
 func _input(event: InputEvent) -> void:
+	# on mouse event
 	if event is InputEventMouseButton:
-		#if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			#pass
+		# if LMB is pressed
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			# and specimen not in another machine
 			if !press_machine.is_chicken_draggable() or !mangler_machine.is_chicken_draggable() or !oven_machine.is_chicken_draggable():
 				pass
+			# and specimen over deliver machine
 			elif snap_deliver_subject: 
+				# set the specimen position at the start of the belt
 				chicken.position = specimen_collision.global_position + Vector2(-100, 5)
 				await get_tree().create_timer(1).timeout
 				var tween = create_tween()
+				# move specimen right 300px over 2sec
 				tween.tween_property(chicken, "position", (chicken.global_position + Vector2(300, 0)), 2)
 				await tween.finished
-				check_subject_deliver()
-			else:
-				pass
+				# verifies state of solution
+				game.check_solution()
 
 
-func check_subject_deliver() -> void:
-	game.check_solution()
-	
 func _on_deliver_belt_area_entered(area: Area2D) -> void:
 	snap_deliver_subject = true
 

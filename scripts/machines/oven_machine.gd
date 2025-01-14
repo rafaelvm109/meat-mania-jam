@@ -29,17 +29,19 @@ func _input(event: InputEvent) -> void:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			# and the mouse is over the oven button
 			if mouse_over_button:
-				# and player hasnt clicked the button enough times
 				clicks_to_burn += 1
 				# cheap and lazy way to give feedback to the button
+				# TODO: add a better way to give button feedback later
 				button_sprite.position += Vector2(2, 2)
 				await get_tree().create_timer(0.1).timeout
 				button_sprite.position -= Vector2(2, 2)
+				# if the button hasnt been clicked enough timnes
 				if clicks_to_burn < total_clicks_to_burn:
-					# add fire particles here
+					# TODO: add fire particles here
 					print("click ", total_clicks_to_burn - clicks_to_burn, " more times to cook the chicken")
-				# on the last click needed allow player to drag chicken
+				# on the last click needed allow player to drag specimen
 				elif clicks_to_burn == total_clicks_to_burn:
+					# change sprite and add result to the list
 					can_drag_chicken_oven = true
 					chicken.burn()
 					game_manager.append_machine_order(2)
@@ -47,22 +49,16 @@ func _input(event: InputEvent) -> void:
 					print("the chicken is burned")
 		# on LMB relesase
 		elif event.button_index == MOUSE_BUTTON_LEFT:
-			# if the subject is not in a machine already
+			# if the specimen is in a machine already pass
 			if !press_machine.is_chicken_draggable() or !mangler_machine.is_chicken_draggable():
 				pass
-			# if subject is over the oven 
+			# if specimen is over the oven 
 			elif snap_oven_subject:
-				# snap subject into place
+				# snap specimen into place
 				chicken.position = specimen_collision.global_position + Vector2(0, 60)
-				# subject not draggable while condition met
+				# specimen not draggable while condition met
 				if clicks_to_burn < total_clicks_to_burn:
 					can_drag_chicken_oven = false
-			# if not in another machine and not in this machine snap back into the inventory
-			else: 
-				# snap logic here
-				pass
-			
-			
 
 
 func _on_oven_button_mouse_entered() -> void:
