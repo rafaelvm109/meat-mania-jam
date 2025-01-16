@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://c36au6a2n2ydq"]
 
 [ext_resource type="Script" path="res://scripts/machines/press_machine.gd" id="1_54isr"]
-[ext_resource type="Texture2D" uid="uid://c0k7seh473gem" path="res://assets/sprites/machines/press/press_machine.png" id="2_370oi"]
-[ext_resource type="Texture2D" uid="uid://rq12fb3ps117" path="res://assets/sprites/machines/press/lever_back.png" id="3_6bbv6"]
-[ext_resource type="Texture2D" uid="uid://dec2jv16l0xyk" path="res://assets/sprites/machines/press/lever_handle.png" id="4_fb3yp"]
-[ext_resource type="Texture2D" uid="uid://rc3nr0klt7yl" path="res://assets/sprites/machines/press/press_lower.png" id="5_o8lk5"]
-[ext_resource type="Texture2D" uid="uid://c4ww66cv5jdnm" path="res://assets/sprites/machines/press/press_upper.png" id="6_mwqab"]
+[ext_resource type="Texture2D" uid="uid://c0k7seh473gem" path="res://assets/sprites/machines/press/old/press_machine.png" id="2_370oi"]
+[ext_resource type="Texture2D" uid="uid://rq12fb3ps117" path="res://assets/sprites/machines/press/old/lever_back.png" id="3_6bbv6"]
+[ext_resource type="Texture2D" uid="uid://dec2jv16l0xyk" path="res://assets/sprites/machines/press/old/lever_handle.png" id="4_fb3yp"]
+[ext_resource type="Texture2D" uid="uid://rc3nr0klt7yl" path="res://assets/sprites/machines/press/old/press_lower.png" id="5_o8lk5"]
+[ext_resource type="Texture2D" uid="uid://c4ww66cv5jdnm" path="res://assets/sprites/machines/press/old/press_upper.png" id="6_mwqab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_077jk"]
 size = Vector2(96, 24)

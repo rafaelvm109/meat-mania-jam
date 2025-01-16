@@ -1,10 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://dd2i03ynligre"]
 
 [ext_resource type="Script" path="res://scripts/menu/menu.gd" id="1_h8ii6"]
-[ext_resource type="Texture2D" uid="uid://k7viqecmiv0a" path="res://assets/sprites/misc/slaughtergouse.jpg" id="2_2rkbc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jlqps"]
+load_path = "res://.godot/imported/slaughtergouse.jpg-9aa207e016e6823241c7f716f1ee18f5.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vqmh"]
-texture = ExtResource("2_2rkbc")
+texture = SubResource("CompressedTexture2D_jlqps")
 modulate_color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbhxu"]
