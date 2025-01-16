@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckbowx7p8wgod"]
+
+[ext_resource type="Texture2D" uid="uid://ct2sb7wq7m0n6" path="res://assets/sprites/machines/blood_1.png" id="1_e1clr"]
+[ext_resource type="Texture2D" uid="uid://dnf3d126mcgip" path="res://assets/sprites/machines/blood_2.png" id="2_i4bwv"]
+[ext_resource type="Texture2D" uid="uid://dp5g1p761lko5" path="res://assets/sprites/machines/blood_3.png" id="3_5tu7a"]
+[ext_resource type="Texture2D" uid="uid://b2ci0i01qk073" path="res://assets/sprites/machines/blood_4.png" id="4_imn8u"]
+[ext_resource type="Texture2D" uid="uid://bd1v1dqrcrsgg" path="res://assets/sprites/machines/flesh_bit.png" id="5_0swss"]
+
+[sub_resource type="Curve" id="Curve_vducj"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_a72u4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.475584, 0.69023), 0.0, 0.0, 0, 0, Vector2(0.7431, 0.0448769), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_bu7iq"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_0ysd0"]
+colors = PackedColorArray(0.764706, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_ba1vc"]
+_data = [Vector2(0.205945, 1), 0.0, 0.0, 0, 0, Vector2(0.815287, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BloodParticle" type="Node2D"]
+
+[node name="Blood" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.1
+texture = ExtResource("1_e1clr")
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -512.95
+angular_velocity_max = 720.0
+angular_velocity_curve = SubResource("Curve_vducj")
+scale_amount_min = 0.1
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_a72u4")
+color = Color(1, 0.695307, 0.646823, 1)
+color_ramp = SubResource("Gradient_bu7iq")
+color_initial_ramp = SubResource("Gradient_0ysd0")
+
+[node name="Blood2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.1
+texture = ExtResource("2_i4bwv")
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -512.95
+angular_velocity_max = 720.0
+angular_velocity_curve = SubResource("Curve_vducj")
+scale_amount_min = 0.1
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_a72u4")
+color = Color(1, 0.695307, 0.646823, 1)
+color_ramp = SubResource("Gradient_bu7iq")
+color_initial_ramp = SubResource("Gradient_0ysd0")
+
+[node name="Blood3" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.1
+texture = ExtResource("3_5tu7a")
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -512.95
+angular_velocity_max = 720.0
+angular_velocity_curve = SubResource("Curve_vducj")
+scale_amount_min = 0.1
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_a72u4")
+color = Color(1, 0.695307, 0.646823, 1)
+color_ramp = SubResource("Gradient_bu7iq")
+color_initial_ramp = SubResource("Gradient_0ysd0")
+
+[node name="Blood4" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.1
+texture = ExtResource("4_imn8u")
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -512.95
+angular_velocity_max = 720.0
+angular_velocity_curve = SubResource("Curve_vducj")
+scale_amount_min = 0.1
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_a72u4")
+color = Color(1, 0.695307, 0.646823, 1)
+color_ramp = SubResource("Gradient_bu7iq")
+color_initial_ramp = SubResource("Gradient_0ysd0")
+
+[node name="meat" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 4.0
+one_shot = true
+draw_order = 1
+texture = ExtResource("5_0swss")
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -512.95
+angular_velocity_max = 720.0
+angular_velocity_curve = SubResource("Curve_vducj")
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_ba1vc")
