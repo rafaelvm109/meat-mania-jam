@@ -25,49 +25,56 @@ var saw_start_pos: Vector2
 var saw_end_pos: Vector2
 var slider_travel_distance: int = 98 # this should be a const later on
 var saw_travel_distance: int = 158 # this should be a const later on
-var mangled_count: int = 0
+var mangled_count: int = 0 # determines number of times saw has passed through the specimen
 var can_drag_chicken_mangler: bool = true  # Determines whether the chicken can be dragged
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# sets the start and end pos for the slider and saw
 	slider_start_pos = slider_handle.position
 	slider_end_pos = slider_handle.position + Vector2(slider_travel_distance, 0)
 	saw_start_pos = saw_blade.position
 	saw_end_pos = saw_blade.position + Vector2(saw_travel_distance, 0)
-	#chicken.position = inv_1.global_position + (inv_1.size / 2)
 	
+	# mannually connect mouse and area entered functions
 	slider_handle.connect("mouse_entered", Callable(self, "_on_slider_handle_mouse_entered"))
 	slider_handle.connect("mouse_exited", Callable(self, "_on_slider_handle_mouse_exited"))
 	specimen_area.connect("area_entered", Callable(self, "_on_specimen_area_entered"))
 	specimen_area.connect("area_exited", Callable(self, "_on_specimen_area_exited"))
 
 
-# listen for mouse input and reacts accordingly
+
 func _input(event: InputEvent) -> void:
-	# checks mouse click on lever, turns drag to on
+	# on mouse input
 	if event is InputEventMouseButton:
+		# if LMB is pressed
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			# abd mouse is over the slider
 			if mouse_over_slider:
 				is_dragging_mangler = true
 		# release mouse click
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_dragging_mangler = false
-			# checks bottom position if chicken present and smash < x
+			# do nothing if chicken is in another machine
 			if !press_machine.is_chicken_draggable() or !oven_machine.is_chicken_draggable():
 				pass
 			elif snap_mangler_subject:
+				# snaps specimen to the machine
 				chicken.position = specimen_collision.global_position + Vector2(0, 60)
+				# if the slider reaches 90% consider mangler activated
 				if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0.9):
-						# add particles effec around here
+						# TODO: add particles effec around here
 						mangled_count += 1
 						print("chicken mangled ", mangled_count, " times")
+				# does not allow specimen to be dragged while < 5
 				if mangled_count < 5:
 					can_drag_chicken_mangler = false
+				# changes specimen sprite and appends result to the list
 				elif mangled_count == 5:
 					can_drag_chicken_mangler = true
 					chicken.dice()
 					game_manager.append_machine_order(1)
+			# whenever slider is moved make it slowly return to starting position in a variable duration depending on how far it was moved
 			if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0):
 				var duration = (slider_handle.position.x - slider_start_pos.x) / (slider_end_pos.x - slider_start_pos.x)
 				var tween = create_tween()
