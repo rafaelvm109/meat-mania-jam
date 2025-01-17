@@ -35,6 +35,7 @@ var lever_travel_distance: int = 74 # this should be a const later on
 var press_travel_distance: int = 100 # this should be a const later on
 var smashed_count: int = 0
 var can_drag_chicken_press: bool = true  # Determines whether the chicken can be dragged
+var is_contacting: bool = true
 
 
 # sets start and end position for the lever and press
@@ -49,6 +50,38 @@ func _ready() -> void:
 	press_lower.connect("area_entered", Callable(self, "_on_press_lower_area_entered"))
 	press_lower.connect("area_exited", Callable(self, "_on_press_lower_area_exited"))
 	print("LeverHandle global position:", lever_handle.global_position)
+
+
+#func _process(delta: float) -> void:
+	#if snap_subject and mouse_over:
+		#if is_contacting:
+			#print("asd")
+			## if lever is moved 90% of the way register it as specimen smashed +1
+			#if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0.9):
+				## TODO: add particles effec around here
+				#smashed_count += 1
+				#print("chicken smashed ", smashed_count, " times")
+				#is_contacting = false
+			## dont let specimen be moved while counter < 3
+			#if smashed_count < 3:
+				#can_drag_chicken_press = false
+			## allow specimen movemnt, change sprite, and add result to the list
+			#elif smashed_count == 3:
+				#can_drag_chicken_press = true
+				#chicken.smash()
+				#game_manager.append_machine_order(0)
+		#else:
+			#is_contacting = false
+			
+			
+			
+	#if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 1):
+		#var duration = (lever_handle.position.y - lever_start_pos.y) / (lever_end_pos.y - lever_start_pos.y)
+		#var tween = create_tween()
+		#var tween2 = create_tween()
+		#tween.tween_property(lever_handle, "position", (lever_start_pos), duration)
+		#tween2.tween_property(press_upper, "position", (press_start_pos), duration)
+		#await tween.finished
 
 
 # listen for mouse input and reacts accordingly
@@ -69,19 +102,6 @@ func _input(event: InputEvent) -> void:
 			# if specimen over press snap it into place
 			elif snap_subject:
 				chicken.position = press_lower_collision.global_position + Vector2(0, 60)
-				# if lever is moved 90% of the way register it as specimen smashed +1
-				if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0.9):
-						# TODO: add particles effec around here
-						smashed_count += 1
-						print("chicken smashed ", smashed_count, " times")
-				# dont let specimen be moved while counter < 3
-				if smashed_count < 3:
-					can_drag_chicken_press = false
-				# allow specimen movemnt, change sprite, and add result to the list
-				elif smashed_count == 3:
-					can_drag_chicken_press = true
-					chicken.smash()
-					game_manager.append_machine_order(0)
 			else:
 				# will always listen for specimen dropped and snap it to the inventory
 				# TODO: I could probbably move this to someplace cleaner
@@ -97,6 +117,24 @@ func _input(event: InputEvent) -> void:
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging and event is InputEventMouseMotion:
 		drag_lever(event.relative.y)
+		
+	if event is InputEventMouseMotion:
+		if is_contacting and snap_subject:
+			if lever_handle.position.y == lerp(lever_start_pos.y, lever_end_pos.y, 1):
+				# TODO: add particles effec around here
+				smashed_count += 1
+				print("chicken smashed ", smashed_count, " times")
+				if smashed_count < 3:
+					can_drag_chicken_press = false
+				# allow specimen movemnt, change sprite, and add result to the list
+				elif smashed_count == 3:
+					can_drag_chicken_press = true
+					chicken.smash()
+					game_manager.append_machine_order(0)
+				is_contacting = false
+		elif lever_handle.position.y == lerp(lever_start_pos.y, lever_end_pos.y, 0):
+			is_contacting = true
+
 
 # moves lever and presss proportionally
 func drag_lever(delta_y) -> void:
@@ -139,3 +177,6 @@ func _on_press_lower_area_exited(area: Area2D) -> void:
 
 func is_chicken_draggable() -> bool:
 	return can_drag_chicken_press
+
+func round_first_decimal(num, places):
+	return (round(num * pow(10, places)) / pow(10, places))

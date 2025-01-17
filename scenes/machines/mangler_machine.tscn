@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dbc8qbdp6moww"]
 
-[ext_resource type="Texture2D" uid="uid://bt4kvrfo163pb" path="res://assets/sprites/machines/mangler/mangler_body.png" id="1_mken5"]
+[ext_resource type="Texture2D" uid="uid://bt4kvrfo163pb" path="res://assets/sprites/machines/mangler/old/mangler_body.png" id="1_mken5"]
 [ext_resource type="Script" path="res://scripts/machines/mangler_machine.gd" id="1_t3lln"]
-[ext_resource type="Texture2D" uid="uid://dneb1nu2vaihm" path="res://assets/sprites/machines/mangler/slider_back.png" id="2_snt7b"]
-[ext_resource type="Texture2D" uid="uid://emvmb84fr842" path="res://assets/sprites/machines/mangler/slider_handle.png" id="3_byw05"]
-[ext_resource type="Texture2D" uid="uid://b36ql223o3wu6" path="res://assets/sprites/machines/mangler/saw_blade.png" id="4_uqyc7"]
+[ext_resource type="Texture2D" uid="uid://dneb1nu2vaihm" path="res://assets/sprites/machines/mangler/old/slider_back.png" id="2_snt7b"]
+[ext_resource type="Texture2D" uid="uid://emvmb84fr842" path="res://assets/sprites/machines/mangler/old/slider_handle.png" id="3_byw05"]
+[ext_resource type="Texture2D" uid="uid://b36ql223o3wu6" path="res://assets/sprites/machines/mangler/old/saw_blade.png" id="4_uqyc7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n06p4"]
 radius = 12.0

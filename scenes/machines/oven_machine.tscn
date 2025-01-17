@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://etghli8183xh"]
 
 [ext_resource type="Script" path="res://scripts/machines/oven_machine.gd" id="1_n5la7"]
-[ext_resource type="Texture2D" uid="uid://dus0x78i1sgd7" path="res://assets/sprites/machines/oven/oven_body.png" id="1_x2y7n"]
-[ext_resource type="Texture2D" uid="uid://bybj7eevcdq2s" path="res://assets/sprites/machines/oven/oven_button.png" id="2_sbnii"]
+[ext_resource type="Texture2D" uid="uid://dus0x78i1sgd7" path="res://assets/sprites/machines/oven/old/oven_body.png" id="1_x2y7n"]
+[ext_resource type="Texture2D" uid="uid://bybj7eevcdq2s" path="res://assets/sprites/machines/oven/old/oven_button.png" id="2_sbnii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ndjv"]
 radius = 24.0208

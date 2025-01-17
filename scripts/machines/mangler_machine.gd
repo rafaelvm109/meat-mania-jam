@@ -27,6 +27,7 @@ var slider_travel_distance: int = 98 # this should be a const later on
 var saw_travel_distance: int = 158 # this should be a const later on
 var mangled_count: int = 0 # determines number of times saw has passed through the specimen
 var can_drag_chicken_mangler: bool = true  # Determines whether the chicken can be dragged
+var is_contacting: bool = true
 
 
 func _ready() -> void:
@@ -61,19 +62,6 @@ func _input(event: InputEvent) -> void:
 			elif snap_mangler_subject:
 				# snaps specimen to the machine
 				chicken.position = specimen_collision.global_position + Vector2(0, 60)
-				# if the slider reaches 90% consider mangler activated
-				if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0.9):
-						# TODO: add particles effec around here
-						mangled_count += 1
-						print("chicken mangled ", mangled_count, " times")
-				# does not allow specimen to be dragged while < 5
-				if mangled_count < 5:
-					can_drag_chicken_mangler = false
-				# changes specimen sprite and appends result to the list
-				elif mangled_count == 5:
-					can_drag_chicken_mangler = true
-					chicken.dice()
-					game_manager.append_machine_order(1)
 			# whenever slider is moved make it slowly return to starting position in a variable duration depending on how far it was moved
 			if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0):
 				var duration = (slider_handle.position.x - slider_start_pos.x) / (slider_end_pos.x - slider_start_pos.x)
@@ -85,9 +73,29 @@ func _input(event: InputEvent) -> void:
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging_mangler and event is InputEventMouseMotion:
 		drag_slider(event.relative.x)
-
-
-# moves lever and presss proportionally
+	
+	if event is InputEventMouseMotion:
+		if is_contacting and snap_mangler_subject:
+			#var mid_pos = float((slider_start_pos.x + slider_end_pos.x) / 2)
+			#print(slider_start_pos.x, " ", slider_end_pos.x, " ", mid_pos)
+			#print(lerp(slider_start_pos.x, slider_end_pos.x, 0.5))
+			#print(slider_handle.position.x)
+			#if slider_handle.position.x == lerp(slider_start_pos.x, slider_end_pos.x, 1):
+			if floor(slider_handle.position.x) == lerp(slider_start_pos.x, slider_end_pos.x, 1):
+				# TODO: add particles effec around here
+				mangled_count += 1
+				print("chicken mangled ", mangled_count, " times")
+				if mangled_count < 5:
+					can_drag_chicken_mangler = false
+				# allow specimen movemnt, change sprite, and add result to the list
+				elif mangled_count == 5:
+					can_drag_chicken_mangler = true
+					chicken.dice()
+					game_manager.append_machine_order(1)
+				is_contacting = false
+		if slider_handle.position.x == lerp(slider_start_pos.x, slider_end_pos.x, 0):
+			is_contacting = true
+			
 func drag_slider(delta_y) -> void:
 	# keeps lever value in between start and end pos
 	var new_slider_pos_x = clamp(
