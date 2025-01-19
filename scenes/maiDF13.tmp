@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd5nwfg25bfty"]
+[gd_scene load_steps=11 format=3 uid="uid://bd5nwfg25bfty"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_ro855"]
 [ext_resource type="Script" path="res://scripts/misc/game_manager.gd" id="2_xwam5"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://etghli8183xh" path="res://scenes/machines/oven_machine.tscn" id="5_4pg23"]
 [ext_resource type="PackedScene" uid="uid://c6avlnb01vhue" path="res://scenes/machines/deliver_machine.tscn" id="6_n7u8f"]
 [ext_resource type="PackedScene" uid="uid://cqcvf6587433b" path="res://scenes/machines/injector_machine.tscn" id="8_e2byj"]
-[ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/reports/user_manual.tscn" id="9_cta31"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne1mv"]
 bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
@@ -20,10 +19,71 @@ script = ExtResource("1_ro855")
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_xwam5")
 
+[node name="Inventory" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
+
+[node name="Control" type="Control" parent="Inventory/CanvasLayer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -147.0
+offset_right = 192.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Inv1" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_right = 95.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Inv2" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 96.0
+offset_right = 191.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Inv3" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 192.0
+offset_right = 287.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Inv4" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 288.0
+offset_right = 383.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
 [node name="Pause" type="Node" parent="."]
 
 [node name="PauseLayer" type="CanvasLayer" parent="Pause"]
-layer = 7
+layer = 2
 
 [node name="Control" type="Control" parent="Pause/PauseLayer"]
 light_mask = 2
@@ -107,74 +167,6 @@ offset_bottom = 64.0
 text = "||
 "
 
-[node name="Inventory" type="Node" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
-layer = -1
-
-[node name="Control" type="Control" parent="Inventory/CanvasLayer"]
-light_mask = 2
-visibility_layer = 2
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -147.0
-offset_right = 192.0
-offset_bottom = -51.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
-mouse_filter = 2
-
-[node name="Inv1" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_right = 95.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
-
-[node name="Inv2" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_left = 96.0
-offset_right = 191.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
-
-[node name="Inv3" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_left = 192.0
-offset_right = 287.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
-
-[node name="Inv4" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_left = 288.0
-offset_right = 383.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
-
-[node name="Specimen" type="Node" parent="."]
-
-[node name="Chicken" parent="Specimen" instance=ExtResource("4_rp8v8")]
-z_index = 1
-position = Vector2(818, 980)
-
 [node name="Machines" type="Node" parent="."]
 
 [node name="PressMachine" parent="Machines" instance=ExtResource("3_76j7j")]
@@ -190,39 +182,12 @@ position = Vector2(960, 399)
 position = Vector2(1626, 510)
 
 [node name="Injector" parent="Machines" instance=ExtResource("8_e2byj")]
-light_mask = 2
-visibility_layer = 2
 position = Vector2(1289, 398)
 
-[node name="UserManualLayer" type="CanvasLayer" parent="Machines/Injector"]
-layer = 6
+[node name="Specimen" type="Node" parent="."]
 
-[node name="BGBlurManual" type="ColorRect" parent="Machines/Injector/UserManualLayer"]
-visible = false
-material = ExtResource("5_4ku4w")
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -960.0
-offset_right = 960.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="UserManualPaper" parent="Machines/Injector/UserManualLayer" instance=ExtResource("9_cta31")]
-visible = false
-position = Vector2(960, 544)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 866.0
-offset_top = 72.0
-offset_right = 1057.0
-offset_bottom = 141.0
-theme_override_font_sizes/font_size = 50
-text = "Chicken"
-horizontal_alignment = 1
+[node name="Chicken" parent="Specimen" instance=ExtResource("4_rp8v8")]
+position = Vector2(818, 980)
 
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Settings" to="." method="_on_settings_pressed"]

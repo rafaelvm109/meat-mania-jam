@@ -6,6 +6,8 @@ extends Node2D
 @onready var press_upper: Sprite2D = $PressUpper
 @onready var press_lower: Area2D = $PressLower
 @onready var chicken: Node2D = $"../../Specimen/Chicken"
+@onready var sheep: Node2D = $"../../Specimen/Sheep"
+@onready var pig: Node2D = $"../../Specimen/Pig"
 @onready var press_snap_pos: Marker2D = $"../PressSnapPos"
 @onready var inv_1: Panel = $"../../Inventory/CanvasLayer/Control/Inv1"
 @onready var inv_2: Panel = $"../../Inventory/CanvasLayer/Control/Inv2"
@@ -20,6 +22,9 @@ extends Node2D
 @onready var mangler_machine: Node2D = $"../mangler_machine"
 @onready var game_manager: Node = $"../../GameManager"
 @onready var oven_machine: Node2D = $"../oven_machine"
+@onready var injector_machine: Node2D = $"../Injector"
+@onready var deliver_machine: Node2D = $"../deliver_machine"
+@onready var specimen: Node = $"../../Specimen"
 
 
 var subject: Node2D = null # might delete later
@@ -36,10 +41,12 @@ var press_travel_distance: int = 100 # this should be a const later on
 var smashed_count: int = 0
 var can_drag_chicken_press: bool = true  # Determines whether the chicken can be dragged
 var is_contacting: bool = true
-
+var current_specimen = null
 
 # sets start and end position for the lever and press
 func _ready() -> void:
+	current_specimen = specimen.get_child(0)
+	
 	lever_start_pos = lever_handle.position
 	lever_end_pos = lever_handle.position + Vector2(0, lever_travel_distance)
 	press_start_pos = press_upper.position
@@ -52,36 +59,12 @@ func _ready() -> void:
 	print("LeverHandle global position:", lever_handle.global_position)
 
 
-#func _process(delta: float) -> void:
-	#if snap_subject and mouse_over:
-		#if is_contacting:
-			#print("asd")
-			## if lever is moved 90% of the way register it as specimen smashed +1
-			#if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0.9):
-				## TODO: add particles effec around here
-				#smashed_count += 1
-				#print("chicken smashed ", smashed_count, " times")
-				#is_contacting = false
-			## dont let specimen be moved while counter < 3
-			#if smashed_count < 3:
-				#can_drag_chicken_press = false
-			## allow specimen movemnt, change sprite, and add result to the list
-			#elif smashed_count == 3:
-				#can_drag_chicken_press = true
-				#chicken.smash()
-				#game_manager.append_machine_order(0)
-		#else:
-			#is_contacting = false
-			
-			
-			
-	#if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 1):
-		#var duration = (lever_handle.position.y - lever_start_pos.y) / (lever_end_pos.y - lever_start_pos.y)
-		#var tween = create_tween()
-		#var tween2 = create_tween()
-		#tween.tween_property(lever_handle, "position", (lever_start_pos), duration)
-		#tween2.tween_property(press_upper, "position", (press_start_pos), duration)
-		#await tween.finished
+func _process(delta: float) -> void:
+	if snap_subject:
+		if smashed_count < 3:
+			can_drag_chicken_press = false
+	else:
+		can_drag_chicken_press = true
 
 
 # listen for mouse input and reacts accordingly
@@ -97,11 +80,11 @@ func _input(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_dragging = false
 			# if specimen is in another machine pass
-			if !mangler_machine.is_chicken_draggable() or !oven_machine.is_chicken_draggable():
+			if !mangler_machine.is_chicken_draggable() or !oven_machine.is_chicken_draggable() or !injector_machine.is_chicken_draggable() or !deliver_machine.is_chicken_draggable():
 				pass
 			# if specimen over press snap it into place
 			elif snap_subject:
-				chicken.position = press_lower_collision.global_position + Vector2(0, 60)
+				current_specimen.position = press_lower_collision.global_position + Vector2(0, 60)
 			else:
 				# will always listen for specimen dropped and snap it to the inventory
 				# TODO: I could probbably move this to someplace cleaner
@@ -120,16 +103,19 @@ func _input(event: InputEvent) -> void:
 		
 	if event is InputEventMouseMotion:
 		if is_contacting and snap_subject:
-			if lever_handle.position.y == lerp(lever_start_pos.y, lever_end_pos.y, 1):
+			if round_first_decimal(lever_handle.position.y, 1) == lerp(lever_start_pos.y, lever_end_pos.y, 1):
 				# TODO: add particles effec around here
 				smashed_count += 1
 				print("chicken smashed ", smashed_count, " times")
-				if smashed_count < 3:
-					can_drag_chicken_press = false
 				# allow specimen movemnt, change sprite, and add result to the list
-				elif smashed_count == 3:
+				if smashed_count == 3:
 					can_drag_chicken_press = true
-					chicken.smash()
+					current_specimen.smash()
+					game_manager.append_machine_order(0)
+				elif smashed_count == 6:
+					game_manager.unusable_specimen = true
+					# change sprite to unusable specimen
+					print("specimen unusable")
 					game_manager.append_machine_order(0)
 				is_contacting = false
 		elif lever_handle.position.y == lerp(lever_start_pos.y, lever_end_pos.y, 0):

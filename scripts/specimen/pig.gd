@@ -8,16 +8,17 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $Subject/AnimationPlayer
 @onready var mangler_machine: Node2D = $"../../Machines/mangler_machine"
 @onready var oven_machine: Node2D = $"../../Machines/oven_machine"
-@onready var chicken_sprite: Sprite2D = $Subject/Sprite2D
+@onready var pig_sprite: Sprite2D = $Subject/Sprite2D
 @onready var injector_machine: Node2D = $"../../Machines/Injector"
 @onready var game_manager: Node = $"../../GameManager"
+@onready var pig: Node2D = $"."
 
 var is_dragging: bool = false # tracks if chicken is being dragged
 var offset: Vector2
 const CHICKEN_PASTE = preload("res://assets/sprites/specimen/chicken_paste.png")
 const DICED_CHICKEN = preload("res://assets/sprites/specimen/diced_chicken.png")
 const DINO_NUGGIE = preload("res://assets/sprites/specimen/dino_nuggie.png")
-const CHICKEN = preload("res://assets/sprites/specimen/chicken.png")
+const PIG = preload("res://assets/sprites/specimen/pig.png")
 
 
 func _input(event: InputEvent) -> void:
@@ -44,30 +45,27 @@ func _process(delta: float) -> void:
 
 # chicken after press machine
 func smash() -> void:
-	if game_manager.machine_order_list == []:
-		chicken_sprite.texture = CHICKEN_PASTE
-		chicken_sprite.scale = Vector2(0.2, 0.2)
-	else:
-		# maybe add unusable texture here
-		pass
+	# no interaction required with this machine
+	pig_sprite.texture = CHICKEN_PASTE
+	pig_sprite.scale = Vector2(0.2, 0.2)
 
 # chicken after mangler machine
 func dice() -> void:
-	if game_manager.machine_order_list == [0]:
-		chicken_sprite.texture = DICED_CHICKEN
-		chicken_sprite.scale = Vector2(0.15, 0.15)
+	if game_manager.machine_order_list == [4]:
+		pig_sprite.texture = DICED_CHICKEN # TODO: add actual sprite
+		pig_sprite.scale = Vector2(0.15, 0.15)
+		# improve on the animation :dead:
+		var tween = create_tween()
+		tween.tween_property(pig_sprite, "position", (Vector2(1200, 0)), 1)
+		await tween.finished
 	else:
-		# maybe add unusable texture here
 		pass
 
 # chicken after oven machine
 func burn() -> void:
-	if game_manager.machine_order_list == [0, 1]:
-		chicken_sprite.texture = DINO_NUGGIE
-		chicken_sprite.scale = Vector2(0.4, 0.4)
-	else:
-		# maybe add unusable texture here
-		pass
+	if game_manager.machine_order_list == [4, 1]:
+		pig_sprite.texture = DINO_NUGGIE # TODO: add actual sprite
+		pig_sprite.scale = Vector2(0.4, 0.4)
 
 # chicken after being injected with mitosis
 func inject_mitosis() -> void:
@@ -76,13 +74,15 @@ func inject_mitosis() -> void:
 
 # chicken after being injected with growth
 func inject_growth() -> void:
-	# no interaction required with this machine
-	pass # TODO: might delete or add sprite later
+	if game_manager.machine_order_list == []:
+		pass # TODO: add actual sprite
+	else:
+		pass
 
 func unusable_sprite() -> void:
 	pass # TODO: add sprite for unusable specimen
 
 # chicken after deliver rejected
 func reset_sprite() -> void:
-	chicken_sprite.texture = CHICKEN
-	chicken_sprite.scale = Vector2(0.256, 0.256)
+	pig_sprite.texture = PIG
+	pig_sprite.scale = Vector2(0.073, 0.092)

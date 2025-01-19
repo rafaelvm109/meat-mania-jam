@@ -7,15 +7,14 @@ extends Node2D
 @onready var inv_2: Panel = $Inventory/CanvasLayer/Control/Inv2
 @onready var inv_3: Panel = $Inventory/CanvasLayer/Control/Inv3
 @onready var inv_4: Panel = $Inventory/CanvasLayer/Control/Inv4
-@onready var chicken: Node2D = $Specimen/Chicken
+@onready var sheep: Node2D = $Specimen/Sheep
 @onready var game_manager: Node = $GameManager
 @onready var specimen: Node = $Specimen
-const CHICKEN_SCENE = preload("res://scenes/specimen/chicken.tscn")
 
 
 # starts by setting specimen position
 func _ready() -> void:
-	chicken.position = inv_1.global_position + (inv_1.size / 2)
+	sheep.position = inv_1.global_position + (inv_1.size / 2)
 
 
 # checks if soultion result is true or false and calls every function needed to reset game state
@@ -23,12 +22,12 @@ func _ready() -> void:
 func check_solution() -> void:
 	if game_manager.is_subject_acceptable():
 		print("solution accepted")
-		get_tree().change_scene_to_file("res://scenes/main-sheep.tscn")
+		get_tree().change_scene_to_file("res://scenes/main-pig.tscn")
 	else:
 		game_manager.clear_list()
 		game_manager.clear_machine_counter()
-		chicken.reset_sprite()
-		chicken.position = inv_1.global_position + (inv_1.size / 2)
+		sheep.reset_sprite()
+		sheep.position = inv_1.global_position + (inv_1.size / 2)
 		print("chicken reset")
 
 
