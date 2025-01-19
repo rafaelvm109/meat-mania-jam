@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://26c1dnbemt1l"]
+
+[ext_resource type="Script" path="res://scripts/specimen/pig.gd" id="1_27fek"]
+[ext_resource type="Texture2D" uid="uid://bt1ofcnrx3lru" path="res://assets/sprites/specimen/pig.png" id="2_memji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q7h4"]
+size = Vector2(248.183, 248.183)
+
+[node name="Pig" type="Node2D"]
+script = ExtResource("1_27fek")
+
+[node name="Subject" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Subject"]
+position = Vector2(-1.43051e-06, -2.98023e-07)
+scale = Vector2(0.0728929, 0.0924855)
+texture = ExtResource("2_memji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Subject"]
+position = Vector2(4.52995e-06, 0)
+scale = Vector2(0.257874, 0.257874)
+shape = SubResource("RectangleShape2D_1q7h4")

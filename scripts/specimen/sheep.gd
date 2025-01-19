@@ -8,7 +8,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $Subject/AnimationPlayer
 @onready var mangler_machine: Node2D = $"../../Machines/mangler_machine"
 @onready var oven_machine: Node2D = $"../../Machines/oven_machine"
-@onready var chicken_sprite: Sprite2D = $Subject/Sprite2D
+@onready var sheep_sprite: Sprite2D = $Subject/Sprite2D
 @onready var injector_machine: Node2D = $"../../Machines/Injector"
 @onready var game_manager: Node = $"../../GameManager"
 
@@ -17,7 +17,7 @@ var offset: Vector2
 const CHICKEN_PASTE = preload("res://assets/sprites/specimen/chicken_paste.png")
 const DICED_CHICKEN = preload("res://assets/sprites/specimen/diced_chicken.png")
 const DINO_NUGGIE = preload("res://assets/sprites/specimen/dino_nuggie.png")
-const CHICKEN = preload("res://assets/sprites/specimen/chicken.png")
+const SHEEP = preload("res://assets/sprites/specimen/sheep.png")
 
 
 func _input(event: InputEvent) -> void:
@@ -44,35 +44,30 @@ func _process(delta: float) -> void:
 
 # chicken after press machine
 func smash() -> void:
-	if game_manager.machine_order_list == []:
-		chicken_sprite.texture = CHICKEN_PASTE
-		chicken_sprite.scale = Vector2(0.2, 0.2)
-	else:
-		# maybe add unusable texture here
-		pass
+	# no interaction required with this machine
+	sheep_sprite.texture = CHICKEN_PASTE # TODO: change for final asset
+	sheep_sprite.scale = Vector2(0.2, 0.2)
 
 # chicken after mangler machine
 func dice() -> void:
-	if game_manager.machine_order_list == [0]:
-		chicken_sprite.texture = DICED_CHICKEN
-		chicken_sprite.scale = Vector2(0.15, 0.15)
+	if game_manager.machine_order_list == [3]:
+		sheep_sprite.texture = DICED_CHICKEN # TODO: change for final asset
+		sheep_sprite.scale = Vector2(0.15, 0.15)
 	else:
-		# maybe add unusable texture here
 		pass
 
 # chicken after oven machine
 func burn() -> void:
-	if game_manager.machine_order_list == [0, 1]:
-		chicken_sprite.texture = DINO_NUGGIE
-		chicken_sprite.scale = Vector2(0.4, 0.4)
-	else:
-		# maybe add unusable texture here
-		pass
+	# no interaction required with this machine
+	sheep_sprite.texture = DINO_NUGGIE # TODO: change for final asset
+	sheep_sprite.scale = Vector2(0.4, 0.4)
 
 # chicken after being injected with mitosis
 func inject_mitosis() -> void:
-	# no interaction required with this machine
-	pass # TODO: might delete or add sprite later
+	if game_manager.machine_order_list == []:
+		pass # TODO: add sprite
+	else:
+		pass
 
 # chicken after being injected with growth
 func inject_growth() -> void:
@@ -84,5 +79,5 @@ func unusable_sprite() -> void:
 
 # chicken after deliver rejected
 func reset_sprite() -> void:
-	chicken_sprite.texture = CHICKEN
-	chicken_sprite.scale = Vector2(0.256, 0.256)
+	sheep_sprite.texture = SHEEP
+	sheep_sprite.scale = Vector2(0.09, 0.094)
