@@ -9,3 +9,9 @@ func choose_alternative(_viewport: Node, event: InputEvent, _shape_idx: int):
 				checkmark.visible = true
 			elif checkmark.visible == true:
 				checkmark.visible = false
+
+
+func ending_signature(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if checkmark.visible == true:
+		await get_tree().create_timer(1).timeout
+		$"../../../CutsceneMain".play("end_cutscene")
