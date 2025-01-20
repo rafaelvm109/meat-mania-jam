@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6avlnb01vhue"]
 
-[ext_resource type="Texture2D" uid="uid://bsf8tti7jwjwh" path="res://assets/sprites/machines/deliver/deliver_body.png" id="1_limbh"]
+[ext_resource type="Texture2D" uid="uid://bsf8tti7jwjwh" path="res://assets/sprites/machines/deliver/old/deliver_body.png" id="1_limbh"]
 [ext_resource type="Script" path="res://scripts/machines/deliver_machine.gd" id="1_psmgx"]
-[ext_resource type="Texture2D" uid="uid://bn7ofc7gocgi3" path="res://assets/sprites/machines/deliver/deliver_belt.png" id="2_h8f6u"]
+[ext_resource type="Texture2D" uid="uid://bn7ofc7gocgi3" path="res://assets/sprites/machines/deliver/old/deliver_belt.png" id="2_h8f6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2sbf"]
 size = Vector2(334, 123)
