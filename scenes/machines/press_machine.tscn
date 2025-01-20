@@ -1,18 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://c36au6a2n2ydq"]
+[gd_scene load_steps=12 format=3 uid="uid://c36au6a2n2ydq"]
 
 [ext_resource type="Script" path="res://scripts/machines/press_machine.gd" id="1_54isr"]
 [ext_resource type="PackedScene" uid="uid://ckbowx7p8wgod" path="res://scenes/machines/blood_particle.tscn" id="2_30v7b"]
-[ext_resource type="Texture2D" uid="uid://c0k7seh473gem" path="res://assets/sprites/machines/press/Old/press_machine.png" id="2_370oi"]
-[ext_resource type="Texture2D" uid="uid://rq12fb3ps117" path="res://assets/sprites/machines/press/Old/lever_back.png" id="3_6bbv6"]
-[ext_resource type="Texture2D" uid="uid://dec2jv16l0xyk" path="res://assets/sprites/machines/press/Old/lever_handle.png" id="4_fb3yp"]
-[ext_resource type="Texture2D" uid="uid://rc3nr0klt7yl" path="res://assets/sprites/machines/press/Old/press_lower.png" id="5_o8lk5"]
-[ext_resource type="Texture2D" uid="uid://c4ww66cv5jdnm" path="res://assets/sprites/machines/press/Old/press_upper.png" id="6_mwqab"]
+[ext_resource type="Texture2D" uid="uid://ds0bt45gk74sk" path="res://assets/sprites/machines/press/press_body.png" id="3_uhrx1"]
+[ext_resource type="Texture2D" uid="uid://q84km5ulsgv1" path="res://assets/sprites/machines/press/press_track.png" id="4_fov18"]
+[ext_resource type="Texture2D" uid="uid://3bocbbn0xcct" path="res://assets/sprites/machines/press/press__handle.png" id="5_447v2"]
+[ext_resource type="Texture2D" uid="uid://btprd23wmoguq" path="res://assets/sprites/machines/press/press_upper.png" id="7_pnxkr"]
+[ext_resource type="Texture2D" uid="uid://bo7kreo1gi3qc" path="res://assets/sprites/machines/press/press_press.png" id="8_ybfwk"]
+[ext_resource type="Texture2D" uid="uid://d0ualfhbh2fq0" path="res://assets/sprites/machines/press/press_motor.png" id="9_yo4t2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_077jk"]
-size = Vector2(96, 24)
+size = Vector2(121, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eq6qf"]
-size = Vector2(250, 199.5)
+size = Vector2(215, 199.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j228y"]
 size = Vector2(126, 82)
@@ -26,34 +27,35 @@ z_index = 5
 position = Vector2(-1, -30)
 
 [node name="PressMachineBody" type="Sprite2D" parent="."]
-texture = ExtResource("2_370oi")
+texture = ExtResource("3_uhrx1")
 
 [node name="LeverBack" type="Sprite2D" parent="."]
-position = Vector2(0, 112)
-texture = ExtResource("3_6bbv6")
+position = Vector2(96, 187)
+texture = ExtResource("4_fov18")
 
 [node name="LeverHandle" type="Area2D" parent="."]
-position = Vector2(0, 75)
+position = Vector2(97, 136)
 
 [node name="Sprite2D" type="Sprite2D" parent="LeverHandle"]
-texture = ExtResource("4_fb3yp")
+texture = ExtResource("5_447v2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeverHandle"]
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_077jk")
 
 [node name="PressLower" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="PressLower"]
-position = Vector2(0, -21)
-texture = ExtResource("5_o8lk5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PressLower"]
-position = Vector2(1, -100.75)
+position = Vector2(1.5, -76)
 shape = SubResource("RectangleShape2D_eq6qf")
 
 [node name="PressUpper" type="Sprite2D" parent="."]
-position = Vector2(1, -163)
-texture = ExtResource("6_mwqab")
+position = Vector2(1, -351)
+texture = ExtResource("8_ybfwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="PressUpper"]
+position = Vector2(2, 66)
+texture = ExtResource("7_pnxkr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PressUpper"]
 
@@ -61,3 +63,8 @@ texture = ExtResource("6_mwqab")
 visible = false
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_j228y")
+
+[node name="PressMotor" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-175, 171)
+texture = ExtResource("9_yo4t2")

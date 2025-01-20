@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://cqcvf6587433b"]
 
 [ext_resource type="Script" path="res://scripts/machines/injector_machine.gd" id="1_1yh33"]
-[ext_resource type="Texture2D" uid="uid://bkqgwujd4hl8y" path="res://assets/sprites/machines/injector/press_machine.png" id="1_f2405"]
-[ext_resource type="Texture2D" uid="uid://dnbbguxkq0g5s" path="res://assets/sprites/machines/injector/needle.png" id="2_212h5"]
-[ext_resource type="Texture2D" uid="uid://dxux0ldeyj7h5" path="res://assets/sprites/machines/injector/numpad.png" id="3_4gojd"]
-[ext_resource type="Texture2D" uid="uid://b0f3e5i7nv30j" path="res://assets/sprites/machines/injector/user_manual.png" id="4_157wh"]
-[ext_resource type="Texture2D" uid="uid://c7nl67y3r848m" path="res://assets/sprites/machines/injector/green_light.png" id="5_ju5ae"]
-[ext_resource type="Texture2D" uid="uid://do5jvtqoxije5" path="res://assets/sprites/machines/injector/red_light.png" id="6_jujbx"]
+[ext_resource type="Texture2D" uid="uid://bkqgwujd4hl8y" path="res://assets/sprites/machines/injector/old/press_machine.png" id="1_f2405"]
+[ext_resource type="Texture2D" uid="uid://dnbbguxkq0g5s" path="res://assets/sprites/machines/injector/old/needle.png" id="2_212h5"]
+[ext_resource type="Texture2D" uid="uid://dxux0ldeyj7h5" path="res://assets/sprites/machines/injector/old/numpad.png" id="3_4gojd"]
+[ext_resource type="Texture2D" uid="uid://b0f3e5i7nv30j" path="res://assets/sprites/machines/injector/old/user_manual.png" id="4_157wh"]
+[ext_resource type="Texture2D" uid="uid://c7nl67y3r848m" path="res://assets/sprites/machines/injector/old/green_light.png" id="5_ju5ae"]
+[ext_resource type="Texture2D" uid="uid://do5jvtqoxije5" path="res://assets/sprites/machines/injector/old/red_light.png" id="6_jujbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwq3v"]
 size = Vector2(24, 24)

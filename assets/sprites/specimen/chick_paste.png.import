@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xc4k50c0bmqn"
-path="res://.godot/imported/bunrt_sheep.png-9932d56bc192360f15a93db0c4dcd00d.ctex"
+uid="uid://df2464xrq5cy7"
+path="res://.godot/imported/chick_paste.png-50ae5c46900f3b726270ce94b33bfa87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/specimen/bunrt_sheep.png"
-dest_files=["res://.godot/imported/bunrt_sheep.png-9932d56bc192360f15a93db0c4dcd00d.ctex"]
+source_file="res://assets/sprites/specimen/chick_paste.png"
+dest_files=["res://.godot/imported/chick_paste.png-50ae5c46900f3b726270ce94b33bfa87.ctex"]
 
 [params]
 
