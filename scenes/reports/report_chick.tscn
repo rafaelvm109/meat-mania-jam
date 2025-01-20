@@ -1,666 +1,14 @@
-[gd_scene load_steps=57 format=3 uid="uid://bt3ha0l521hxt"]
+[gd_scene load_steps=47 format=3 uid="uid://bj1pvoqfkg32"]
 
-[ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_m3iu2"]
-[ext_resource type="Script" path="res://scripts/reports/intership_contract_cutscene.gd" id="1_tni7c"]
-[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/reports/dependencies/paper.tscn" id="2_llil8"]
-[ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="3_b0m00"]
-[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/reports/dependencies/option.tscn" id="4_g7nl4"]
-[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/reports/checkbox.png" id="5_hqwv5"]
-[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/reports/checkmark.png" id="6_jqrnb"]
-[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/reports/dependencies/flip_previous_page.tscn" id="7_0seyf"]
-[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/reports/dependencies/flip_next_page.tscn" id="8_fqlxa"]
-[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/reports/dependencies/signature.tscn" id="9_iph32"]
-[ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="10_7dq5h"]
-[ext_resource type="Texture2D" uid="uid://douec7r0khxdf" path="res://assets/sprites/reports/willard.png" id="11_y47wq"]
-[ext_resource type="Texture2D" uid="uid://2b3mcjq2v1tv" path="res://assets/sprites/reports/table.png" id="12_4c6ej"]
-[ext_resource type="Texture2D" uid="uid://baexo6k4idi2v" path="res://assets/sprites/reports/dialogue_box.png" id="14_mxvo3"]
-[ext_resource type="LabelSettings" uid="uid://ccvdtf650cqs2" path="res://assets/text/dialogue_box.tres" id="15_mo5si"]
-
-[sub_resource type="Animation" id="Animation_yjyev"]
-resource_name = "start_scene"
-length = 40.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fade:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Contract:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 29.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Contract:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(30, 30.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Dialogue Box Start Cutscene:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.41473, 30.4147),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Dialogue Box Start Cutscene/Label:visible_ratio")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(3.41473, 3.91473),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("willard:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 10, 20, 30, 40),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 39), Vector2(0, 45), Vector2(0, 39), Vector2(0, 45), Vector2(0, 39)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Dialogue Box Start Cutscene/Label:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(6.41473),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Dialogue Box Start Cutscene/Label2:visible_ratio")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(6.41473, 8.41473),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Dialogue Box Start Cutscene/Label2:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(10.4147),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Dialogue Box Start Cutscene/Label3:visible_ratio")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(10.4147, 12.3147),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [5.96046e-08, 1.0]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Dialogue Box Start Cutscene/Label3:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(14.4147),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Dialogue Box Start Cutscene/Label4:visible_ratio")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(14.4147, 16.4147),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Dialogue Box Start Cutscene/Label4:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(19.4147),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Dialogue Box Start Cutscene/Label5:visible_ratio")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(19.4147, 21.4147),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Dialogue Box Start Cutscene/Label5:visible")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(24.4147),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Dialogue Box Start Cutscene/Label6:visible_ratio")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(24.4147, 26.4147),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Contract:position")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(30, 30.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-230, 1020), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_loy70"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fade:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Contract:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Contract:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Dialogue Box Start Cutscene:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Dialogue Box Start Cutscene/Label:visible_ratio")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("willard:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 39)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Dialogue Box Start Cutscene/Label:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Dialogue Box Start Cutscene/Label2:visible_ratio")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Dialogue Box Start Cutscene/Label2:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Dialogue Box Start Cutscene/Label3:visible_ratio")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5.96046e-08]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Dialogue Box Start Cutscene/Label3:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Dialogue Box Start Cutscene/Label4:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Dialogue Box Start Cutscene/Label4:visible_ratio")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Dialogue Box Start Cutscene/Label5:visible_ratio")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Dialogue Box Start Cutscene/Label5:visible")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Dialogue Box Start Cutscene/Label6:visible_ratio")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Contract:position")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1020)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Dialogue Box End Cutscene/Label 7:visible_ratio")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Dialogue Box End Cutscene/Label 7:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Dialogue Box End Cutscene/Label 8:visible_ratio")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Dialogue Box End Cutscene:visible")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Dialogue Box End Cutscene/Label 8:visible")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Dialogue Box End Cutscene/Label 9:visible_ratio")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5.96046e-08]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Dialogue Box End Cutscene/Label 9:visible")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_60pvg"]
-resource_name = "end_cutscene"
-length = 17.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fade:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(13.5, 15.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Contract:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(486, 1097)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Contract:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Dialogue Box End Cutscene/Label 7:visible_ratio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(10.9, 11.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Dialogue Box End Cutscene/Label 7:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Dialogue Box End Cutscene/Label 8:visible_ratio")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.9, 3.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Dialogue Box End Cutscene:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.7, 13.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Dialogue Box End Cutscene/Label 8:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(6.8),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Dialogue Box End Cutscene/Label 9:visible_ratio")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(6.8, 8.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [5.96046e-08, 1.0]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Dialogue Box End Cutscene/Label 9:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(10.9),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath(".")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(16.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"change_scene"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb478"]
-_data = {
-"RESET": SubResource("Animation_loy70"),
-"end_cutscene": SubResource("Animation_60pvg"),
-"start_scene": SubResource("Animation_yjyev")
-}
+[ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_f187p"]
+[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/reports/dependencies/paper.tscn" id="2_vt5sq"]
+[ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="3_qouiq"]
+[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/reports/dependencies/flip_next_page.tscn" id="4_cgwmt"]
+[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/reports/dependencies/option.tscn" id="5_pxrux"]
+[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/reports/checkbox.png" id="6_uaqgg"]
+[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/reports/checkmark.png" id="7_vlase"]
+[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/reports/dependencies/flip_previous_page.tscn" id="8_jxf5i"]
+[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/reports/dependencies/signature.tscn" id="9_jcrmy"]
 
 [sub_resource type="Animation" id="Animation_s2g41"]
 resource_name = "turn_next"
@@ -1648,35 +996,19 @@ _data = {
 "turn_previous": SubResource("Animation_8e8nn")
 }
 
-[node name="IntershipContract" type="Node2D"]
-script = ExtResource("1_tni7c")
-
-[node name="CutsceneMain" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_pb478")
-}
-
-[node name="fade" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-z_index = 50
-texture = ExtResource("10_7dq5h")
+[node name="IntershipContract2" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_m3iu2")
+stream = ExtResource("1_f187p")
 
-[node name="Contract" type="Node2D" parent="."]
-position = Vector2(0, 1020)
-scale = Vector2(0.796, 0.916)
-
-[node name="Paper 01" parent="Contract" node_paths=PackedStringArray("next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 01" parent="." node_paths=PackedStringArray("next_page", "animator") instance=ExtResource("2_vt5sq")]
 z_index = 10
-scale = Vector2(1.305, 1.305)
 next_page = NodePath("../Paper 02")
 animator = NodePath("Animator")
 
-[node name="Text" type="Label" parent="Contract/Paper 01"]
+[node name="Text" type="Label" parent="Paper 01"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1690,28 +1022,27 @@ grow_vertical = 2
 text = "COMPANY NAME
 
 \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ex ea commodo consequat. Duis reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
-label_settings = ExtResource("3_b0m00")
+label_settings = ExtResource("3_qouiq")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Animator" type="AnimationPlayer" parent="Contract/Paper 01"]
+[node name="Animator" type="AnimationPlayer" parent="Paper 01"]
 libraries = {
 "": SubResource("AnimationLibrary_yoeso")
 }
 
-[node name="Flip Next Page" parent="Contract/Paper 01" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 01" instance=ExtResource("4_cgwmt")]
 
-[node name="Paper 02" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 02" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = 8
-scale = Vector2(1.305, 1.305)
 texture = SubResource("CompressedTexture2D_78uo7")
 script = SubResource("GDScript_h3hh1")
 previous_page = NodePath("../Paper 01")
 next_page = NodePath("../Paper 03")
 animator = NodePath("Animator")
 
-[node name="Text" type="Label" parent="Contract/Paper 02"]
+[node name="Text" type="Label" parent="Paper 02"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1727,7 +1058,7 @@ label_settings = SubResource("LabelSettings_8ybn1")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Yes" type="Label" parent="Contract/Paper 02"]
+[node name="Yes" type="Label" parent="Paper 02"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1743,7 +1074,7 @@ label_settings = SubResource("LabelSettings_s4r1k")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="No" type="Label" parent="Contract/Paper 02"]
+[node name="No" type="Label" parent="Paper 02"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1759,44 +1090,43 @@ label_settings = SubResource("LabelSettings_8ybn1")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Option 01" parent="Contract/Paper 02" instance=ExtResource("4_g7nl4")]
+[node name="Option 01" parent="Paper 02" instance=ExtResource("5_pxrux")]
 
-[node name="Option 02" type="Area2D" parent="Contract/Paper 02" node_paths=PackedStringArray("checkmark")]
+[node name="Option 02" type="Area2D" parent="Paper 02" node_paths=PackedStringArray("checkmark")]
 position = Vector2(-56.5327, 213.568)
 scale = Vector2(1.25628, 1.25628)
 script = SubResource("GDScript_gfnb8")
 checkmark = NodePath("Checkmark")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Contract/Paper 02/Option 02"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper 02/Option 02"]
 shape = SubResource("RectangleShape2D_lavu6")
 
-[node name="Checkbox" type="Sprite2D" parent="Contract/Paper 02/Option 02"]
+[node name="Checkbox" type="Sprite2D" parent="Paper 02/Option 02"]
 scale = Vector2(0.437501, 0.437501)
-texture = ExtResource("5_hqwv5")
+texture = ExtResource("6_uaqgg")
 
-[node name="Checkmark" type="Sprite2D" parent="Contract/Paper 02/Option 02"]
+[node name="Checkmark" type="Sprite2D" parent="Paper 02/Option 02"]
 visible = false
 scale = Vector2(0.498892, 0.498892)
-texture = ExtResource("6_jqrnb")
+texture = ExtResource("7_vlase")
 
-[node name="Animator" type="AnimationPlayer" parent="Contract/Paper 02"]
+[node name="Animator" type="AnimationPlayer" parent="Paper 02"]
 libraries = {
 "": SubResource("AnimationLibrary_e70ae")
 }
 
-[node name="Flip Previous Page" parent="Contract/Paper 02" instance=ExtResource("7_0seyf")]
+[node name="Flip Previous Page" parent="Paper 02" instance=ExtResource("8_jxf5i")]
 
-[node name="Flip Next Page" parent="Contract/Paper 02" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 02" instance=ExtResource("4_cgwmt")]
 
-[node name="Paper 03" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 03" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = 6
-scale = Vector2(1.305, 1.305)
 previous_page = NodePath("../Paper 02")
 next_page = NodePath("../Paper 04")
 animator = NodePath("Animatior")
 
-[node name="Text" type="Label" parent="Contract/Paper 03"]
+[node name="Text" type="Label" parent="Paper 03"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1813,9 +1143,9 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Contract/Paper 03" instance=ExtResource("4_g7nl4")]
+[node name="Option 01" parent="Paper 03" instance=ExtResource("5_pxrux")]
 
-[node name="Yes" type="Label" parent="Contract/Paper 03"]
+[node name="Yes" type="Label" parent="Paper 03"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1832,10 +1162,10 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 02" parent="Contract/Paper 03" instance=ExtResource("4_g7nl4")]
+[node name="Option 02" parent="Paper 03" instance=ExtResource("5_pxrux")]
 position = Vector2(-56.5327, 213.568)
 
-[node name="No" type="Label" parent="Contract/Paper 03"]
+[node name="No" type="Label" parent="Paper 03"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1852,24 +1182,23 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Animatior" type="AnimationPlayer" parent="Contract/Paper 03"]
+[node name="Animatior" type="AnimationPlayer" parent="Paper 03"]
 libraries = {
 "": SubResource("AnimationLibrary_767ek")
 }
 
-[node name="Flip Next Page" parent="Contract/Paper 03" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 03" instance=ExtResource("4_cgwmt")]
 
-[node name="Flip Previous Page" parent="Contract/Paper 03" instance=ExtResource("7_0seyf")]
+[node name="Flip Previous Page" parent="Paper 03" instance=ExtResource("8_jxf5i")]
 
-[node name="Paper 04" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 04" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = 4
-scale = Vector2(1.305, 1.305)
 previous_page = NodePath("../Paper 03")
 next_page = NodePath("../Paper 05")
 animator = NodePath("Animator")
 
-[node name="Text" type="Label" parent="Contract/Paper 04"]
+[node name="Text" type="Label" parent="Paper 04"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1886,7 +1215,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Indifferent" type="Label" parent="Contract/Paper 04"]
+[node name="Indifferent" type="Label" parent="Paper 04"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1903,7 +1232,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Disgusted" type="Label" parent="Contract/Paper 04"]
+[node name="Disgusted" type="Label" parent="Paper 04"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1920,7 +1249,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Nauseous" type="Label" parent="Contract/Paper 04"]
+[node name="Nauseous" type="Label" parent="Paper 04"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1937,7 +1266,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Terrified" type="Label" parent="Contract/Paper 04"]
+[node name="Terrified" type="Label" parent="Paper 04"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1954,7 +1283,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Hungry" type="Label" parent="Contract/Paper 04"]
+[node name="Hungry" type="Label" parent="Paper 04"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1972,39 +1301,38 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Contract/Paper 04" instance=ExtResource("4_g7nl4")]
+[node name="Option 01" parent="Paper 04" instance=ExtResource("5_pxrux")]
 position = Vector2(-111.809, -158.291)
 
-[node name="Option 02" parent="Contract/Paper 04" instance=ExtResource("4_g7nl4")]
+[node name="Option 02" parent="Paper 04" instance=ExtResource("5_pxrux")]
 position = Vector2(-111.809, -69.0955)
 
-[node name="Option 03" parent="Contract/Paper 04" instance=ExtResource("4_g7nl4")]
+[node name="Option 03" parent="Paper 04" instance=ExtResource("5_pxrux")]
 position = Vector2(-111.809, 16.3317)
 
-[node name="Option 04" parent="Contract/Paper 04" instance=ExtResource("4_g7nl4")]
+[node name="Option 04" parent="Paper 04" instance=ExtResource("5_pxrux")]
 position = Vector2(-111.809, 95.4774)
 
-[node name="Option 05" parent="Contract/Paper 04" instance=ExtResource("4_g7nl4")]
+[node name="Option 05" parent="Paper 04" instance=ExtResource("5_pxrux")]
 position = Vector2(-111.809, 187.186)
 
-[node name="Flip Next Page" parent="Contract/Paper 04" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 04" instance=ExtResource("4_cgwmt")]
 
-[node name="Flip Previous Page" parent="Contract/Paper 04" instance=ExtResource("7_0seyf")]
+[node name="Flip Previous Page" parent="Paper 04" instance=ExtResource("8_jxf5i")]
 
-[node name="Animator" type="AnimationPlayer" parent="Contract/Paper 04"]
+[node name="Animator" type="AnimationPlayer" parent="Paper 04"]
 libraries = {
 "": SubResource("AnimationLibrary_rx121")
 }
 
-[node name="Paper 05" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 05" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = 2
-scale = Vector2(1.305, 1.305)
 previous_page = NodePath("../Paper 04")
 next_page = NodePath("../Paper 06")
 animator = NodePath("Animatior")
 
-[node name="Text" type="Label" parent="Contract/Paper 05"]
+[node name="Text" type="Label" parent="Paper 05"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -2021,7 +1349,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Yes" type="Label" parent="Contract/Paper 05"]
+[node name="Yes" type="Label" parent="Paper 05"]
 anchors_preset = -1
 anchor_left = 0.308974
 anchor_top = -0.000126668
@@ -2038,7 +1366,7 @@ text = "Yes
 label_settings = SubResource("LabelSettings_n8sed")
 metadata/_edit_use_anchors_ = true
 
-[node name="No" type="Label" parent="Contract/Paper 05"]
+[node name="No" type="Label" parent="Paper 05"]
 anchors_preset = -1
 anchor_left = 0.315438
 anchor_top = 0.00029479
@@ -2054,7 +1382,7 @@ text = "No"
 label_settings = SubResource("LabelSettings_jx5kl")
 metadata/_edit_use_anchors_ = true
 
-[node name="All the time" type="Label" parent="Contract/Paper 05"]
+[node name="All the time" type="Label" parent="Paper 05"]
 anchors_preset = -1
 anchor_left = 0.318924
 anchor_top = 0.000422119
@@ -2070,36 +1398,35 @@ text = "All the time"
 label_settings = SubResource("LabelSettings_jx5kl")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Contract/Paper 05" instance=ExtResource("4_g7nl4")]
+[node name="Option 01" parent="Paper 05" instance=ExtResource("5_pxrux")]
 position = Vector2(-139.965, -67.5477)
 
-[node name="Option 02" parent="Contract/Paper 05" instance=ExtResource("4_g7nl4")]
+[node name="Option 02" parent="Paper 05" instance=ExtResource("5_pxrux")]
 position = Vector2(-139.965, 21.6483)
 
-[node name="Option 03" parent="Contract/Paper 05" instance=ExtResource("4_g7nl4")]
+[node name="Option 03" parent="Paper 05" instance=ExtResource("5_pxrux")]
 position = Vector2(-143.734, 107.075)
 
-[node name="Flip Next Page" parent="Contract/Paper 05" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 05" instance=ExtResource("4_cgwmt")]
 
-[node name="Flip Previous Page" parent="Contract/Paper 05" instance=ExtResource("7_0seyf")]
+[node name="Flip Previous Page" parent="Paper 05" instance=ExtResource("8_jxf5i")]
 
-[node name="Animatior" type="AnimationPlayer" parent="Contract/Paper 05"]
+[node name="Animatior" type="AnimationPlayer" parent="Paper 05"]
 libraries = {
 "": SubResource("AnimationLibrary_wkyly")
 }
 
-[node name="Paper 06" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 06" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
 visible = false
-scale = Vector2(1.305, 1.305)
 previous_page = NodePath("../Paper 05")
 next_page = NodePath("../Paper 07")
 animator = NodePath("Animatior")
 
-[node name="Flip Next Page" parent="Contract/Paper 06" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 06" instance=ExtResource("4_cgwmt")]
 
-[node name="Flip Previous Page" parent="Contract/Paper 06" instance=ExtResource("7_0seyf")]
+[node name="Flip Previous Page" parent="Paper 06" instance=ExtResource("8_jxf5i")]
 
-[node name="Text" type="Label" parent="Contract/Paper 06"]
+[node name="Text" type="Label" parent="Paper 06"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -2116,7 +1443,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Animal" type="Label" parent="Contract/Paper 06"]
+[node name="Animal" type="Label" parent="Paper 06"]
 anchors_preset = -1
 anchor_left = 0.308974
 anchor_top = -0.000126668
@@ -2132,7 +1459,7 @@ text = "Animal"
 label_settings = SubResource("LabelSettings_igbdh")
 metadata/_edit_use_anchors_ = true
 
-[node name="Blood" type="Label" parent="Contract/Paper 06"]
+[node name="Blood" type="Label" parent="Paper 06"]
 anchors_preset = -1
 anchor_left = 0.315438
 anchor_top = 0.00029479
@@ -2148,7 +1475,7 @@ text = "Blood Smear"
 label_settings = SubResource("LabelSettings_8as0r")
 metadata/_edit_use_anchors_ = true
 
-[node name="Face" type="Label" parent="Contract/Paper 06"]
+[node name="Face" type="Label" parent="Paper 06"]
 anchors_preset = -1
 anchor_left = 0.318924
 anchor_top = 0.000422119
@@ -2164,29 +1491,29 @@ text = "Face"
 label_settings = SubResource("LabelSettings_o0yku")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Contract/Paper 06" instance=ExtResource("4_g7nl4")]
+[node name="Option 01" parent="Paper 06" instance=ExtResource("5_pxrux")]
 position = Vector2(-116.834, 92.7688)
 
-[node name="Option 02" parent="Contract/Paper 06" instance=ExtResource("4_g7nl4")]
+[node name="Option 02" parent="Paper 06" instance=ExtResource("5_pxrux")]
 position = Vector2(-116.834, 156.523)
 
-[node name="Option 03" parent="Contract/Paper 06" instance=ExtResource("4_g7nl4")]
+[node name="Option 03" parent="Paper 06" instance=ExtResource("5_pxrux")]
 position = Vector2(-116.834, 218.251)
 
-[node name="Animatior" type="AnimationPlayer" parent="Contract/Paper 06"]
+[node name="Animatior" type="AnimationPlayer" parent="Paper 06"]
 libraries = {
 "": SubResource("AnimationLibrary_gvu0w")
 }
 
-[node name="Paper 07" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 07" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
 visible = false
-z_index = -2
-scale = Vector2(1.305, 1.305)
+modulate = Color(0.341176, 0.341176, 0.341176, 1)
+z_index = -12
 previous_page = NodePath("../Paper 06")
 next_page = NodePath("../Paper 08")
 animator = NodePath("Animator")
 
-[node name="Text" type="Label" parent="Contract/Paper 07"]
+[node name="Text" type="Label" parent="Paper 07"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -2205,7 +1532,7 @@ label_settings = SubResource("LabelSettings_u6f4u")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Agree" type="Label" parent="Contract/Paper 07"]
+[node name="Agree" type="Label" parent="Paper 07"]
 anchors_preset = -1
 anchor_left = 0.308974
 anchor_top = -0.000126668
@@ -2221,27 +1548,26 @@ text = "I agree"
 label_settings = SubResource("LabelSettings_igbdh")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Contract/Paper 07" instance=ExtResource("4_g7nl4")]
+[node name="Option 01" parent="Paper 07" instance=ExtResource("5_pxrux")]
 position = Vector2(-56.5327, 255.025)
 
-[node name="Flip Next Page" parent="Contract/Paper 07" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 07" instance=ExtResource("4_cgwmt")]
 
-[node name="Flip Previous Page" parent="Contract/Paper 07" instance=ExtResource("7_0seyf")]
+[node name="Flip Previous Page" parent="Paper 07" instance=ExtResource("8_jxf5i")]
 
-[node name="Animator" type="AnimationPlayer" parent="Contract/Paper 07"]
+[node name="Animator" type="AnimationPlayer" parent="Paper 07"]
 libraries = {
 "": SubResource("AnimationLibrary_f0yju")
 }
 
-[node name="Paper 08" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_llil8")]
+[node name="Paper 08" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = -4
-scale = Vector2(1.305, 1.305)
 previous_page = NodePath("../Paper 07")
 next_page = NodePath("../Paper 09")
 animator = NodePath("Animator")
 
-[node name="Text" type="Label" parent="Contract/Paper 08"]
+[node name="Text" type="Label" parent="Paper 08"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -2258,7 +1584,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Agree" type="Label" parent="Contract/Paper 08"]
+[node name="Agree" type="Label" parent="Paper 08"]
 anchors_preset = -1
 anchor_left = 0.308974
 anchor_top = -0.000126668
@@ -2274,26 +1600,25 @@ text = "I agree"
 label_settings = SubResource("LabelSettings_igbdh")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Contract/Paper 08" instance=ExtResource("4_g7nl4")]
+[node name="Option 01" parent="Paper 08" instance=ExtResource("5_pxrux")]
 position = Vector2(-41.4573, 255.025)
 
-[node name="Flip Next Page" parent="Contract/Paper 08" instance=ExtResource("8_fqlxa")]
+[node name="Flip Next Page" parent="Paper 08" instance=ExtResource("4_cgwmt")]
 
-[node name="Flip Previous Page" parent="Contract/Paper 08" instance=ExtResource("7_0seyf")]
+[node name="Flip Previous Page" parent="Paper 08" instance=ExtResource("8_jxf5i")]
 
-[node name="Animator" type="AnimationPlayer" parent="Contract/Paper 08"]
+[node name="Animator" type="AnimationPlayer" parent="Paper 08"]
 libraries = {
 "": SubResource("AnimationLibrary_6rvrr")
 }
 
-[node name="Paper 09" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_llil8")]
+[node name="Paper 09" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = -6
-scale = Vector2(1.305, 1.305)
 previous_page = NodePath("../Paper 01")
 next_page = NodePath(".")
 
-[node name="Text" type="Label" parent="Contract/Paper 09"]
+[node name="Text" type="Label" parent="Paper 09"]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.005
@@ -2309,219 +1634,22 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="sing here" parent="Contract/Paper 09" instance=ExtResource("9_iph32")]
+[node name="sing here" parent="Paper 09" instance=ExtResource("9_jcrmy")]
 position = Vector2(-7.62939e-06, 148.241)
 
-[node name="willard" type="Sprite2D" parent="."]
-z_index = -20
-position = Vector2(0, 39)
-scale = Vector2(0.679831, 0.679831)
-texture = ExtResource("11_y47wq")
-
-[node name="table" type="Sprite2D" parent="."]
-z_index = -18
-position = Vector2(0, 438)
-texture = ExtResource("12_4c6ej")
-
-[node name="background" type="Sprite2D" parent="."]
-z_index = -50
-texture = ExtResource("10_7dq5h")
-
-[node name="Dialogue Box Start Cutscene" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, 366)
-texture = ExtResource("14_mxvo3")
-
-[node name="Label" type="Label" parent="Dialogue Box Start Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -257.0
-offset_top = -70.0
-offset_right = -314.0
-offset_bottom = -94.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Hello."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Label2" type="Label" parent="Dialogue Box Start Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -61.0
-offset_right = -311.0
-offset_bottom = -103.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "As you may know, my name is John Willard."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Label3" type="Label" parent="Dialogue Box Start Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -61.0
-offset_right = -311.0
-offset_bottom = -103.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "I'm the head of R&D, here at Theseus Enterprises."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 5.96046e-08
-
-[node name="Label4" type="Label" parent="Dialogue Box Start Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -61.0
-offset_right = -311.0
-offset_bottom = -103.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "And I'll be overseeing your admission process."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Label5" type="Label" parent="Dialogue Box Start Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -61.0
-offset_right = -311.0
-offset_bottom = -103.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Read this form, and answer the questions."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Label6" type="Label" parent="Dialogue Box Start Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -61.0
-offset_right = -311.0
-offset_bottom = -103.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Take your time, this is part of the evaluation."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Dialogue Box End Cutscene" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, 366)
-texture = ExtResource("14_mxvo3")
-
-[node name="Label 7" type="Label" parent="Dialogue Box End Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -257.0
-offset_top = -70.0
-offset_right = -314.0
-offset_bottom = -94.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You are now dismissed."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Label 8" type="Label" parent="Dialogue Box End Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -61.0
-offset_right = -311.0
-offset_bottom = -103.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Come back to this facility tomorrow."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Label 9" type="Label" parent="Dialogue Box End Cutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -61.0
-offset_right = -311.0
-offset_bottom = -103.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You'll be subjected to your first task."
-label_settings = ExtResource("15_mo5si")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 5.96046e-08
-
-[connection signal="input_event" from="Contract/Paper 01/Flip Next Page" to="Contract/Paper 01" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 02/Option 02" to="Contract/Paper 02/Option 02" method="choose_alternative"]
-[connection signal="input_event" from="Contract/Paper 02/Flip Previous Page" to="Contract/Paper 02" method="turn_previous"]
-[connection signal="input_event" from="Contract/Paper 02/Flip Next Page" to="Contract/Paper 02" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 03/Flip Next Page" to="Contract/Paper 03" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 03/Flip Previous Page" to="Contract/Paper 03" method="turn_previous"]
-[connection signal="input_event" from="Contract/Paper 04/Flip Next Page" to="Contract/Paper 04" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 04/Flip Previous Page" to="Contract/Paper 04" method="turn_previous"]
-[connection signal="input_event" from="Contract/Paper 05/Flip Next Page" to="Contract/Paper 05" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 05/Flip Previous Page" to="Contract/Paper 05" method="turn_previous"]
-[connection signal="input_event" from="Contract/Paper 06/Flip Next Page" to="Contract/Paper 06" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 06/Flip Previous Page" to="Contract/Paper 06" method="turn_previous"]
-[connection signal="input_event" from="Contract/Paper 07/Flip Next Page" to="Contract/Paper 07" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 07/Flip Previous Page" to="Contract/Paper 07" method="turn_previous"]
-[connection signal="input_event" from="Contract/Paper 08/Flip Next Page" to="Contract/Paper 08" method="turn_next"]
-[connection signal="input_event" from="Contract/Paper 08/Flip Previous Page" to="Contract/Paper 08" method="turn_previous"]
-[connection signal="input_event" from="Contract/Paper 09/sing here" to="Contract/Paper 09/sing here" method="ending_signature"]
+[connection signal="input_event" from="Paper 01/Flip Next Page" to="Paper 01" method="turn_next"]
+[connection signal="input_event" from="Paper 02/Option 02" to="Paper 02/Option 02" method="choose_alternative"]
+[connection signal="input_event" from="Paper 02/Flip Previous Page" to="Paper 02" method="turn_previous"]
+[connection signal="input_event" from="Paper 02/Flip Next Page" to="Paper 02" method="turn_next"]
+[connection signal="input_event" from="Paper 03/Flip Next Page" to="Paper 03" method="turn_next"]
+[connection signal="input_event" from="Paper 03/Flip Previous Page" to="Paper 03" method="turn_previous"]
+[connection signal="input_event" from="Paper 04/Flip Next Page" to="Paper 04" method="turn_next"]
+[connection signal="input_event" from="Paper 04/Flip Previous Page" to="Paper 04" method="turn_previous"]
+[connection signal="input_event" from="Paper 05/Flip Next Page" to="Paper 05" method="turn_next"]
+[connection signal="input_event" from="Paper 05/Flip Previous Page" to="Paper 05" method="turn_previous"]
+[connection signal="input_event" from="Paper 06/Flip Next Page" to="Paper 06" method="turn_next"]
+[connection signal="input_event" from="Paper 06/Flip Previous Page" to="Paper 06" method="turn_previous"]
+[connection signal="input_event" from="Paper 07/Flip Next Page" to="Paper 07" method="turn_next"]
+[connection signal="input_event" from="Paper 07/Flip Previous Page" to="Paper 07" method="turn_previous"]
+[connection signal="input_event" from="Paper 08/Flip Next Page" to="Paper 08" method="turn_next"]
+[connection signal="input_event" from="Paper 08/Flip Previous Page" to="Paper 08" method="turn_previous"]

@@ -1,8 +1,12 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://dtfo6j22frg6g"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dtfo6j22frg6g"]
+
+[ext_resource type="FontFile" uid="uid://ctxmug0g2f7fs" path="res://assets/text/AlteHaasGroteskRegular.ttf" id="1_d50qg"]
 
 [resource]
+line_spacing = 1.0
+font = ExtResource("1_d50qg")
 font_size = 30
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.345098, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
 shadow_offset = Vector2(0, 0)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmr34mj30fbg7"]
+
+[ext_resource type="Texture2D" uid="uid://baexo6k4idi2v" path="res://assets/sprites/reports/dialogue_box.png" id="1_qjnc8"]
+[ext_resource type="LabelSettings" uid="uid://ccvdtf650cqs2" path="res://assets/text/dialogue_box.tres" id="2_01ka0"]
+
+[node name="Dialogue Box" type="Sprite2D"]
+visible = false
+position = Vector2(0, 366)
+texture = ExtResource("1_qjnc8")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -285.5
+offset_top = -82.5
+offset_right = -285.5
+offset_bottom = -82.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello, my name is John Willard."
+label_settings = ExtResource("2_01ka0")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0

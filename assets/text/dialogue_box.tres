@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ccvdtf650cqs2"]
+
+[ext_resource type="FontFile" uid="uid://cl0o3h8dlvtet" path="res://assets/text/AlteHaasGroteskBold.ttf" id="1_76ahl"]
+
+[resource]
+font = ExtResource("1_76ahl")
+font_size = 35
