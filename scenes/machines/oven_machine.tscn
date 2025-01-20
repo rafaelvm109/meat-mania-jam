@@ -1,31 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://etghli8183xh"]
+[gd_scene load_steps=10 format=3 uid="uid://etghli8183xh"]
 
 [ext_resource type="Script" path="res://scripts/machines/oven_machine.gd" id="1_n5la7"]
-[ext_resource type="Texture2D" uid="uid://dus0x78i1sgd7" path="res://assets/sprites/machines/oven/old/oven_body.png" id="1_x2y7n"]
 [ext_resource type="PackedScene" uid="uid://cbt42uuosv1xm" path="res://scenes/machines/fire_particle.tscn" id="2_lwngp"]
-[ext_resource type="Texture2D" uid="uid://bybj7eevcdq2s" path="res://assets/sprites/machines/oven/old/oven_button.png" id="2_sbnii"]
+[ext_resource type="Texture2D" uid="uid://3nglvg4n8if5" path="res://assets/sprites/machines/oven/oven_body.png" id="3_bo0tb"]
+[ext_resource type="Texture2D" uid="uid://was2jpxcq0r" path="res://assets/sprites/machines/oven/oven_button.png" id="4_dylb7"]
+[ext_resource type="Texture2D" uid="uid://djeds18m7ouu0" path="res://assets/sprites/machines/oven/oven_lights.png" id="6_g1v4r"]
+[ext_resource type="Texture2D" uid="uid://4xcsf871elad" path="res://assets/sprites/machines/oven/oven_chimney.png" id="7_gm1wg"]
+[ext_resource type="Texture2D" uid="uid://do5o0bckojnwa" path="res://assets/sprites/machines/oven/oven_piston.png" id="8_mto0c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ndjv"]
-radius = 24.0208
+radius = 30.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igid0"]
-size = Vector2(250, 200)
+size = Vector2(281, 218)
 
 [node name="oven_machine" type="Node2D"]
 script = ExtResource("1_n5la7")
 
 [node name="FireParticle" parent="." instance=ExtResource("2_lwngp")]
 z_index = 5
-position = Vector2(0, -49)
+position = Vector2(0, 33)
 
 [node name="OvenBody" type="Sprite2D" parent="."]
-texture = ExtResource("1_x2y7n")
+z_index = 1
+texture = ExtResource("3_bo0tb")
 
 [node name="OvenButton" type="Area2D" parent="."]
-position = Vector2(0, 113)
+position = Vector2(2, -235)
 
 [node name="ButtonSprite" type="Sprite2D" parent="OvenButton"]
-texture = ExtResource("2_sbnii")
+texture = ExtResource("4_dylb7")
 
 [node name="ButtonCollision" type="CollisionShape2D" parent="OvenButton"]
 shape = SubResource("CircleShape2D_2ndjv")
@@ -33,8 +37,42 @@ shape = SubResource("CircleShape2D_2ndjv")
 [node name="SpecimenArea" type="Area2D" parent="."]
 
 [node name="SpecimenCollision" type="CollisionShape2D" parent="SpecimenArea"]
-position = Vector2(1, -102)
+position = Vector2(1.5, -21)
 shape = SubResource("RectangleShape2D_igid0")
+
+[node name="OvenLights" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -146.25)
+scale = Vector2(1, 1.34615)
+texture = ExtResource("6_g1v4r")
+
+[node name="OvenChimney" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -317)
+texture = ExtResource("7_gm1wg")
+
+[node name="OvenPiston" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(180, -174)
+texture = ExtResource("8_mto0c")
+
+[node name="OvenPiston2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(180, 126)
+rotation = 1.5708
+texture = ExtResource("8_mto0c")
+
+[node name="OvenPiston3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-180, 127)
+rotation = 3.14159
+texture = ExtResource("8_mto0c")
+
+[node name="OvenPiston4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-180, -172)
+rotation = 4.71239
+texture = ExtResource("8_mto0c")
 
 [connection signal="mouse_entered" from="OvenButton" to="." method="_on_oven_button_mouse_entered"]
 [connection signal="mouse_exited" from="OvenButton" to="." method="_on_oven_button_mouse_exited"]

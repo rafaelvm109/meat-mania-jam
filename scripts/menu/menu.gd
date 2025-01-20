@@ -2,6 +2,7 @@ extends Control
 
 
 const MAIN_SCENE = "res://scenes/main.tscn"
+const MAIN_SCENE_PIG = "res://scenes/main-pig.tscn"
 const OPTIONS = "res://scenes/menu/options.tscn"
 const GAME = "res://scenes/machines/press_machine.tscn"
 

@@ -1,15 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqcvf6587433b"]
+[gd_scene load_steps=14 format=3 uid="uid://cqcvf6587433b"]
 
 [ext_resource type="Script" path="res://scripts/machines/injector_machine.gd" id="1_1yh33"]
-[ext_resource type="Texture2D" uid="uid://bkqgwujd4hl8y" path="res://assets/sprites/machines/injector/old/press_machine.png" id="1_f2405"]
-[ext_resource type="Texture2D" uid="uid://dnbbguxkq0g5s" path="res://assets/sprites/machines/injector/old/needle.png" id="2_212h5"]
-[ext_resource type="Texture2D" uid="uid://dxux0ldeyj7h5" path="res://assets/sprites/machines/injector/old/numpad.png" id="3_4gojd"]
+[ext_resource type="Texture2D" uid="uid://b4jto7euwlbwk" path="res://assets/sprites/machines/injector/injector_body.png" id="2_tvqfo"]
+[ext_resource type="Texture2D" uid="uid://cfhded0mxo6v" path="res://assets/sprites/machines/injector/injector_needle.png" id="3_tdqjo"]
+[ext_resource type="Texture2D" uid="uid://byfyr0odnyso2" path="res://assets/sprites/machines/injector/injector_numpad.png" id="4_111t6"]
 [ext_resource type="Texture2D" uid="uid://b0f3e5i7nv30j" path="res://assets/sprites/machines/injector/old/user_manual.png" id="4_157wh"]
 [ext_resource type="Texture2D" uid="uid://c7nl67y3r848m" path="res://assets/sprites/machines/injector/old/green_light.png" id="5_ju5ae"]
-[ext_resource type="Texture2D" uid="uid://do5jvtqoxije5" path="res://assets/sprites/machines/injector/old/red_light.png" id="6_jujbx"]
+[ext_resource type="Texture2D" uid="uid://d3uf5q3p8n6mh" path="res://assets/sprites/machines/injector/injector_light.png" id="7_8dyra"]
+[ext_resource type="Texture2D" uid="uid://c4eut6ln5o5m4" path="res://assets/sprites/machines/injector/injector_arm.png" id="8_57wi1"]
+[ext_resource type="Texture2D" uid="uid://cylofer7yuhsk" path="res://assets/sprites/machines/injector/injector_engine.png" id="9_5ytyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwq3v"]
-size = Vector2(24, 24)
+size = Vector2(33, 33)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ctcec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwjmv"]
 size = Vector2(50, 73)
@@ -21,15 +25,16 @@ size = Vector2(250, 200)
 script = ExtResource("1_1yh33")
 
 [node name="PressMachine" type="Sprite2D" parent="."]
-texture = ExtResource("1_f2405")
+texture = ExtResource("2_tvqfo")
 
 [node name="Needle" type="Sprite2D" parent="."]
-position = Vector2(0, -153)
-texture = ExtResource("2_212h5")
+z_index = -1
+position = Vector2(-4, -204)
+texture = ExtResource("3_tdqjo")
 
 [node name="Numpad" type="Sprite2D" parent="."]
-position = Vector2(0, 111)
-texture = ExtResource("3_4gojd")
+position = Vector2(-86, 156)
+texture = ExtResource("4_111t6")
 
 [node name="NumpadContainer" type="GridContainer" parent="Numpad"]
 offset_left = -37.0
@@ -41,44 +46,56 @@ size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 
 [node name="OneArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(13, 61)
+position = Vector2(3, 70)
 
 [node name="OneCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/OneArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight1" type="Sprite2D" parent="Numpad/NumpadContainer/OneArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(-0.6875, 0.687495)
+scale = Vector2(31.375, 31.375)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="TwoArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(37, 61)
+position = Vector2(37, 70)
 
 [node name="TwoCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/TwoArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight2" type="Sprite2D" parent="Numpad/NumpadContainer/TwoArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(-5.96046e-08, 1)
+scale = Vector2(31.375, 31.375)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="ThreeArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(61, 61)
+position = Vector2(71, 70)
 
 [node name="ThreeCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/ThreeArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight3" type="Sprite2D" parent="Numpad/NumpadContainer/ThreeArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(0.999998, 0.6875)
+scale = Vector2(32, 31.375)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="FourArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(13, 37)
+position = Vector2(3, 37)
 
 [node name="FourCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/FourArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight4" type="Sprite2D" parent="Numpad/NumpadContainer/FourArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(-0.6875, -2.38419e-07)
+scale = Vector2(31.375, 32)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="FiveArea" type="Area2D" parent="Numpad/NumpadContainer"]
 position = Vector2(37, 37)
@@ -88,50 +105,65 @@ shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight5" type="Sprite2D" parent="Numpad/NumpadContainer/FiveArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(0.499998, -6.27339e-06)
+scale = Vector2(31, 32)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="SixArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(61, 37)
+position = Vector2(71, 37)
 
 [node name="SixCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/SixArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight6" type="Sprite2D" parent="Numpad/NumpadContainer/SixArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(0.999998, 1.44541e-06)
+scale = Vector2(32, 32)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="SevenArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(13, 13)
+position = Vector2(3, 4)
 
 [node name="SevenCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/SevenArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight7" type="Sprite2D" parent="Numpad/NumpadContainer/SevenArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(-0.6875, -0.999997)
+scale = Vector2(31.375, 32)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="EightArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(37, 13)
+position = Vector2(37, 4)
 
 [node name="EightCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/EightArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight8" type="Sprite2D" parent="Numpad/NumpadContainer/EightArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(1.10269e-06, -0.999997)
+scale = Vector2(32, 32)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="NineArea" type="Area2D" parent="Numpad/NumpadContainer"]
-position = Vector2(61, 13)
+position = Vector2(71, 4)
 
 [node name="NineCollision" type="CollisionShape2D" parent="Numpad/NumpadContainer/NineArea"]
 shape = SubResource("RectangleShape2D_pwq3v")
 
 [node name="GreenLight9" type="Sprite2D" parent="Numpad/NumpadContainer/NineArea"]
 visible = false
-texture = ExtResource("5_ju5ae")
+modulate = Color(0, 0, 0, 0.631373)
+position = Vector2(0.999998, -0.999997)
+scale = Vector2(32, 32)
+texture = SubResource("CanvasTexture_ctcec")
 
 [node name="UserManual" type="Area2D" parent="."]
-position = Vector2(81, 111)
+position = Vector2(74, 156)
 
 [node name="UserManual" type="Sprite2D" parent="UserManual"]
 texture = ExtResource("4_157wh")
@@ -143,15 +175,14 @@ shape = SubResource("RectangleShape2D_jwjmv")
 [node name="SpecimenArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecimenArea"]
-position = Vector2(1, -101)
+position = Vector2(-11, -63)
 shape = SubResource("RectangleShape2D_06m3e")
 
 [node name="InProgressLight" type="Node2D" parent="."]
 
 [node name="RedLight" type="Sprite2D" parent="InProgressLight"]
-visible = false
-position = Vector2(0, 49)
-texture = ExtResource("6_jujbx")
+position = Vector2(2, -320)
+texture = ExtResource("7_8dyra")
 
 [node name="GreenLight" type="Sprite2D" parent="InProgressLight"]
 visible = false
@@ -159,3 +190,17 @@ position = Vector2(0, 49)
 texture = ExtResource("5_ju5ae")
 
 [node name="Manual" type="Sprite2D" parent="."]
+
+[node name="InjectorArm" type="Sprite2D" parent="."]
+position = Vector2(-37, -406)
+texture = ExtResource("8_57wi1")
+
+[node name="InjectorArm2" type="Sprite2D" parent="."]
+position = Vector2(46, -406)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_57wi1")
+
+[node name="InjectorEngine" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(163, 27)
+texture = ExtResource("9_5ytyc")

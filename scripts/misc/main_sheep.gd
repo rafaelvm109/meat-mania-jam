@@ -10,12 +10,15 @@ extends Node2D
 @onready var sheep: Node2D = $Specimen/Sheep
 @onready var game_manager: Node = $GameManager
 @onready var specimen: Node = $Specimen
+@onready var deliver_machine: Node2D = $Machines/deliver_machine
+@onready var h_slider: HSlider = $Pause/PauseLayer/Control/PauseBox/PauseContainer/Label/HSlider
 
 
 # starts by setting specimen position
 func _ready() -> void:
 	sheep.position = inv_1.global_position + (inv_1.size / 2)
-
+	h_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
+	h_slider.value_changed.connect(_on_volume_changed)
 
 # checks if soultion result is true or false and calls every function needed to reset game state
 # TODO: now that I see this is very similar to game.is_subject_acceptable() I should merge them into one
@@ -28,6 +31,7 @@ func check_solution() -> void:
 		game_manager.clear_machine_counter()
 		sheep.reset_sprite()
 		sheep.position = inv_1.global_position + (inv_1.size / 2)
+		deliver_machine.deliver_tray_down()
 		print("chicken reset")
 
 
@@ -46,10 +50,10 @@ func _on_resume_pressed() -> void:
 	pause_button.visible = true
 	bg_blur.visible = false
 
-
-func _on_settings_pressed() -> void:
-	pass # Replace with function body.
-
+func _on_volume_changed(value: float):
+	var db_value = linear_to_db(value)
+	AudioServer.set_bus_volume_db(0, db_value)
 
 func _on_exit_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")

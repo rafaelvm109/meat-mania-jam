@@ -14,10 +14,11 @@ extends Node2D
 
 var is_dragging: bool = false # tracks if chicken is being dragged
 var offset: Vector2
-const CHICKEN_PASTE = preload("res://assets/sprites/specimen/chicken_paste.png")
-const DICED_CHICKEN = preload("res://assets/sprites/specimen/diced_chicken.png")
-const DINO_NUGGIE = preload("res://assets/sprites/specimen/dino_nuggie.png")
-const CHICKEN = preload("res://assets/sprites/specimen/chicken.png")
+const CHICKEN_PASTE = preload("res://assets/sprites/specimen/chick_paste.png")
+const DICED_CHICKEN = preload("res://assets/sprites/specimen/chick_nugget_raw.png")
+const DINO_NUGGIE = preload("res://assets/sprites/specimen/chick_nugget_cooked.png")
+const CHICKEN = preload("res://assets/sprites/specimen/chick.png")
+const CHICKEN_UNUSABLE = preload("res://assets/sprites/specimen/chick_poop.png")
 
 
 func _input(event: InputEvent) -> void:
@@ -46,41 +47,37 @@ func _process(delta: float) -> void:
 func smash() -> void:
 	if game_manager.machine_order_list == []:
 		chicken_sprite.texture = CHICKEN_PASTE
-		chicken_sprite.scale = Vector2(0.2, 0.2)
+		chicken_sprite.scale = Vector2(0.131, 0.154)
 	else:
-		# maybe add unusable texture here
-		pass
+		unusable_sprite()
 
 # chicken after mangler machine
 func dice() -> void:
 	if game_manager.machine_order_list == [0]:
 		chicken_sprite.texture = DICED_CHICKEN
-		chicken_sprite.scale = Vector2(0.15, 0.15)
+		chicken_sprite.scale = Vector2(0.212, 0.281)
 	else:
-		# maybe add unusable texture here
-		pass
+		unusable_sprite()
 
 # chicken after oven machine
 func burn() -> void:
 	if game_manager.machine_order_list == [0, 1]:
 		chicken_sprite.texture = DINO_NUGGIE
-		chicken_sprite.scale = Vector2(0.4, 0.4)
+		chicken_sprite.scale = Vector2(0.213, 0.246)
 	else:
-		# maybe add unusable texture here
-		pass
+		unusable_sprite()
 
 # chicken after being injected with mitosis
 func inject_mitosis() -> void:
-	# no interaction required with this machine
-	pass # TODO: might delete or add sprite later
+	unusable_sprite()
 
 # chicken after being injected with growth
 func inject_growth() -> void:
-	# no interaction required with this machine
-	pass # TODO: might delete or add sprite later
+	unusable_sprite()
 
 func unusable_sprite() -> void:
-	pass # TODO: add sprite for unusable specimen
+	chicken_sprite.texture = CHICKEN_UNUSABLE
+	chicken_sprite.scale = Vector2(0.272, 0.318)
 
 # chicken after deliver rejected
 func reset_sprite() -> void:

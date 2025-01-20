@@ -35,12 +35,16 @@ func _input(event: InputEvent) -> void:
 			elif snap_deliver_subject: 
 				# set the specimen position at the start of the belt
 				can_drag_chicken_deliver = false
-				current_specimen.position = specimen_collision.global_position + Vector2(-100, 5)
+				current_specimen.position = specimen_collision.global_position + Vector2(0, 45)
 				await get_tree().create_timer(1).timeout
 				var tween = create_tween()
+				var tween2 = create_tween()
 				# move specimen right 300px over 2sec
-				tween.tween_property(current_specimen, "position", (current_specimen.global_position + Vector2(300, 0)), 2)
+				tween.tween_property(current_specimen, "position", (current_specimen.global_position + Vector2(0, -280)), 2)
+				tween2.tween_property(deliver_belt, "position", (deliver_belt.position + Vector2(0, -350)), 2)
 				await tween.finished
+				await tween2.finished
+				await get_tree().create_timer(1).timeout
 				# verifies state of solution
 				can_drag_chicken_deliver = true
 				game.check_solution()
@@ -51,6 +55,11 @@ func _on_deliver_belt_area_entered(area: Area2D) -> void:
 
 func _on_deliver_belt_area_exited(area: Area2D) -> void:
 	snap_deliver_subject = false
+
+func deliver_tray_down() -> void:
+	var tween2 = create_tween()
+	tween2.tween_property(deliver_belt, "position", (deliver_belt.position + Vector2(0, 350)), 2)
+	await tween2.finished
 
 func is_chicken_draggable() -> bool:
 	return can_drag_chicken_deliver

@@ -162,11 +162,12 @@ func _input(event: InputEvent) -> void:
 					can_drag_chicken_injector = false
 					print("chicken draggable injector false")
 					has_been_injected = true
-					red_light.visible = true
-					green_light.visible = false
+					red_light.modulate = Color(1.0, 0.1, 0.1, 1.0)
+					#red_light.visible = true
+					#green_light.visible = false
 					
 					var tween = create_tween()
-					tween.tween_property(needle, "position", (needle.position + Vector2(0, 75)), 1)
+					tween.tween_property(needle, "position", (needle.position + Vector2(0, 75)), 0.2)
 					await tween.finished
 					
 					await get_tree().create_timer(0.5).timeout
@@ -175,14 +176,18 @@ func _input(event: InputEvent) -> void:
 					tween2.tween_property(needle, "position", (needle.position - Vector2(0, 75)), 1)
 					await tween2.finished
 					
-					red_light.visible = false
-					green_light.visible = true
+					#red_light.visible = false
+					#green_light.visible = true
+					red_light.modulate = Color(0.1, 1.0, 0.1, 1.0)
 					for key in injector_codes:
 						if injector_codes[key] == input_list:
 							activate_injector_effect(key)
 							print("that is the code for: ", key)
 						else:
 							print("not a valid code for: ", key)
+					if input_list not in injector_codes.values():
+						current_specimen.unusable_sprite()
+						print(input_list, " not a valid code")
 					# reset numpad stuff
 					input_list = []
 					can_drag_chicken_injector = true
@@ -197,30 +202,29 @@ func activate_injector_effect(key) -> void:
 		current_specimen.reset_sprite()
 		print("reverse applied")
 	elif key == "mitosis":
-		#
 		if mitosis_flag:
-			# change sprite to unusable
+			current_specimen.unusable_sprite()
 			game_manager.unusable_specimen = true
 			print("unusable specimen")
 		else:
 			mitosis_flag = true
-			# change sprite to mitosis sprite
+			current_specimen.inject_mitosis()
 			game_manager.append_machine_order(3)
 			print("mitosis applied")
 	elif key == "growth":
 		if mitosis_flag:
-			# change sprite to unusable
+			current_specimen.unusable_sprite()
 			# TODO: call change animatiuon
 			game_manager.unusable_specimen = true
 			print("unusable specimen")
 		else:
 			growth_flag = true
 			# TODO: call change animatiuon
-			# change sprite to tumor growth
+			current_specimen.inject_growth()
 			game_manager.append_machine_order(4)
 			print("growth applied")
 	elif key == "explosion":
-		# change sprite to unusable specimen
+		current_specimen.unusable_sprite()
 		game_manager.unusable_specimen = true
 		print("explosion applied")
 
@@ -229,8 +233,9 @@ func _on_specimen_area_entered(area: Area2D) -> void:
 
 func _on_specimen_area_exited(area: Area2D) -> void:
 	snap_injector_specimen = false
-	red_light.visible = false
-	green_light.visible = false
+	#red_light.visible = false
+	#green_light.visible = false
+	red_light.modulate = Color.WHITE
 
 func _on_numpad_container_mouse_entered() -> void:
 	mouse_over_numpad = true

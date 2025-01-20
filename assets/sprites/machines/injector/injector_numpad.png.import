@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb82gkpws2s5u"
-path="res://.godot/imported/chicken.png-a8a9b9e78f0553b693e377dcd52ebdd0.ctex"
+uid="uid://byfyr0odnyso2"
+path="res://.godot/imported/injector_numpad.png-84ffec2d6c39b50776d442457f602017.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/specimen/chicken.png"
-dest_files=["res://.godot/imported/chicken.png-a8a9b9e78f0553b693e377dcd52ebdd0.ctex"]
+source_file="res://assets/sprites/machines/injector/injector_numpad.png"
+dest_files=["res://.godot/imported/injector_numpad.png-84ffec2d6c39b50776d442457f602017.ctex"]
 
 [params]
 

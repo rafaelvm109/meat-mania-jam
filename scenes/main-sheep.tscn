@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhxv2dh46af7j"]
+[gd_scene load_steps=14 format=3 uid="uid://bhxv2dh46af7j"]
 
 [ext_resource type="Script" path="res://scripts/misc/main_sheep.gd" id="1_6btih"]
+[ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="2_btx6w"]
 [ext_resource type="Script" path="res://scripts/misc/game_manager.gd" id="2_usnlm"]
 [ext_resource type="Material" uid="uid://t8ek8x36aomn" path="res://shaders/pause.tres" id="3_t4tcm"]
 [ext_resource type="PackedScene" uid="uid://c36au6a2n2ydq" path="res://scenes/machines/press_machine.tscn" id="4_0cgrm"]
@@ -8,83 +9,28 @@
 [ext_resource type="PackedScene" uid="uid://etghli8183xh" path="res://scenes/machines/oven_machine.tscn" id="6_bl2p0"]
 [ext_resource type="PackedScene" uid="uid://c6avlnb01vhue" path="res://scenes/machines/deliver_machine.tscn" id="7_ut65l"]
 [ext_resource type="PackedScene" uid="uid://cqcvf6587433b" path="res://scenes/machines/injector_machine.tscn" id="8_2uxys"]
+[ext_resource type="Texture2D" uid="uid://1cihufc8ljnh" path="res://assets/sprites/machines/oven/oven_inside.png" id="9_dmqiv"]
 [ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/reports/user_manual.tscn" id="9_ocgc5"]
 [ext_resource type="PackedScene" uid="uid://5dwphybk2qid" path="res://scenes/specimen/sheep.tscn" id="9_rrcwd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne1mv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iug0k"]
 bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6btih")
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(959, 540)
+texture = ExtResource("2_btx6w")
+
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_usnlm")
-
-[node name="Inventory" type="Node" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
-
-[node name="Control" type="Control" parent="Inventory/CanvasLayer"]
-light_mask = 2
-visibility_layer = 2
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -147.0
-offset_right = 192.0
-offset_bottom = -51.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
-mouse_filter = 2
-
-[node name="Inv1" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_right = 95.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
-
-[node name="Inv2" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_left = 96.0
-offset_right = 191.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
-
-[node name="Inv3" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_left = 192.0
-offset_right = 287.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
-
-[node name="Inv4" type="Panel" parent="Inventory/CanvasLayer/Control"]
-light_mask = 2
-visibility_layer = 2
-custom_minimum_size = Vector2(95, 96)
-layout_mode = 0
-offset_left = 288.0
-offset_right = 383.0
-offset_bottom = 96.0
-size_flags_horizontal = 3
 
 [node name="Pause" type="Node" parent="."]
 
 [node name="PauseLayer" type="CanvasLayer" parent="Pause"]
-layer = 2
+layer = 7
 
 [node name="Control" type="Control" parent="Pause/PauseLayer"]
 light_mask = 2
@@ -142,22 +88,32 @@ process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_ne1mv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iug0k")
 text = "Resume"
 
-[node name="Settings" type="Button" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_ne1mv")
-text = "Settings"
-
 [node name="Exit" type="Button" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_ne1mv")
-text = "Exit"
+theme_override_styles/normal = SubResource("StyleBoxFlat_iug0k")
+text = "Exit to Main Menu"
+
+[node name="Label" type="Label" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_iug0k")
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer/Label"]
+process_mode = 3
+layout_mode = 0
+offset_left = 18.0
+offset_top = 42.5
+offset_right = 283.0
+offset_bottom = 58.5
 
 [node name="Pause" type="Button" parent="Pause/PauseLayer/Control"]
 layout_mode = 0
@@ -168,22 +124,113 @@ offset_bottom = 64.0
 text = "||
 "
 
+[node name="Inventory" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
+layer = -1
+
+[node name="Control" type="Control" parent="Inventory/CanvasLayer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -147.0
+offset_right = 192.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Inv1" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -48.0
+offset_right = 51.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Inv2" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 96.0
+offset_right = 191.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Inv3" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 192.0
+offset_right = 287.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Inv4" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 288.0
+offset_right = 383.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Specimen" type="Node" parent="."]
+
+[node name="Sheep" parent="Specimen" instance=ExtResource("9_rrcwd")]
+z_index = -2
+position = Vector2(965, 983)
+
 [node name="Machines" type="Node" parent="."]
 
 [node name="PressMachine" parent="Machines" instance=ExtResource("4_0cgrm")]
-position = Vector2(285, 398)
+z_index = 1
+position = Vector2(328, 697)
+scale = Vector2(0.8, 0.8)
 
 [node name="mangler_machine" parent="Machines" instance=ExtResource("5_u21o0")]
-position = Vector2(621, 399)
+z_index = -1
+position = Vector2(664, 695)
+scale = Vector2(0.8, 0.8)
 
 [node name="oven_machine" parent="Machines" instance=ExtResource("6_bl2p0")]
-position = Vector2(960, 399)
+z_index = 1
+position = Vector2(1281, 801)
+scale = Vector2(0.8, 0.8)
 
-[node name="deliver_machine" parent="Machines" instance=ExtResource("7_ut65l")]
-position = Vector2(1626, 510)
+[node name="Sprite2D" type="Sprite2D" parent="Machines/oven_machine"]
+light_mask = 2
+visibility_layer = 2
+z_index = -5
+position = Vector2(2.49985, -21.2501)
+texture = ExtResource("9_dmqiv")
 
 [node name="Injector" parent="Machines" instance=ExtResource("8_2uxys")]
-position = Vector2(1289, 398)
+light_mask = 2
+visibility_layer = 2
+z_index = -2
+position = Vector2(964, 573)
+scale = Vector2(0.8, 0.8)
 
 [node name="UserManualLayer" type="CanvasLayer" parent="Machines/Injector"]
 layer = 6
@@ -206,10 +253,10 @@ mouse_filter = 2
 visible = false
 position = Vector2(960, 544)
 
-[node name="Specimen" type="Node" parent="."]
-
-[node name="Sheep" parent="Specimen" instance=ExtResource("9_rrcwd")]
-position = Vector2(816, 981)
+[node name="deliver_machine" parent="Machines" instance=ExtResource("7_ut65l")]
+z_index = 1
+position = Vector2(1609, 645)
+scale = Vector2(0.8, 0.8)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 866.0
@@ -221,6 +268,5 @@ text = "Sheep"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Pause/PauseLayer/Control/Pause" to="." method="_on_pause_pressed"]
