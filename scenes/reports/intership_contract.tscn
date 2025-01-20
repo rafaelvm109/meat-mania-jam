@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bt3ha0l521hxt"]
+[gd_scene load_steps=59 format=3 uid="uid://bt3ha0l521hxt"]
 
 [ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_m3iu2"]
 [ext_resource type="Script" path="res://scripts/reports/cutscene_manager.gd" id="1_tni7c"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/reports/dependencies/option.tscn" id="4_g7nl4"]
 [ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/reports/checkbox.png" id="5_hqwv5"]
 [ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/reports/checkmark.png" id="6_jqrnb"]
+[ext_resource type="Texture2D" uid="uid://ypf7p3o4sw08" path="res://assets/sprites/reports/theseus_logo.png" id="6_nqm17"]
 [ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/reports/dependencies/flip_previous_page.tscn" id="7_0seyf"]
 [ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/reports/dependencies/flip_next_page.tscn" id="8_fqlxa"]
 [ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/reports/dependencies/signature.tscn" id="9_iph32"]
@@ -1089,6 +1090,7 @@ libraries = {
 [node name="fade" type="Sprite2D" parent="Cutscene Script Holder/CutsceneManager"]
 modulate = Color(0, 0, 0, 0)
 z_index = 50
+scale = Vector2(1.07778, 1.07778)
 texture = ExtResource("10_7dq5h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1106,22 +1108,32 @@ scale = Vector2(1.305, 1.305)
 next_page = NodePath("../Paper 02")
 animator = NodePath("Animator")
 
+[node name="Sprite2D" type="Sprite2D" parent="Contract/Paper 01"]
+position = Vector2(-107.819, -317.054)
+scale = Vector2(0.233887, 0.233887)
+texture = ExtResource("6_nqm17")
+
 [node name="Text" type="Label" parent="Contract/Paper 01"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -453.0
-offset_top = -342.0
+offset_top = -228.0
 offset_right = -47.0
-offset_bottom = -408.0
+offset_bottom = -482.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "COMPANY NAME
+text = "Position: Operations Assistant
 
-\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ex ea commodo consequat. Duis reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
+Description: Execute operations and experiments following superviror instructions.
+
+Manage specimen and run trials to assure efficacy of procedures.
+
+Answer to supervisor unquestionably during training.
+
+The training will take place during the first work week. Afterwards new terms will be discussed."
 label_settings = ExtResource("3_b0m00")
-horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Animator" type="AnimationPlayer" parent="Contract/Paper 01"]

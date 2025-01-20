@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgv068txkpnfv"]
+[gd_scene load_steps=3 format=3 uid="uid://cgv068txkpnfv"]
+
+[ext_resource type="Texture2D" uid="uid://cimpkg8o22ivu" path="res://assets/sprites/reports/page_arrow.png" id="1_jrdnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hfv2"]
-size = Vector2(67.9999, 56)
+size = Vector2(102.047, 45.9171)
 
 [node name="Flip Next Page" type="Area2D"]
 position = Vector2(218.593, 350.503)
 scale = Vector2(1.25628, 1.25628)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16.4715, -1.32187)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8hfv2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-18.5835, -1.592)
+scale = Vector2(0.0954083, 0.0954083)
+texture = ExtResource("1_jrdnk")

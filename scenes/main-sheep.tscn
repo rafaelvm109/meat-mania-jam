@@ -129,6 +129,8 @@ libraries = {
 [node name="fade" type="Sprite2D" parent="Cutscene Script Holder/CutsceneManager"]
 modulate = Color(0, 0, 0, 0)
 z_index = 50
+position = Vector2(959, 540)
+scale = Vector2(1.18889, 1.18889)
 texture = ExtResource("2_btx6w")
 
 [node name="Background" type="Sprite2D" parent="."]
