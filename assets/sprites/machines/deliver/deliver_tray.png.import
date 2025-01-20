@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0f3e5i7nv30j"
-path="res://.godot/imported/user_manual.png-aca432fd3b58fa6a3c3f223a0fe4b409.ctex"
+uid="uid://ojpijymffhn6"
+path="res://.godot/imported/deliver_tray.png-9613313cb1e818910acaec683f1aad66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machines/injector/old/user_manual.png"
-dest_files=["res://.godot/imported/user_manual.png-aca432fd3b58fa6a3c3f223a0fe4b409.ctex"]
+source_file="res://assets/sprites/machines/deliver/deliver_tray.png"
+dest_files=["res://.godot/imported/deliver_tray.png-9613313cb1e818910acaec683f1aad66.ctex"]
 
 [params]
 

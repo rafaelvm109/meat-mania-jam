@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0f3e5i7nv30j"
-path="res://.godot/imported/user_manual.png-aca432fd3b58fa6a3c3f223a0fe4b409.ctex"
+uid="uid://cfhded0mxo6v"
+path="res://.godot/imported/injector_needle.png-00618ea2ea42b25fa1e1b6df948823f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machines/injector/old/user_manual.png"
-dest_files=["res://.godot/imported/user_manual.png-aca432fd3b58fa6a3c3f223a0fe4b409.ctex"]
+source_file="res://assets/sprites/machines/injector/injector_needle.png"
+dest_files=["res://.godot/imported/injector_needle.png-00618ea2ea42b25fa1e1b6df948823f9.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkqgwujd4hl8y"
-path="res://.godot/imported/press_machine.png-3b2f14d7124f27ebcc204b59aad7b25d.ctex"
+path="res://.godot/imported/press_machine.png-3ef32e90a9197165416c612e5f06fca4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machines/injector/press_machine.png"
-dest_files=["res://.godot/imported/press_machine.png-3b2f14d7124f27ebcc204b59aad7b25d.ctex"]
+source_file="res://assets/sprites/machines/injector/old/press_machine.png"
+dest_files=["res://.godot/imported/press_machine.png-3ef32e90a9197165416c612e5f06fca4.ctex"]
 
 [params]
 

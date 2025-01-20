@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7nl67y3r848m"
-path="res://.godot/imported/green_light.png-9ab4df8e59f1cbdb49f1e2dd7b730da3.ctex"
+path="res://.godot/imported/green_light.png-efc736219f4c921a22e410931588b73a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machines/injector/green_light.png"
-dest_files=["res://.godot/imported/green_light.png-9ab4df8e59f1cbdb49f1e2dd7b730da3.ctex"]
+source_file="res://assets/sprites/machines/injector/old/green_light.png"
+dest_files=["res://.godot/imported/green_light.png-efc736219f4c921a22e410931588b73a.ctex"]
 
 [params]
 

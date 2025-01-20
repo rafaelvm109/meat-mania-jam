@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn7ofc7gocgi3"
-path="res://.godot/imported/deliver_belt.png-6bdffbddccad19343afdc7025c99d912.ctex"
+path="res://.godot/imported/deliver_belt.png-909c55e58cabd4a68c6d2454cd9f8c5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machines/deliver/deliver_belt.png"
-dest_files=["res://.godot/imported/deliver_belt.png-6bdffbddccad19343afdc7025c99d912.ctex"]
+source_file="res://assets/sprites/machines/deliver/old/deliver_belt.png"
+dest_files=["res://.godot/imported/deliver_belt.png-909c55e58cabd4a68c6d2454cd9f8c5f.ctex"]
 
 [params]
 

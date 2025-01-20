@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0f3e5i7nv30j"
-path="res://.godot/imported/user_manual.png-aca432fd3b58fa6a3c3f223a0fe4b409.ctex"
+uid="uid://c4eut6ln5o5m4"
+path="res://.godot/imported/injector_arm.png-c130eb95b0c012bc609dd51f6e1446db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machines/injector/old/user_manual.png"
-dest_files=["res://.godot/imported/user_manual.png-aca432fd3b58fa6a3c3f223a0fe4b409.ctex"]
+source_file="res://assets/sprites/machines/injector/injector_arm.png"
+dest_files=["res://.godot/imported/injector_arm.png-c130eb95b0c012bc609dd51f6e1446db.ctex"]
 
 [params]
 
