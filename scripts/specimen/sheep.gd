@@ -45,8 +45,9 @@ func _process(delta: float) -> void:
 # chicken after press machine
 func smash() -> void:
 	# no interaction required with this machine
-	sheep_sprite.texture = CHICKEN_PASTE # TODO: change for final asset
-	sheep_sprite.scale = Vector2(0.2, 0.2)
+	#sheep_sprite.texture = CHICKEN_PASTE # TODO: change for final asset
+	#sheep_sprite.scale = Vector2(0.2, 0.2)
+	pass
 
 # chicken after mangler machine
 func dice() -> void:
@@ -59,8 +60,9 @@ func dice() -> void:
 # chicken after oven machine
 func burn() -> void:
 	# no interaction required with this machine
-	sheep_sprite.texture = DINO_NUGGIE # TODO: change for final asset
-	sheep_sprite.scale = Vector2(0.4, 0.4)
+	#sheep_sprite.texture = DINO_NUGGIE # TODO: change for final asset
+	#sheep_sprite.scale = Vector2(0.4, 0.4)
+	pass
 
 # chicken after being injected with mitosis
 func inject_mitosis() -> void:

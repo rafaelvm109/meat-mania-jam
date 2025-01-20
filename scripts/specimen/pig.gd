@@ -12,6 +12,7 @@ extends Node2D
 @onready var injector_machine: Node2D = $"../../Machines/Injector"
 @onready var game_manager: Node = $"../../GameManager"
 @onready var pig: Node2D = $"."
+@onready var specimen: Node = $".."
 
 var is_dragging: bool = false # tracks if chicken is being dragged
 var offset: Vector2
@@ -46,8 +47,9 @@ func _process(delta: float) -> void:
 # chicken after press machine
 func smash() -> void:
 	# no interaction required with this machine
-	pig_sprite.texture = CHICKEN_PASTE
-	pig_sprite.scale = Vector2(0.2, 0.2)
+	#pig_sprite.texture = CHICKEN_PASTE
+	#pig_sprite.scale = Vector2(0.2, 0.2)
+	pass
 
 # chicken after mangler machine
 func dice() -> void:
@@ -55,8 +57,15 @@ func dice() -> void:
 		pig_sprite.texture = DICED_CHICKEN # TODO: add actual sprite
 		pig_sprite.scale = Vector2(0.15, 0.15)
 		# improve on the animation :dead:
+		
+		var pig_sprite_only = Sprite2D.new()
+		pig_sprite_only.texture = PIG
+		pig_sprite_only.scale = Vector2(0.073, 0.092)
+		pig_sprite_only.position = pig_sprite.global_position
+		specimen.add_child(pig_sprite_only)
+		
 		var tween = create_tween()
-		tween.tween_property(pig_sprite, "position", (Vector2(1200, 0)), 1)
+		tween.tween_property(pig_sprite_only, "position", (Vector2(1710, 334)), 1)
 		await tween.finished
 	else:
 		pass

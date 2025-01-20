@@ -13,7 +13,7 @@ extends Node2D
 @onready var specimen: Node = $"../../Specimen"
 
 var snap_deliver_subject: bool = false # tracks if specimen is over the machine
-var can_drag_chicken_injector: bool = true
+var can_drag_chicken_deliver: bool = true
 var current_specimen
 
 
@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 			# and specimen over deliver machine
 			elif snap_deliver_subject: 
 				# set the specimen position at the start of the belt
-				can_drag_chicken_injector = false
+				can_drag_chicken_deliver = false
 				current_specimen.position = specimen_collision.global_position + Vector2(-100, 5)
 				await get_tree().create_timer(1).timeout
 				var tween = create_tween()
@@ -42,7 +42,7 @@ func _input(event: InputEvent) -> void:
 				tween.tween_property(current_specimen, "position", (current_specimen.global_position + Vector2(300, 0)), 2)
 				await tween.finished
 				# verifies state of solution
-				can_drag_chicken_injector = true
+				can_drag_chicken_deliver = true
 				game.check_solution()
 
 
@@ -53,4 +53,4 @@ func _on_deliver_belt_area_exited(area: Area2D) -> void:
 	snap_deliver_subject = false
 
 func is_chicken_draggable() -> bool:
-	return can_drag_chicken_injector
+	return can_drag_chicken_deliver

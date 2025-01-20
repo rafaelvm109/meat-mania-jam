@@ -25,6 +25,7 @@ extends Node2D
 @onready var injector_machine: Node2D = $"../Injector"
 @onready var deliver_machine: Node2D = $"../deliver_machine"
 @onready var specimen: Node = $"../../Specimen"
+@onready var blood_particle: Node2D = $BloodParticle
 
 
 var subject: Node2D = null # might delete later
@@ -105,20 +106,24 @@ func _input(event: InputEvent) -> void:
 		if is_contacting and snap_subject:
 			if round_first_decimal(lever_handle.position.y, 1) == lerp(lever_start_pos.y, lever_end_pos.y, 1):
 				# TODO: add particles effec around here
+				blood_particle.start_blood_particles()
 				smashed_count += 1
 				print("chicken smashed ", smashed_count, " times")
 				# allow specimen movemnt, change sprite, and add result to the list
-				if smashed_count == 3:
-					can_drag_chicken_press = true
+				if smashed_count == 1:
 					current_specimen.smash()
 					game_manager.append_machine_order(0)
+				elif smashed_count == 3:
+					can_drag_chicken_press = true
 				elif smashed_count == 6:
 					game_manager.unusable_specimen = true
+					# TODO: add unsuavble sprite function
 					# change sprite to unusable specimen
 					print("specimen unusable")
 					game_manager.append_machine_order(0)
 				is_contacting = false
 		elif lever_handle.position.y == lerp(lever_start_pos.y, lever_end_pos.y, 0):
+			blood_particle.stop_blood_particles()
 			is_contacting = true
 
 

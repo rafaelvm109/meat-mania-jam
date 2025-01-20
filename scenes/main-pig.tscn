@@ -220,6 +220,11 @@ theme_override_font_sizes/font_size = 50
 text = "Pig"
 horizontal_alignment = 1
 
+[node name="Marker2D" type="Marker2D" parent="."]
+visible = false
+position = Vector2(1713, 337)
+gizmo_extents = 402.6
+
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Exit" to="." method="_on_exit_pressed"]

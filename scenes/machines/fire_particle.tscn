@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbt42uuosv1xm"]
+[gd_scene load_steps=6 format=3 uid="uid://cbt42uuosv1xm"]
 
 [ext_resource type="Texture2D" uid="uid://dhtu3cxtis0oj" path="res://assets/sprites/machines/fire_particle.png" id="1_1ls10"]
+[ext_resource type="Script" path="res://scripts/machines/fire_particle.gd" id="1_5mujq"]
 
 [sub_resource type="Environment" id="Environment_1lb2m"]
 background_mode = 3
@@ -20,6 +21,7 @@ _data = [Vector2(0.804412, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="FireParticle" type="Node2D"]
+script = ExtResource("1_5mujq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1lb2m")
@@ -27,6 +29,7 @@ environment = SubResource("Environment_1lb2m")
 [node name="Fire1" type="CPUParticles2D" parent="."]
 modulate = Color(1, 0.501961, 0, 1)
 material = SubResource("CanvasItemMaterial_8sn0p")
+scale = Vector2(0.25, 0.25)
 emitting = false
 amount = 25
 one_shot = true
@@ -51,6 +54,7 @@ anim_speed_max = 5.0
 modulate = Color(1, 0.501961, 0, 1)
 material = SubResource("CanvasItemMaterial_8sn0p")
 position = Vector2(36, 0)
+scale = Vector2(0.25, 0.25)
 emitting = false
 amount = 25
 one_shot = true
@@ -77,6 +81,7 @@ anim_speed_max = 5.0
 modulate = Color(1, 0.501961, 0, 1)
 material = SubResource("CanvasItemMaterial_8sn0p")
 position = Vector2(-27, 0)
+scale = Vector2(0.25, 0.25)
 emitting = false
 amount = 25
 one_shot = true

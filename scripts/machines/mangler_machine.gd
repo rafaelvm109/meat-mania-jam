@@ -19,6 +19,7 @@ extends Node2D
 @onready var injector_machine: Node2D = $"../Injector"
 @onready var deliver_machine: Node2D = $"../deliver_machine"
 @onready var specimen: Node = $"../../Specimen"
+@onready var blood_particle: Node2D = $BloodParticle
 
 
 var is_dragging_mangler: bool = false # detects lever dragging
@@ -51,12 +52,13 @@ func _ready() -> void:
 	specimen_area.connect("area_exited", Callable(self, "_on_specimen_area_exited"))
 		
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:	
 	if snap_mangler_subject:
 		if mangled_count < 5:
 			can_drag_chicken_mangler = false
 	else:
 		can_drag_chicken_mangler = true
+
 
 func _input(event: InputEvent) -> void:
 	# on mouse input
@@ -93,15 +95,10 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseMotion:
 		if is_contacting and snap_mangler_subject:
-			#var mid_pos = float((slider_start_pos.x + slider_end_pos.x) / 2)
-			#print(slider_start_pos.x, " ", slider_end_pos.x, " ", mid_pos)
-			#print(lerp(slider_start_pos.x, slider_end_pos.x, 0.5))
-			#print(slider_handle.position.x)
-			#if slider_handle.position.x == lerp(slider_start_pos.x, slider_end_pos.x, 1):
-			#print(round_first_decimal(slider_handle.position.x, 0), " ", lerp(slider_start_pos.x, slider_end_pos.x, 0.5))
 			if slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0.4) and slider_handle.position.x <= lerp(slider_start_pos.x, slider_end_pos.x, 0.6):
 				if !saw_coming_back:
 					# TODO: add particles effec around here
+					blood_particle.start_blood_particles()
 					mangled_count += 1
 					print("chicken mangled ", mangled_count, " times")
 					# allow specimen movemnt, change sprite, and add result to the list
@@ -116,6 +113,7 @@ func _input(event: InputEvent) -> void:
 						game_manager.append_machine_order(1)
 					is_contacting = false
 		if slider_handle.position.x <= lerp(slider_start_pos.x, slider_end_pos.x, 0.1) or slider_handle.position.x >= lerp(slider_start_pos.x, slider_end_pos.x, 0.9):
+			blood_particle.stop_blood_particles()
 			is_contacting = true
 		
 		

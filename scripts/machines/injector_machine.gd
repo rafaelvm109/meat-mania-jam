@@ -67,14 +67,6 @@ var injector_codes = {
 	"test": [1, 2, 3]
 }
 
-"""
-1. clickable numpad - DONE
-2. move needle after 3 clicks
-3. list of valid clicks
-4. red light affter pressing 3 buttons when chicken enter
-5. green light when chicken is ready
-"""
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -205,6 +197,7 @@ func activate_injector_effect(key) -> void:
 		current_specimen.reset_sprite()
 		print("reverse applied")
 	elif key == "mitosis":
+		#
 		if mitosis_flag:
 			# change sprite to unusable
 			game_manager.unusable_specimen = true
@@ -217,10 +210,12 @@ func activate_injector_effect(key) -> void:
 	elif key == "growth":
 		if mitosis_flag:
 			# change sprite to unusable
+			# TODO: call change animatiuon
 			game_manager.unusable_specimen = true
 			print("unusable specimen")
 		else:
 			growth_flag = true
+			# TODO: call change animatiuon
 			# change sprite to tumor growth
 			game_manager.append_machine_order(4)
 			print("growth applied")

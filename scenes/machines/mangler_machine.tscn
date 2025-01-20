@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbc8qbdp6moww"]
+[gd_scene load_steps=10 format=3 uid="uid://dbc8qbdp6moww"]
 
 [ext_resource type="Texture2D" uid="uid://bt4kvrfo163pb" path="res://assets/sprites/machines/mangler/old/mangler_body.png" id="1_mken5"]
 [ext_resource type="Script" path="res://scripts/machines/mangler_machine.gd" id="1_t3lln"]
+[ext_resource type="PackedScene" uid="uid://ckbowx7p8wgod" path="res://scenes/machines/blood_particle.tscn" id="2_ie15o"]
 [ext_resource type="Texture2D" uid="uid://dneb1nu2vaihm" path="res://assets/sprites/machines/mangler/old/slider_back.png" id="2_snt7b"]
 [ext_resource type="Texture2D" uid="uid://emvmb84fr842" path="res://assets/sprites/machines/mangler/old/slider_handle.png" id="3_byw05"]
 [ext_resource type="Texture2D" uid="uid://b36ql223o3wu6" path="res://assets/sprites/machines/mangler/old/saw_blade.png" id="4_uqyc7"]
@@ -17,6 +18,10 @@ size = Vector2(126, 82)
 
 [node name="mangler_machine" type="Node2D"]
 script = ExtResource("1_t3lln")
+
+[node name="BloodParticle" parent="." instance=ExtResource("2_ie15o")]
+z_index = 5
+position = Vector2(1, -16)
 
 [node name="ManglerBody" type="Sprite2D" parent="."]
 texture = ExtResource("1_mken5")
