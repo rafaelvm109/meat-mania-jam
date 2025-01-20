@@ -14,7 +14,7 @@ extends Node
 var unusable_specimen: bool = false
 var chicken_solution_list = [0, 1, 2] # solution list for first specimen
 var sheep_solution_list = [3, 1] # solution list for first specimen
-var pig_solution_list = [4, 1, 3] # solution list for first specimen
+var pig_solution_list = [4, 1, 2] # solution list for first specimen
 var machine_order_list = [] # list of the actual sequence
 var current_specimen = null
 
