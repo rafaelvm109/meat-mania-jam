@@ -11,6 +11,7 @@ extends Node2D
 @onready var button_sprite: Sprite2D = $OvenButton/ButtonSprite
 @onready var injector_machine: Node2D = $"../Injector"
 @onready var specimen: Node = $"../../Specimen"
+@onready var fire_particle: Node2D = $FireParticle
 
 
 var mouse_over_button: bool = false
@@ -40,13 +41,11 @@ func _input(event: InputEvent) -> void:
 				button_sprite.position -= Vector2(2, 2)
 				if snap_oven_subject:
 					clicks_to_burn += 1
+					fire_particle.play_fire_particles()
 					print("chicken burned ", clicks_to_burn, " times")
 				# if the button hasnt been clicked enough timnes
-					if clicks_to_burn < total_clicks_to_burn:
-						# TODO: add fire particles here
-						pass
 					# on the last click needed allow player to drag specimen
-					elif clicks_to_burn == total_clicks_to_burn:
+					if clicks_to_burn == total_clicks_to_burn:
 						# change sprite and add result to the list
 						can_drag_chicken_oven = true
 						current_specimen.burn()

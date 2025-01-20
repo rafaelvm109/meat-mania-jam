@@ -29,12 +29,10 @@ process_mode = 3
 process_priority = 1
 process_physics_priority = 1
 position = Vector2(7.82544, -4.97784)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_f4wqe")
 
 [node name="Checkmark" type="Sprite2D" parent="Area2D"]
 process_mode = 3
 process_priority = 1
 process_physics_priority = 1
-scale = Vector2(1, 1)
 texture = ExtResource("3_0gjyy")

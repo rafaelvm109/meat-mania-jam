@@ -13,23 +13,17 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		print("1")
 		if user_manual_paper.visible:
-			print("2")
 			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-				print("3")
 				if mouse_over_close:
-					print("4")
 					user_manual_paper.visible = false
 					bg_blur_manual.visible = false
 					
 					
 					
 func _on_close_area_mouse_entered() -> void:
-	print("a")
 	mouse_over_close = true
 
 
 func _on_close_area_mouse_exited() -> void:
-	print("b")
 	mouse_over_close = false
