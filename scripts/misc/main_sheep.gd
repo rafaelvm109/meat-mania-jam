@@ -13,19 +13,17 @@ extends Node2D
 @onready var deliver_machine: Node2D = $Machines/deliver_machine
 @onready var h_slider: HSlider = $Pause/PauseLayer/Control/PauseBox/PauseContainer/Label/HSlider
 
-
 # starts by setting specimen position
 func _ready() -> void:
 	sheep.position = inv_1.global_position + (inv_1.size / 2)
 	h_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 	h_slider.value_changed.connect(_on_volume_changed)
-
 # checks if soultion result is true or false and calls every function needed to reset game state
 # TODO: now that I see this is very similar to game.is_subject_acceptable() I should merge them into one
 func check_solution() -> void:
 	if game_manager.is_subject_acceptable():
 		print("solution accepted")
-		get_tree().change_scene_to_file("res://scenes/main-pig.tscn")
+		%CutsceneManager.play("end_cutscene")
 	else:
 		game_manager.clear_list()
 		game_manager.clear_machine_counter()
@@ -34,6 +32,8 @@ func check_solution() -> void:
 		deliver_machine.deliver_tray_down()
 		print("chicken reset")
 
+func change_scene():
+	get_tree().change_scene_to_file("res://scenes/reports/report_sheep.tscn")
 
 # make pause menu and blur background visible
 func _on_pause_pressed() -> void:

@@ -22,14 +22,13 @@ func _ready() -> void:
 	h_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 	h_slider.value_changed.connect(_on_volume_changed)
 
-
 # checks if soultion result is true or false and calls every function needed to reset game state
 # TODO: now that I see this is very similar to game.is_subject_acceptable() I should merge them into one
 func check_solution() -> void:
 	if game_manager.is_subject_acceptable():
 		print("solution accepted")
-		# TODO: asd
-		get_tree().change_scene_to_file("res://scenes/main-sheep.tscn")
+		%CutsceneManager.play("end_cutscene")
+		# TODO: add stuff
 	else:
 		game_manager.clear_list()
 		game_manager.clear_machine_counter()

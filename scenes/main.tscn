@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bd5nwfg25bfty"]
+[gd_scene load_steps=26 format=3 uid="uid://bd5nwfg25bfty"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_ro855"]
+[ext_resource type="Script" path="res://scripts/reports/cutscene_manager.gd" id="2_5gmbm"]
+[ext_resource type="Texture2D" uid="uid://dyyutlkpdoei8" path="res://assets/sprites/machines/background shadows.png" id="2_p7uc6"]
 [ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="2_pu0d8"]
 [ext_resource type="Script" path="res://scripts/misc/game_manager.gd" id="2_xwam5"]
 [ext_resource type="PackedScene" uid="uid://dbc8qbdp6moww" path="res://scenes/machines/mangler_machine.tscn" id="3_7vni7"]
 [ext_resource type="PackedScene" uid="uid://c36au6a2n2ydq" path="res://scenes/machines/press_machine.tscn" id="3_76j7j"]
+[ext_resource type="PackedScene" uid="uid://bj1pvoqfkg32" path="res://scenes/reports/report_chick.tscn" id="3_lu04y"]
 [ext_resource type="PackedScene" uid="uid://bgbx8g7acgq2l" path="res://scenes/specimen/chicken.tscn" id="4_rp8v8"]
 [ext_resource type="Material" uid="uid://t8ek8x36aomn" path="res://shaders/pause.tres" id="5_4ku4w"]
 [ext_resource type="PackedScene" uid="uid://etghli8183xh" path="res://scenes/machines/oven_machine.tscn" id="5_4pg23"]
@@ -12,17 +15,127 @@
 [ext_resource type="PackedScene" uid="uid://cqcvf6587433b" path="res://scenes/machines/injector_machine.tscn" id="8_e2byj"]
 [ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/reports/user_manual.tscn" id="9_cta31"]
 [ext_resource type="Texture2D" uid="uid://1cihufc8ljnh" path="res://assets/sprites/machines/oven/oven_inside.png" id="9_iajgu"]
+[ext_resource type="Texture2D" uid="uid://dxql3w22dwyam" path="res://assets/sprites/machines/specimen_inventory.png" id="13_jbucq"]
+[ext_resource type="Texture2D" uid="uid://c77ta4p5f5cey" path="res://assets/sprites/machines/speaker.png" id="13_m8kvo"]
+
+[sub_resource type="Animation" id="Animation_loy70"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cutscene Script Holder/CutsceneManager/fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_60pvg"]
+resource_name = "end_cutscene"
+length = 17.0
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(16.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cutscene Script Holder/CutsceneManager/fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(15, 17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yjyev"]
+resource_name = "start_scene"
+length = 40.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cutscene Script Holder/CutsceneManager/fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb478"]
+_data = {
+"RESET": SubResource("Animation_loy70"),
+"end_cutscene": SubResource("Animation_60pvg"),
+"start_scene": SubResource("Animation_yjyev")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne1mv"]
 bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt1j8"]
+atlas = ExtResource("13_m8kvo")
+region = Rect2(0, 0, 796, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kj7q"]
+atlas = ExtResource("13_m8kvo")
+region = Rect2(828, 0, 796, 290)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2igqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt1j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kj7q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ro855")
+
+[node name="Cutscene Script Holder" type="Node2D" parent="."]
+script = ExtResource("2_5gmbm")
+next_scene = ExtResource("3_lu04y")
+
+[node name="CutsceneManager" type="AnimationPlayer" parent="Cutscene Script Holder"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_pb478")
+}
+
+[node name="fade" type="Sprite2D" parent="Cutscene Script Holder/CutsceneManager"]
+modulate = Color(0, 0, 0, 0)
+z_index = 50
+texture = ExtResource("2_pu0d8")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -10
 position = Vector2(959, 540)
-texture = ExtResource("2_pu0d8")
+texture = ExtResource("2_p7uc6")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_xwam5")
@@ -257,6 +370,21 @@ position = Vector2(960, 544)
 z_index = 1
 position = Vector2(1609, 645)
 scale = Vector2(0.8, 0.8)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.560955, 0.560955, 0.560955, 1)
+z_index = -9
+position = Vector2(760, 291)
+scale = Vector2(0.144828, 0.144828)
+sprite_frames = SubResource("SpriteFrames_2igqs")
+autoplay = "default"
+frame_progress = 0.0619833
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(956, 1032)
+scale = Vector2(0.444444, 0.444444)
+texture = ExtResource("13_jbucq")
 
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Exit" to="." method="_on_exit_pressed"]

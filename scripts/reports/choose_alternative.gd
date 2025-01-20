@@ -14,4 +14,4 @@ func choose_alternative(_viewport: Node, event: InputEvent, _shape_idx: int):
 func ending_signature(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if checkmark.visible == true:
 		await get_tree().create_timer(1).timeout
-		$"../../../CutsceneMain".play("end_cutscene")
+		%CutsceneManager.play("end_cutscene")
