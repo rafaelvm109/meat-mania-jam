@@ -1,17 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbc8qbdp6moww"]
+[gd_scene load_steps=13 format=3 uid="uid://dbc8qbdp6moww"]
 
-[ext_resource type="Texture2D" uid="uid://bt4kvrfo163pb" path="res://assets/sprites/machines/mangler/old/mangler_body.png" id="1_mken5"]
 [ext_resource type="Script" path="res://scripts/machines/mangler_machine.gd" id="1_t3lln"]
 [ext_resource type="PackedScene" uid="uid://ckbowx7p8wgod" path="res://scenes/machines/blood_particle.tscn" id="2_ie15o"]
-[ext_resource type="Texture2D" uid="uid://dneb1nu2vaihm" path="res://assets/sprites/machines/mangler/old/slider_back.png" id="2_snt7b"]
-[ext_resource type="Texture2D" uid="uid://emvmb84fr842" path="res://assets/sprites/machines/mangler/old/slider_handle.png" id="3_byw05"]
-[ext_resource type="Texture2D" uid="uid://b36ql223o3wu6" path="res://assets/sprites/machines/mangler/old/saw_blade.png" id="4_uqyc7"]
+[ext_resource type="Texture2D" uid="uid://5rapxiu6i1r2" path="res://assets/sprites/machines/mangler/mangler_body.png" id="3_36x10"]
+[ext_resource type="Texture2D" uid="uid://dqw2bn8pmgeqt" path="res://assets/sprites/machines/mangler/mangler_track.png" id="4_kudtu"]
+[ext_resource type="Texture2D" uid="uid://c0ejptyxyr32p" path="res://assets/sprites/machines/mangler/mangler_handle.png" id="5_vbwuq"]
+[ext_resource type="Texture2D" uid="uid://bnay5mmivra5a" path="res://assets/sprites/machines/mangler/mangler_blade.png" id="6_t1vu1"]
+[ext_resource type="Texture2D" uid="uid://d2d88o8uhlk7d" path="res://assets/sprites/machines/mangler/mangler_armature.png" id="7_ukx4e"]
+[ext_resource type="Texture2D" uid="uid://bfujxh41pjr7m" path="res://assets/sprites/machines/mangler/mangler_lights.png" id="8_kqyp2"]
+[ext_resource type="Texture2D" uid="uid://ddhkadx4ntdtc" path="res://assets/sprites/machines/mangler/mangler_arm.png" id="9_bo7f6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n06p4"]
-radius = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pjqd"]
+size = Vector2(88, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58hq6"]
-size = Vector2(250, 199)
+size = Vector2(294, 193)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n64o1"]
 size = Vector2(126, 82)
@@ -20,36 +23,37 @@ size = Vector2(126, 82)
 script = ExtResource("1_t3lln")
 
 [node name="BloodParticle" parent="." instance=ExtResource("2_ie15o")]
-z_index = 5
+z_index = -1
 position = Vector2(1, -16)
 
 [node name="ManglerBody" type="Sprite2D" parent="."]
-texture = ExtResource("1_mken5")
+texture = ExtResource("3_36x10")
 
 [node name="SliderBack" type="Sprite2D" parent="."]
-position = Vector2(0, 115)
-texture = ExtResource("2_snt7b")
+position = Vector2(3, 59)
+texture = ExtResource("4_kudtu")
 
 [node name="SliderHandle" type="Area2D" parent="."]
-position = Vector2(-49, 114)
+position = Vector2(-61, 59)
 
 [node name="Sprite2D" type="Sprite2D" parent="SliderHandle"]
 position = Vector2(1, 0)
-texture = ExtResource("3_byw05")
+texture = ExtResource("5_vbwuq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SliderHandle"]
-position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_n06p4")
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_7pjqd")
 
 [node name="SpecimenArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecimenArea"]
-position = Vector2(1, -101.5)
+position = Vector2(4, -125.5)
 shape = SubResource("RectangleShape2D_58hq6")
 
 [node name="SawBlade" type="Sprite2D" parent="."]
-position = Vector2(-78, -25)
-texture = ExtResource("4_uqyc7")
+z_index = -1
+position = Vector2(-106, -27)
+texture = ExtResource("6_t1vu1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="SawBlade"]
 
@@ -57,3 +61,43 @@ texture = ExtResource("4_uqyc7")
 visible = false
 position = Vector2(17, 9)
 shape = SubResource("RectangleShape2D_n64o1")
+
+[node name="ManglerArmature" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(3, -245)
+texture = ExtResource("7_ukx4e")
+
+[node name="ManglerArm" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-95, -130)
+texture = ExtResource("9_bo7f6")
+
+[node name="ManglerLights1" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-108, -278)
+texture = ExtResource("8_kqyp2")
+
+[node name="ManglerLights2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-70, -278)
+texture = ExtResource("8_kqyp2")
+
+[node name="ManglerLights3" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-31, -278)
+texture = ExtResource("8_kqyp2")
+
+[node name="ManglerLights4" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(7, -278)
+texture = ExtResource("8_kqyp2")
+
+[node name="ManglerLights5" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(47, -278)
+texture = ExtResource("8_kqyp2")
+
+[node name="ManglerLights6" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(86, -278)
+texture = ExtResource("8_kqyp2")

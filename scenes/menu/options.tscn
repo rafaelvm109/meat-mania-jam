@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnd0o3y7p2xc4"]
 
 [ext_resource type="Script" path="res://scripts/menu/options.gd" id="1_n52xx"]
-[ext_resource type="Texture2D" uid="uid://k7viqecmiv0a" path="res://assets/misc/slaughtergouse.jpg" id="2_rjao6"]
+[ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="2_hqals"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7orke"]
-texture = ExtResource("2_rjao6")
-modulate_color = Color(0.18359, 0.18359, 0.18359, 1)
+texture = ExtResource("2_hqals")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvsbe"]
 bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
@@ -63,5 +62,9 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_xvsbe")
 text = "Back"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+value = 50.0
 
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

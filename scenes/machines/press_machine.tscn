@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c36au6a2n2ydq"]
+[gd_scene load_steps=13 format=3 uid="uid://c36au6a2n2ydq"]
 
 [ext_resource type="Script" path="res://scripts/machines/press_machine.gd" id="1_54isr"]
 [ext_resource type="PackedScene" uid="uid://ckbowx7p8wgod" path="res://scenes/machines/blood_particle.tscn" id="2_30v7b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3bocbbn0xcct" path="res://assets/sprites/machines/press/press__handle.png" id="5_447v2"]
 [ext_resource type="Texture2D" uid="uid://btprd23wmoguq" path="res://assets/sprites/machines/press/press_upper.png" id="7_pnxkr"]
 [ext_resource type="Texture2D" uid="uid://bo7kreo1gi3qc" path="res://assets/sprites/machines/press/press_press.png" id="8_ybfwk"]
+[ext_resource type="Texture2D" uid="uid://b61vfgcxpa3v" path="res://assets/sprites/machines/press/press_lights.png" id="9_d8lya"]
 [ext_resource type="Texture2D" uid="uid://d0ualfhbh2fq0" path="res://assets/sprites/machines/press/press_motor.png" id="9_yo4t2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_077jk"]
@@ -23,7 +24,6 @@ position = Vector2(2, -1)
 script = ExtResource("1_54isr")
 
 [node name="BloodParticle" parent="." instance=ExtResource("2_30v7b")]
-z_index = 5
 position = Vector2(-1, -30)
 
 [node name="PressMachineBody" type="Sprite2D" parent="."]
@@ -49,13 +49,14 @@ shape = SubResource("RectangleShape2D_077jk")
 position = Vector2(1.5, -76)
 shape = SubResource("RectangleShape2D_eq6qf")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(3, -285)
+texture = ExtResource("7_pnxkr")
+
 [node name="PressUpper" type="Sprite2D" parent="."]
 position = Vector2(1, -351)
 texture = ExtResource("8_ybfwk")
-
-[node name="Sprite2D" type="Sprite2D" parent="PressUpper"]
-position = Vector2(2, 66)
-texture = ExtResource("7_pnxkr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PressUpper"]
 
@@ -68,3 +69,18 @@ shape = SubResource("RectangleShape2D_j228y")
 z_index = -1
 position = Vector2(-175, 171)
 texture = ExtResource("9_yo4t2")
+
+[node name="PressLights" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(188, 146)
+texture = ExtResource("9_d8lya")
+
+[node name="PressLights2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(188, 190)
+texture = ExtResource("9_d8lya")
+
+[node name="PressLights3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(188, 235)
+texture = ExtResource("9_d8lya")
