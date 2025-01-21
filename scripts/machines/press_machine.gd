@@ -26,6 +26,9 @@ extends Node2D
 @onready var deliver_machine: Node2D = $"../deliver_machine"
 @onready var specimen: Node = $"../../Specimen"
 @onready var blood_particle: Node2D = $BloodParticle
+@onready var press_lights: Sprite2D = $PressLights
+@onready var press_lights_2: Sprite2D = $PressLights2
+@onready var press_lights_3: Sprite2D = $PressLights3
 
 
 var subject: Node2D = null # might delete later
@@ -37,8 +40,8 @@ var lever_start_pos: Vector2
 var lever_end_pos: Vector2
 var press_start_pos: Vector2
 var press_end_pos: Vector2
-var lever_travel_distance: int = 74 # this should be a const later on
-var press_travel_distance: int = 100 # this should be a const later on
+var lever_travel_distance: int = 105 # this should be a const later on
+var press_travel_distance: int = 200 # this should be a const later on
 var smashed_count: int = 0
 var can_drag_chicken_press: bool = true  # Determines whether the chicken can be dragged
 var is_contacting: bool = true
@@ -113,12 +116,21 @@ func _input(event: InputEvent) -> void:
 				if smashed_count == 1:
 					current_specimen.smash()
 					game_manager.append_machine_order(0)
+					press_lights.modulate = Color(0, 1, 0, 1)
+				elif smashed_count == 2:
+					press_lights_2.modulate = Color(0, 1, 0, 1)
 				elif smashed_count == 3:
+					press_lights_3.modulate = Color(0, 1, 0, 1)
 					can_drag_chicken_press = true
+				elif smashed_count == 4:
+					press_lights.modulate = Color(1, 0, 0, 1)
+				elif smashed_count == 5:
+					press_lights_2.modulate = Color(1, 0, 0, 1)
 				elif smashed_count == 6:
+					press_lights_3.modulate = Color(1, 0, 0, 1)
 					game_manager.unusable_specimen = true
 					# TODO: add unsuavble sprite function
-					# change sprite to unusable specimen
+					current_specimen.unusable_sprite()
 					print("specimen unusable")
 					game_manager.append_machine_order(0)
 				is_contacting = false
@@ -165,6 +177,9 @@ func _on_press_lower_area_entered(area: Area2D) -> void:
 # detects if specimen is exiting press lower
 func _on_press_lower_area_exited(area: Area2D) -> void:
 	snap_subject = false
+	press_lights.modulate = Color.WHITE
+	press_lights_2.modulate = Color.WHITE
+	press_lights_3.modulate = Color.WHITE
 
 func is_chicken_draggable() -> bool:
 	return can_drag_chicken_press

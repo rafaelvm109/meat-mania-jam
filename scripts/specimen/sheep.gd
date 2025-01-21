@@ -14,11 +14,10 @@ extends Node2D
 
 var is_dragging: bool = false # tracks if chicken is being dragged
 var offset: Vector2
-const CHICKEN_PASTE = preload("res://assets/sprites/specimen/chicken_paste.png")
-const DICED_CHICKEN = preload("res://assets/sprites/specimen/diced_chicken.png")
-const DINO_NUGGIE = preload("res://assets/sprites/specimen/dino_nuggie.png")
 const SHEEP = preload("res://assets/sprites/specimen/sheep.png")
-
+const SHEEP_DOUBLE = preload("res://assets/sprites/specimen/sheep_double.png")
+const SHEEP_MITOSIS = preload("res://assets/sprites/specimen/sheep_mitosis.png")
+const SHEEP_UNUSABLE = preload("res://assets/sprites/specimen/sheep_poop.png")
 
 func _input(event: InputEvent) -> void:
 	# checks if mouse event
@@ -45,41 +44,39 @@ func _process(delta: float) -> void:
 # chicken after press machine
 func smash() -> void:
 	# no interaction required with this machine
-	#sheep_sprite.texture = CHICKEN_PASTE # TODO: change for final asset
-	#sheep_sprite.scale = Vector2(0.2, 0.2)
-	pass
+	unusable_sprite()
 
 # chicken after mangler machine
 func dice() -> void:
 	if game_manager.machine_order_list == [3]:
-		sheep_sprite.texture = DICED_CHICKEN # TODO: change for final asset
-		sheep_sprite.scale = Vector2(0.15, 0.15)
+		sheep_sprite.texture = SHEEP_DOUBLE # TODO: change for final asset
+		sheep_sprite.scale = Vector2(0.154, 0.164)
 	else:
-		pass
+		unusable_sprite()
 
 # chicken after oven machine
 func burn() -> void:
 	# no interaction required with this machine
-	#sheep_sprite.texture = DINO_NUGGIE # TODO: change for final asset
-	#sheep_sprite.scale = Vector2(0.4, 0.4)
-	pass
+	unusable_sprite()
 
 # chicken after being injected with mitosis
 func inject_mitosis() -> void:
 	if game_manager.machine_order_list == []:
-		pass # TODO: add sprite
+		sheep_sprite.texture = SHEEP_MITOSIS # TODO: change for final asset
+		sheep_sprite.scale = Vector2(0.167, 0.187)
 	else:
-		pass
+		unusable_sprite()
 
 # chicken after being injected with growth
 func inject_growth() -> void:
 	# no interaction required with this machine
-	pass # TODO: might delete or add sprite later
+	unusable_sprite()
 
 func unusable_sprite() -> void:
-	pass # TODO: add sprite for unusable specimen
+	sheep_sprite.texture = SHEEP_UNUSABLE # TODO: change for final asset
+	sheep_sprite.scale = Vector2(0.283, 0.427)
 
 # chicken after deliver rejected
 func reset_sprite() -> void:
 	sheep_sprite.texture = SHEEP
-	sheep_sprite.scale = Vector2(0.09, 0.094)
+	sheep_sprite.scale = Vector2(0.181, 0.177)

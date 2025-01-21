@@ -20,6 +20,14 @@ extends Node2D
 @onready var deliver_machine: Node2D = $"../deliver_machine"
 @onready var specimen: Node = $"../../Specimen"
 @onready var blood_particle: Node2D = $BloodParticle
+@onready var mangler_lights = [
+	$ManglerLights1,
+	$ManglerLights2,
+	$ManglerLights3,
+	$ManglerLights4,
+	$ManglerLights5,
+	$ManglerLights6
+]
 
 
 var is_dragging_mangler: bool = false # detects lever dragging
@@ -29,13 +37,14 @@ var slider_start_pos: Vector2
 var slider_end_pos: Vector2
 var saw_start_pos: Vector2
 var saw_end_pos: Vector2
-var slider_travel_distance: int = 98 # this should be a const later on
-var saw_travel_distance: int = 158 # this should be a const later on
+var slider_travel_distance: int = 155 # this should be a const later on
+var saw_travel_distance: int = 220 # this should be a const later on
 var mangled_count: int = 0 # determines number of times saw has passed through the specimen
 var can_drag_chicken_mangler: bool = true  # Determines whether the chicken can be dragged
 var is_contacting: bool = true
 var saw_coming_back: bool = false
 var current_specimen = null
+var light_bool = false
 
 func _ready() -> void:
 	current_specimen = specimen.get_child(0)
@@ -101,14 +110,18 @@ func _input(event: InputEvent) -> void:
 					blood_particle.start_blood_particles()
 					mangled_count += 1
 					print("chicken mangled ", mangled_count, " times")
+					if mangled_count < 7:
+						mangler_lights[mangled_count-1].modulate = Color(0, 1, 0, 1)
+					if mangled_count >= 7 and mangled_count < 13:
+						mangler_lights[mangled_count-7].modulate = Color(1, 0, 0, 1)
 					# allow specimen movemnt, change sprite, and add result to the list
-					if mangled_count == 5:
+					if mangled_count == 6:
 						can_drag_chicken_mangler = true
 						current_specimen.dice()
 						game_manager.append_machine_order(1)
-					elif mangled_count == 10:
+					elif mangled_count == 12:
 						game_manager.unusable_specimen = true
-						# change sprite to unusable
+						current_specimen.unusable_sprite()
 						print("unusable specimen")
 						game_manager.append_machine_order(1)
 					is_contacting = false

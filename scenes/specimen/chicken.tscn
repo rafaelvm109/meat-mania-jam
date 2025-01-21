@@ -1,77 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgbx8g7acgq2l"]
+[gd_scene load_steps=4 format=3 uid="uid://bgbx8g7acgq2l"]
 
-[ext_resource type="Texture2D" uid="uid://bb82gkpws2s5u" path="res://assets/sprites/specimen/chicken.png" id="1_6atqe"]
 [ext_resource type="Script" path="res://scripts/specimen/chicken.gd" id="1_yvtj6"]
-[ext_resource type="Texture2D" uid="uid://irrpe5gpigt7" path="res://assets/sprites/specimen/chicken_paste.png" id="3_y5272"]
+[ext_resource type="Texture2D" uid="uid://535clxm17cx" path="res://assets/sprites/specimen/chick.png" id="2_rqpfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1q7h4"]
-size = Vector2(255.939, 255.939)
-
-[sub_resource type="Animation" id="Animation_bvvev"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.257874, 0.257874)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_6atqe")]
-}
-
-[sub_resource type="Animation" id="Animation_syyef"]
-resource_name = "change_sprite"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("1_6atqe"), ExtResource("3_y5272")]
-}
-
-[sub_resource type="Animation" id="Animation_s3717"]
-resource_name = "smashed"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.257874, 0.257874), Vector2(0.258, 0.206)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_eg1qv"]
-_data = {
-"RESET": SubResource("Animation_bvvev"),
-"change_sprite": SubResource("Animation_syyef"),
-"smashed": SubResource("Animation_s3717")
-}
+size = Vector2(496.366, 496.366)
 
 [node name="Chicken" type="Node2D"]
 script = ExtResource("1_yvtj6")
@@ -80,15 +13,11 @@ script = ExtResource("1_yvtj6")
 input_pickable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Subject"]
-scale = Vector2(0.257874, 0.257874)
-texture = ExtResource("1_6atqe")
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.257874, 0.22898)
+texture = ExtResource("2_rqpfa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Subject"]
-position = Vector2(-1, 0)
+position = Vector2(3.8147e-06, 1.90735e-06)
 scale = Vector2(0.257874, 0.257874)
 shape = SubResource("RectangleShape2D_1q7h4")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Subject"]
-libraries = {
-"": SubResource("AnimationLibrary_eg1qv")
-}

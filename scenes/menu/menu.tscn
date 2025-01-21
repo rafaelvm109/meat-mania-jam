@@ -1,12 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dd2i03ynligre"]
 
 [ext_resource type="Script" path="res://scripts/menu/menu.gd" id="1_h8ii6"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jlqps"]
+[ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="2_0xyjy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vqmh"]
-texture = SubResource("CompressedTexture2D_jlqps")
-modulate_color = Color(0.18359, 0.18359, 0.18359, 1)
+texture = ExtResource("2_0xyjy")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbhxu"]
 bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
