@@ -30,10 +30,13 @@ func check_solution() -> void:
 	else:
 		game_manager.clear_list()
 		game_manager.clear_machine_counter()
+		$GameManager/Glitch.visible = true
+		await get_tree().create_timer(0.2).timeoutchicken.reset_sprite()
 		sheep.reset_sprite()
 		sheep.position = inv_1.global_position + (inv_1.size / 2)
 		deliver_machine.deliver_tray_down()
 		print("chicken reset")
+		$GameManager/Glitch.visible = false
 
 
 # make pause menu and blur background visible
