@@ -28,8 +28,8 @@ func _ready() -> void:
 func check_solution() -> void:
 	if game_manager.is_subject_acceptable():
 		print("solution accepted")
-		# TODO: asd
-		get_tree().change_scene_to_file("res://scenes/main-sheep.tscn")
+		SceneTransition.change_scene_to_file("res://scenes/reports/report_chick.tscn")
+		#get_tree().change_scene_to_file("res://scenes/main-sheep.tscn")
 	else:
 		game_manager.clear_list()
 		game_manager.clear_machine_counter()
@@ -61,4 +61,5 @@ func _on_volume_changed(value: float):
 
 func _on_exit_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/menu/menu.tscn")
+	#get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
