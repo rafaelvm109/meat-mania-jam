@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 BgMusic="*res://scenes/autoload/bg_music.tscn"
 Globals="*res://scripts/misc/globals.gd"
+SceneTransition="*res://scenes/autoload/scene_transition.tscn"
 
 [display]
 
