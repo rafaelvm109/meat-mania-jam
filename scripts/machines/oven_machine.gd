@@ -28,7 +28,7 @@ var b: float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_specimen = specimen.get_child(0)
-	oven_lights.modulate = Color(0, 0, 0, 0)
+	oven_lights.modulate = Color(0, 0, 0, 1)
 
 
 func _input(event: InputEvent) -> void:
@@ -51,13 +51,12 @@ func _input(event: InputEvent) -> void:
 					# on the last click needed allow player to drag specimen
 					
 					if clicks_to_burn < total_clicks_to_burn:
-						a += 0.03333333
-						oven_lights.modulate = Color(0, 1, 0, a)
-					if clicks_to_burn > total_clicks_to_burn and clicks_to_burn < total_clicks_to_burn*2:
-						b += 0.03333333
-						oven_lights.modulate = Color(1, 0, 0, b)
+						a += 0.02
+						oven_lights.modulate = Color(0, a, 0, 1)
 					if clicks_to_burn == total_clicks_to_burn:
 						# change sprite and add result to the list
+						oven_lights.modulate = Color(0, 1, 0, 1)
+						$PointLight2D.visible = true
 						can_drag_chicken_oven = true
 						current_specimen.burn()
 						game_manager.append_machine_order(2)
@@ -93,6 +92,8 @@ func _on_specimen_area_entered(area: Area2D) -> void:
 
 func _on_specimen_area_exited(area: Area2D) -> void:
 	snap_oven_subject = false
+	oven_lights.modulate = Color (0,0,0, 1)
+	$PointLight2D.visible = false
 
 func is_chicken_draggable() -> bool:
 	return can_drag_chicken_oven

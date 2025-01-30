@@ -82,4 +82,4 @@ func unusable_sprite() -> void:
 # chicken after deliver rejected
 func reset_sprite() -> void:
 	chicken_sprite.texture = CHICKEN
-	chicken_sprite.scale = Vector2(0.256, 0.256)
+	chicken_sprite.scale = Vector2(0.258, 0.229)

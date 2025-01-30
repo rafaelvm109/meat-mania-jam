@@ -20,15 +20,23 @@ extends Node2D
 @onready var deliver_machine: Node2D = $"../deliver_machine"
 @onready var specimen: Node = $"../../Specimen"
 @onready var blood_particle: Node2D = $BloodParticle
-@onready var mangler_lights = [
+'''@onready var mangler_lights = [
 	$ManglerLights1,
 	$ManglerLights2,
 	$ManglerLights3,
 	$ManglerLights4,
 	$ManglerLights5,
 	$ManglerLights6
-]
 
+]'''
+@onready var mangler_lights = [
+	$Light1,
+	$Light2,
+	$Light3,
+	$Light4,
+	$Light5,
+	$Light6	
+]
 
 var is_dragging_mangler: bool = false # detects lever dragging
 var mouse_over_slider: bool = false # detects mouse over lever
@@ -111,10 +119,7 @@ func _input(event: InputEvent) -> void:
 					mangled_count += 1
 					print("chicken mangled ", mangled_count, " times")
 					if mangled_count < 7:
-						mangler_lights[mangled_count-1].modulate = Color(0, 1, 0, 1)
-					if mangled_count >= 7 and mangled_count < 13:
-						mangler_lights[mangled_count-7].modulate = Color(1, 0, 0, 1)
-					# allow specimen movemnt, change sprite, and add result to the list
+						mangler_lights[mangled_count-1].visible = true
 					if mangled_count == 6:
 						can_drag_chicken_mangler = true
 						current_specimen.dice()
@@ -168,6 +173,9 @@ func _on_specimen_area_entered(area: Area2D) -> void:
 # detects if specimen is exiting press lower
 func _on_specimen_area_exited(area: Area2D) -> void:
 	snap_mangler_subject = false
+	for i in range (6):
+		mangler_lights[i].visible = false
+		await get_tree().create_timer(0.04).timeout
 
 func is_chicken_draggable() -> bool:
 	return can_drag_chicken_mangler

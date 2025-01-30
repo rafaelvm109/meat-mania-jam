@@ -116,18 +116,13 @@ func _input(event: InputEvent) -> void:
 				if smashed_count == 1:
 					current_specimen.smash()
 					game_manager.append_machine_order(0)
-					press_lights.modulate = Color(0, 1, 0, 1)
+					$Light1.visible = true
 				elif smashed_count == 2:
-					press_lights_2.modulate = Color(0, 1, 0, 1)
+					$Light2.visible = true
 				elif smashed_count == 3:
-					press_lights_3.modulate = Color(0, 1, 0, 1)
+					$Light3.visible = true
 					can_drag_chicken_press = true
 				elif smashed_count == 4:
-					press_lights.modulate = Color(1, 0, 0, 1)
-				elif smashed_count == 5:
-					press_lights_2.modulate = Color(1, 0, 0, 1)
-				elif smashed_count == 6:
-					press_lights_3.modulate = Color(1, 0, 0, 1)
 					game_manager.unusable_specimen = true
 					# TODO: add unsuavble sprite function
 					current_specimen.unusable_sprite()
@@ -177,9 +172,11 @@ func _on_press_lower_area_entered(area: Area2D) -> void:
 # detects if specimen is exiting press lower
 func _on_press_lower_area_exited(area: Area2D) -> void:
 	snap_subject = false
-	press_lights.modulate = Color.WHITE
-	press_lights_2.modulate = Color.WHITE
-	press_lights_3.modulate = Color.WHITE
+	$Light1.visible = false
+	await get_tree().create_timer(0.04).timeout
+	$Light2.visible = false
+	await get_tree().create_timer(0.04).timeout
+	$Light3.visible = false
 
 func is_chicken_draggable() -> bool:
 	return can_drag_chicken_press

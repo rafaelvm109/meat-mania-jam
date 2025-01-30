@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqcvf6587433b"]
+[gd_scene load_steps=18 format=3 uid="uid://cqcvf6587433b"]
 
 [ext_resource type="Script" path="res://scripts/machines/injector_machine.gd" id="1_1yh33"]
 [ext_resource type="Texture2D" uid="uid://b4jto7euwlbwk" path="res://assets/sprites/machines/injector/injector_body.png" id="2_tvqfo"]
@@ -21,6 +21,24 @@ size = Vector2(50, 73)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06m3e"]
 size = Vector2(250, 200)
 
+[sub_resource type="Gradient" id="Gradient_7jvcd"]
+offsets = PackedFloat32Array(0, 0.324324)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i5rr2"]
+gradient = SubResource("Gradient_7jvcd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_142i7"]
+offsets = PackedFloat32Array(0, 0.518018)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6kp1n"]
+gradient = SubResource("Gradient_142i7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Injector" type="Node2D"]
 script = ExtResource("1_1yh33")
 
@@ -29,7 +47,7 @@ texture = ExtResource("2_tvqfo")
 
 [node name="Needle" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-4, -204)
+position = Vector2(-4, -284)
 texture = ExtResource("3_tdqjo")
 
 [node name="Numpad" type="Sprite2D" parent="."]
@@ -181,6 +199,7 @@ shape = SubResource("RectangleShape2D_06m3e")
 [node name="InProgressLight" type="Node2D" parent="."]
 
 [node name="RedLight" type="Sprite2D" parent="InProgressLight"]
+modulate = Color(1, 1, 1, 0.988235)
 position = Vector2(2, -320)
 texture = ExtResource("7_8dyra")
 
@@ -204,3 +223,19 @@ texture = ExtResource("8_57wi1")
 z_index = -1
 position = Vector2(163, 27)
 texture = ExtResource("9_5ytyc")
+
+[node name="LightGreen" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(1.99998, -321)
+scale = Vector2(0.625, 0.625)
+energy = 8.88
+texture = SubResource("GradientTexture2D_i5rr2")
+texture_scale = 4.0
+
+[node name="LightRed" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(1.99998, -321)
+scale = Vector2(0.625, 0.625)
+energy = 8.88
+texture = SubResource("GradientTexture2D_6kp1n")
+texture_scale = 2.0

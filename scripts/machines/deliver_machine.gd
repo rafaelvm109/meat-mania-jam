@@ -44,9 +44,13 @@ func _input(event: InputEvent) -> void:
 				tween2.tween_property(deliver_belt, "position", (deliver_belt.position + Vector2(0, -350)), 2)
 				await tween.finished
 				await tween2.finished
-				await get_tree().create_timer(1).timeout
+				$PointLight2D.visible = true
+				$CircleLight.visible = true
+				await get_tree().create_timer(1.5).timeout
 				# verifies state of solution
 				can_drag_chicken_deliver = true
+				$PointLight2D.visible = false
+				$CircleLight.visible = false
 				game.check_solution()
 
 

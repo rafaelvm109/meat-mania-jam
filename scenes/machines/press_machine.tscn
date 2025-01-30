@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c36au6a2n2ydq"]
+[gd_scene load_steps=15 format=3 uid="uid://c36au6a2n2ydq"]
 
 [ext_resource type="Script" path="res://scripts/machines/press_machine.gd" id="1_54isr"]
 [ext_resource type="PackedScene" uid="uid://ckbowx7p8wgod" path="res://scenes/machines/blood_particle.tscn" id="2_30v7b"]
@@ -18,6 +18,15 @@ size = Vector2(215, 199.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j228y"]
 size = Vector2(126, 82)
+
+[sub_resource type="Gradient" id="Gradient_pea5v"]
+offsets = PackedFloat32Array(0, 0.731707)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tgqte"]
+gradient = SubResource("Gradient_pea5v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="PressMachine" type="Node2D"]
 position = Vector2(2, -1)
@@ -84,3 +93,27 @@ texture = ExtResource("9_d8lya")
 z_index = -1
 position = Vector2(188, 235)
 texture = ExtResource("9_d8lya")
+
+[node name="Light1" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(195.4, 146)
+scale = Vector2(0.625, 0.625)
+energy = 2.0
+texture = SubResource("GradientTexture2D_tgqte")
+texture_scale = 1.67
+
+[node name="Light2" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(195.4, 190)
+scale = Vector2(0.625, 0.625)
+energy = 2.0
+texture = SubResource("GradientTexture2D_tgqte")
+texture_scale = 1.67
+
+[node name="Light3" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(195.4, 235)
+scale = Vector2(0.625, 0.625)
+energy = 2.0
+texture = SubResource("GradientTexture2D_tgqte")
+texture_scale = 1.67

@@ -1,0 +1,341 @@
+[gd_scene load_steps=20 format=3 uid="uid://ddcxpui3bf013"]
+
+[ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_tx8wy"]
+[ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="2_jc2by"]
+[ext_resource type="Script" path="res://scripts/misc/game_manager.gd" id="3_fp7f4"]
+[ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="4_vm0g7"]
+[ext_resource type="Shader" path="res://shaders/aberration.gdshader" id="5_5eljk"]
+[ext_resource type="Material" uid="uid://t8ek8x36aomn" path="res://shaders/pause.tres" id="5_tkeuw"]
+[ext_resource type="PackedScene" uid="uid://bgbx8g7acgq2l" path="res://scenes/specimen/chicken.tscn" id="6_1kp5q"]
+[ext_resource type="PackedScene" uid="uid://c36au6a2n2ydq" path="res://scenes/machines/press_machine.tscn" id="7_kp121"]
+[ext_resource type="PackedScene" uid="uid://dbc8qbdp6moww" path="res://scenes/machines/mangler_machine.tscn" id="8_e7f1u"]
+[ext_resource type="PackedScene" uid="uid://etghli8183xh" path="res://scenes/machines/oven_machine.tscn" id="9_qinc3"]
+[ext_resource type="Texture2D" uid="uid://1cihufc8ljnh" path="res://assets/sprites/machines/oven/oven_inside.png" id="10_jx0j5"]
+[ext_resource type="PackedScene" uid="uid://cqcvf6587433b" path="res://scenes/machines/injector_machine.tscn" id="11_nt5gl"]
+[ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/reports/user_manual.tscn" id="12_67onw"]
+[ext_resource type="PackedScene" uid="uid://c6avlnb01vhue" path="res://scenes/machines/deliver_machine.tscn" id="13_wogxc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svlm7"]
+shader = ExtResource("4_vm0g7")
+shader_parameter/shake_power = 0.02
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 50.0
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="Shader" id="Shader_t86ca"]
+code = "shader_type canvas_item;
+
+uniform float vignette_intensity = 0.4;
+uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
+uniform vec4 vignette_rgb : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+float vignette(vec2 uv){
+uv *= 1.0 - uv.xy;
+float vignette = uv.x * uv.y * 15.0;
+return pow(vignette, vignette_intensity * vignette_opacity);
+}
+
+void fragment(){
+vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+vec4 text = texture(TEXTURE, UV);
+text.rgba *= (vignette_rgb.rgba);
+text.rgba *= (1.0 - vignette(UV));
+COLOR = vec4((text.rgb)*color.rgb,text.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ba34"]
+shader = SubResource("Shader_t86ca")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwr6t"]
+shader = ExtResource("5_5eljk")
+shader_parameter/r_displacement = Vector2(0, 0)
+shader_parameter/g_displacement = Vector2(3, 0)
+shader_parameter/b_displacement = Vector2(3, 0)
+shader_parameter/height = 1.0
+shader_parameter/width = 1.0
+shader_parameter/fade = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne1mv"]
+bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_tx8wy")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(959, 540)
+texture = ExtResource("2_jc2by")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("3_fp7f4")
+
+[node name="Glitch" type="ColorRect" parent="GameManager"]
+visible = false
+z_index = 100
+material = SubResource("ShaderMaterial_svlm7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" type="ColorRect" parent="GameManager"]
+z_index = 100
+material = SubResource("ShaderMaterial_8ba34")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Aberration" type="ColorRect" parent="GameManager"]
+z_index = 90
+material = SubResource("ShaderMaterial_kwr6t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Pause" type="Node" parent="."]
+
+[node name="PauseLayer" type="CanvasLayer" parent="Pause"]
+layer = 7
+visible = false
+
+[node name="Control" type="Control" parent="Pause/PauseLayer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BGBlur" type="ColorRect" parent="Pause/PauseLayer/Control"]
+visible = false
+material = ExtResource("5_tkeuw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseBox" type="Panel" parent="Pause/PauseLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -162.5
+offset_right = 175.0
+offset_bottom = 162.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseContainer" type="VBoxContainer" parent="Pause/PauseLayer/Control/PauseBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -137.5
+offset_right = 150.0
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Resume" type="Button" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ne1mv")
+text = "Resume"
+
+[node name="Exit" type="Button" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ne1mv")
+text = "Exit to Main Menu"
+
+[node name="Label" type="Label" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ne1mv")
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Pause/PauseLayer/Control/PauseBox/PauseContainer/Label"]
+process_mode = 3
+layout_mode = 0
+offset_left = 18.0
+offset_top = 42.5
+offset_right = 283.0
+offset_bottom = 58.5
+
+[node name="Pause" type="Button" parent="Pause/PauseLayer/Control"]
+layout_mode = 0
+offset_left = 1856.0
+offset_top = 24.0
+offset_right = 1896.0
+offset_bottom = 64.0
+text = "||
+"
+
+[node name="Inventory" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
+layer = -1
+
+[node name="Control" type="Control" parent="Inventory/CanvasLayer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -147.0
+offset_right = 192.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Inv1" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -48.0
+offset_right = 51.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Inv2" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 96.0
+offset_right = 191.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Inv3" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 192.0
+offset_right = 287.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Inv4" type="Panel" parent="Inventory/CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(95, 96)
+layout_mode = 0
+offset_left = 288.0
+offset_right = 383.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="Specimen" type="Node" parent="."]
+
+[node name="Chicken" parent="Specimen" instance=ExtResource("6_1kp5q")]
+z_index = -2
+position = Vector2(964, 980)
+
+[node name="Machines" type="Node" parent="."]
+
+[node name="PressMachine" parent="Machines" instance=ExtResource("7_kp121")]
+z_index = 1
+position = Vector2(328, 697)
+scale = Vector2(0.8, 0.8)
+
+[node name="mangler_machine" parent="Machines" instance=ExtResource("8_e7f1u")]
+z_index = -1
+position = Vector2(664, 695)
+scale = Vector2(0.8, 0.8)
+
+[node name="oven_machine" parent="Machines" instance=ExtResource("9_qinc3")]
+z_index = 1
+position = Vector2(1281, 801)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Machines/oven_machine"]
+light_mask = 2
+visibility_layer = 2
+z_index = -5
+position = Vector2(2.49985, -21.2501)
+texture = ExtResource("10_jx0j5")
+
+[node name="Injector" parent="Machines" instance=ExtResource("11_nt5gl")]
+light_mask = 2
+visibility_layer = 2
+z_index = -2
+position = Vector2(964, 573)
+scale = Vector2(0.8, 0.8)
+
+[node name="UserManualLayer" type="CanvasLayer" parent="Machines/Injector"]
+layer = 6
+
+[node name="BGBlurManual" type="ColorRect" parent="Machines/Injector/UserManualLayer"]
+visible = false
+material = ExtResource("5_tkeuw")
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UserManualPaper" parent="Machines/Injector/UserManualLayer" instance=ExtResource("12_67onw")]
+visible = false
+position = Vector2(960, 544)
+
+[node name="deliver_machine" parent="Machines" instance=ExtResource("13_wogxc")]
+z_index = 1
+position = Vector2(1609, 645)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/PauseLayer/Control/PauseBox/PauseContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause/PauseLayer/Control/Pause" to="." method="_on_pause_pressed"]

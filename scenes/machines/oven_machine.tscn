@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://etghli8183xh"]
+[gd_scene load_steps=12 format=3 uid="uid://etghli8183xh"]
 
 [ext_resource type="Script" path="res://scripts/machines/oven_machine.gd" id="1_n5la7"]
 [ext_resource type="PackedScene" uid="uid://cbt42uuosv1xm" path="res://scenes/machines/fire_particle.tscn" id="2_lwngp"]
@@ -13,6 +13,17 @@ radius = 30.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igid0"]
 size = Vector2(281, 218)
+
+[sub_resource type="Gradient" id="Gradient_l8wbf"]
+offsets = PackedFloat32Array(0.319853, 0.797794)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o21w8"]
+gradient = SubResource("Gradient_l8wbf")
+width = 190
+height = 50
+fill = 2
+fill_from = Vector2(0.508929, 0.535714)
 
 [node name="oven_machine" type="Node2D"]
 script = ExtResource("1_n5la7")
@@ -42,7 +53,7 @@ shape = SubResource("RectangleShape2D_igid0")
 
 [node name="OvenLights" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -146.25)
+position = Vector2(1, -310)
 scale = Vector2(1, 1.34615)
 texture = ExtResource("6_g1v4r")
 
@@ -73,6 +84,11 @@ z_index = -1
 position = Vector2(-180, -172)
 rotation = 4.71239
 texture = ExtResource("8_mto0c")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(1, -309)
+texture = SubResource("GradientTexture2D_o21w8")
 
 [connection signal="mouse_entered" from="OvenButton" to="." method="_on_oven_button_mouse_entered"]
 [connection signal="mouse_exited" from="OvenButton" to="." method="_on_oven_button_mouse_exited"]

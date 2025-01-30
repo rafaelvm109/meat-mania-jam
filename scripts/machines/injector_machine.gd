@@ -162,22 +162,25 @@ func _input(event: InputEvent) -> void:
 					can_drag_chicken_injector = false
 					print("chicken draggable injector false")
 					has_been_injected = true
-					red_light.modulate = Color(1.0, 0.1, 0.1, 1.0)
+					$LightRed.visible = true
+					red_light.modulate = Color(1.0, 0.1, 0.1, 0.5)
 					#red_light.visible = true
 					#green_light.visible = false
-					
+					await get_tree().create_timer(0.2).timeout
 					var tween = create_tween()
-					tween.tween_property(needle, "position", (needle.position + Vector2(0, 75)), 0.2)
+					tween.tween_property(needle, "position", (needle.position + Vector2(0, 150)), 0.1)
 					await tween.finished
 					
-					await get_tree().create_timer(0.5).timeout
+					await get_tree().create_timer(0.8).timeout
 					
 					var tween2 = create_tween()
-					tween2.tween_property(needle, "position", (needle.position - Vector2(0, 75)), 1)
+					tween2.tween_property(needle, "position", (needle.position - Vector2(0, 150)), 1)
 					await tween2.finished
 					
 					#red_light.visible = false
 					#green_light.visible = true
+					$LightRed.visible = false
+					$LightGreen.visible = true
 					red_light.modulate = Color(0.1, 1.0, 0.1, 1.0)
 					for key in injector_codes:
 						if injector_codes[key] == input_list:
@@ -235,7 +238,8 @@ func _on_specimen_area_exited(area: Area2D) -> void:
 	snap_injector_specimen = false
 	#red_light.visible = false
 	#green_light.visible = false
-	red_light.modulate = Color.WHITE
+	$LightGreen.visible = false
+	red_light.modulate = Color(0.5, 0.5, 0.5, 1.1)
 
 func _on_numpad_container_mouse_entered() -> void:
 	mouse_over_numpad = true
