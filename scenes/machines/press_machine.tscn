@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c36au6a2n2ydq"]
+[gd_scene load_steps=18 format=3 uid="uid://c36au6a2n2ydq"]
 
 [ext_resource type="Script" path="res://scripts/machines/press_machine.gd" id="1_54isr"]
 [ext_resource type="PackedScene" uid="uid://ckbowx7p8wgod" path="res://scenes/machines/blood_particle.tscn" id="2_30v7b"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bo7kreo1gi3qc" path="res://assets/sprites/machines/press/press_press.png" id="8_ybfwk"]
 [ext_resource type="Texture2D" uid="uid://b61vfgcxpa3v" path="res://assets/sprites/machines/press/press_lights.png" id="9_d8lya"]
 [ext_resource type="Texture2D" uid="uid://d0ualfhbh2fq0" path="res://assets/sprites/machines/press/press_motor.png" id="9_yo4t2"]
+[ext_resource type="AudioStream" uid="uid://cbmo3f4winig8" path="res://assets/sfx/press/press_on.mp3" id="10_o4fhy"]
+[ext_resource type="AudioStream" uid="uid://bk3icq4d78hxe" path="res://assets/sfx/press/press_smash.mp3" id="11_os4h6"]
+[ext_resource type="AudioStream" uid="uid://dpp47fpk0xqgt" path="res://assets/sfx/machine_off.wav" id="12_n4jy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_077jk"]
 size = Vector2(121, 35)
@@ -117,3 +120,13 @@ scale = Vector2(0.625, 0.625)
 energy = 2.0
 texture = SubResource("GradientTexture2D_tgqte")
 texture_scale = 1.67
+
+[node name="On_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_o4fhy")
+parameters/looping = true
+
+[node name="Crush_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_os4h6")
+
+[node name="Off_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_n4jy4")

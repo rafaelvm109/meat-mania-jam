@@ -62,7 +62,6 @@ func _ready() -> void:
 	press_lower.connect("area_exited", Callable(self, "_on_press_lower_area_exited"))
 	print("LeverHandle global position:", lever_handle.global_position)
 
-
 func _process(delta: float) -> void:
 	if snap_subject:
 		if smashed_count < 3:
@@ -101,16 +100,20 @@ func _input(event: InputEvent) -> void:
 				tween.tween_property(lever_handle, "position", (lever_start_pos), duration)
 				tween2.tween_property(press_upper, "position", (press_start_pos), duration)
 				await tween.finished
+				$On_SFX.playing = false
+				$Off_SFX.playing = true
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging and event is InputEventMouseMotion:
 		drag_lever(event.relative.y)
-		
+		if not $On_SFX.is_playing():
+			$On_SFX.playing = true
 	if event is InputEventMouseMotion:
 		if is_contacting and snap_subject:
 			if round_first_decimal(lever_handle.position.y, 1) == lerp(lever_start_pos.y, lever_end_pos.y, 1):
 				# TODO: add particles effec around here
 				blood_particle.start_blood_particles()
 				smashed_count += 1
+				$Crush_SFX.playing = true
 				print("chicken smashed ", smashed_count, " times")
 				# allow specimen movemnt, change sprite, and add result to the list
 				if smashed_count == 1:
@@ -132,8 +135,6 @@ func _input(event: InputEvent) -> void:
 		elif lever_handle.position.y == lerp(lever_start_pos.y, lever_end_pos.y, 0):
 			blood_particle.stop_blood_particles()
 			is_contacting = true
-
-
 # moves lever and presss proportionally
 func drag_lever(delta_y) -> void:
 	# keeps lever value in between start and end pos
