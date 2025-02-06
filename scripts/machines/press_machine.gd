@@ -46,6 +46,7 @@ var smashed_count: int = 0
 var can_drag_chicken_press: bool = true  # Determines whether the chicken can be dragged
 var is_contacting: bool = true
 var current_specimen = null
+var lever_in_action = false
 
 # sets start and end position for the lever and press
 func _ready() -> void:
@@ -93,15 +94,19 @@ func _input(event: InputEvent) -> void:
 				# TODO: I could probbably move this to someplace cleaner
 				game_manager.snap_chicken_to_inv()
 			# if lever is moved slowly return it back to its starting position alongside the press
-			if lever_handle.position.y >= lerp(lever_start_pos.y, lever_end_pos.y, 0):
+			if lever_handle.position.y > lerp(lever_start_pos.y, lever_end_pos.y, 0):
+				lever_in_action = true
 				var duration = (lever_handle.position.y - lever_start_pos.y) / (lever_end_pos.y - lever_start_pos.y)
 				var tween = create_tween()
 				var tween2 = create_tween()
 				tween.tween_property(lever_handle, "position", (lever_start_pos), duration)
 				tween2.tween_property(press_upper, "position", (press_start_pos), duration)
 				await tween.finished
-				$On_SFX.playing = false
+				var lever_in_action = false
+			if lever_in_action:
 				$Off_SFX.playing = true
+				$On_SFX.playing = false
+				
 	# calls drag_lever when mouse is dragging the lever 
 	elif is_dragging and event is InputEventMouseMotion:
 		drag_lever(event.relative.y)
