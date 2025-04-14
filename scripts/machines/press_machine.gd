@@ -102,8 +102,8 @@ func _input(event: InputEvent) -> void:
 				tween.tween_property(lever_handle, "position", (lever_start_pos), duration)
 				tween2.tween_property(press_upper, "position", (press_start_pos), duration)
 				await tween.finished
-				var lever_in_action = false
-			if lever_in_action:
+				# after return animation switch leverinaction to false and play off sfx
+				lever_in_action = false
 				$Off_SFX.playing = true
 				$On_SFX.playing = false
 				
