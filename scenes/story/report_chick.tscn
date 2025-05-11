@@ -1,14 +1,14 @@
 [gd_scene load_steps=47 format=3 uid="uid://bj1pvoqfkg32"]
 
 [ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_f187p"]
-[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/reports/dependencies/paper.tscn" id="2_vt5sq"]
+[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/story/dependencies/paper.tscn" id="2_vt5sq"]
 [ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="3_qouiq"]
-[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/reports/dependencies/flip_next_page.tscn" id="4_cgwmt"]
-[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/reports/dependencies/option.tscn" id="5_pxrux"]
-[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/reports/checkbox.png" id="6_uaqgg"]
-[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/reports/checkmark.png" id="7_vlase"]
-[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/reports/dependencies/flip_previous_page.tscn" id="8_jxf5i"]
-[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/reports/dependencies/signature.tscn" id="9_jcrmy"]
+[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/story/dependencies/flip_next_page.tscn" id="4_cgwmt"]
+[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/story/dependencies/option.tscn" id="5_pxrux"]
+[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/story/checkbox.png" id="6_uaqgg"]
+[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/story/checkmark.png" id="7_vlase"]
+[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/story/dependencies/flip_previous_page.tscn" id="8_jxf5i"]
+[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/story/dependencies/signature.tscn" id="9_jcrmy"]
 
 [sub_resource type="Animation" id="Animation_s2g41"]
 resource_name = "turn_next"
@@ -1003,10 +1003,9 @@ _data = {
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_f187p")
 
-[node name="Paper 01" parent="." node_paths=PackedStringArray("next_page", "animator") instance=ExtResource("2_vt5sq")]
+[node name="Paper 01" parent="." node_paths=PackedStringArray("next_page") instance=ExtResource("2_vt5sq")]
 z_index = 10
 next_page = NodePath("../Paper 02")
-animator = NodePath("Animator")
 
 [node name="Text" type="Label" parent="Paper 01"]
 anchors_preset = 13
@@ -1119,12 +1118,11 @@ libraries = {
 
 [node name="Flip Next Page" parent="Paper 02" instance=ExtResource("4_cgwmt")]
 
-[node name="Paper 03" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
+[node name="Paper 03" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = 6
 previous_page = NodePath("../Paper 02")
 next_page = NodePath("../Paper 04")
-animator = NodePath("Animatior")
 
 [node name="Text" type="Label" parent="Paper 03"]
 anchors_preset = 13
@@ -1191,12 +1189,11 @@ libraries = {
 
 [node name="Flip Previous Page" parent="Paper 03" instance=ExtResource("8_jxf5i")]
 
-[node name="Paper 04" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
+[node name="Paper 04" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = 4
 previous_page = NodePath("../Paper 03")
 next_page = NodePath("../Paper 05")
-animator = NodePath("Animator")
 
 [node name="Text" type="Label" parent="Paper 04"]
 anchors_preset = 13
@@ -1325,12 +1322,11 @@ libraries = {
 "": SubResource("AnimationLibrary_rx121")
 }
 
-[node name="Paper 05" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
+[node name="Paper 05" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = 2
 previous_page = NodePath("../Paper 04")
 next_page = NodePath("../Paper 06")
-animator = NodePath("Animatior")
 
 [node name="Text" type="Label" parent="Paper 05"]
 anchors_preset = 13
@@ -1416,11 +1412,10 @@ libraries = {
 "": SubResource("AnimationLibrary_wkyly")
 }
 
-[node name="Paper 06" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
+[node name="Paper 06" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_vt5sq")]
 visible = false
 previous_page = NodePath("../Paper 05")
 next_page = NodePath("../Paper 07")
-animator = NodePath("Animatior")
 
 [node name="Flip Next Page" parent="Paper 06" instance=ExtResource("4_cgwmt")]
 
@@ -1505,13 +1500,12 @@ libraries = {
 "": SubResource("AnimationLibrary_gvu0w")
 }
 
-[node name="Paper 07" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
+[node name="Paper 07" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_vt5sq")]
 visible = false
 modulate = Color(0.341176, 0.341176, 0.341176, 1)
 z_index = -12
 previous_page = NodePath("../Paper 06")
 next_page = NodePath("../Paper 08")
-animator = NodePath("Animator")
 
 [node name="Text" type="Label" parent="Paper 07"]
 anchors_preset = 13
@@ -1560,12 +1554,11 @@ libraries = {
 "": SubResource("AnimationLibrary_f0yju")
 }
 
-[node name="Paper 08" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_vt5sq")]
+[node name="Paper 08" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_vt5sq")]
 visible = false
 z_index = -4
 previous_page = NodePath("../Paper 07")
 next_page = NodePath("../Paper 09")
-animator = NodePath("Animator")
 
 [node name="Text" type="Label" parent="Paper 08"]
 anchors_preset = 13

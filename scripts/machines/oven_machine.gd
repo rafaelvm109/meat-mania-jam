@@ -18,7 +18,7 @@ extends Node2D
 var mouse_over_button: bool = false
 var is_dragging_oven: bool = false
 var clicks_to_burn: int = 0
-var total_clicks_to_burn: int = 30
+var total_clicks_to_burn: int = 15
 var snap_oven_subject: bool = false
 var can_drag_chicken_oven: bool = true
 var current_specimen = null

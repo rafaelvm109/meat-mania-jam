@@ -1,0 +1,1727 @@
+[gd_scene load_steps=41 format=3 uid="uid://bt3ha0l521hxt"]
+
+[ext_resource type="Script" path="res://scripts/reports/intership_contract_cutscene.gd" id="1_cjqpq"]
+[ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="2_qsytd"]
+[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/story/dependencies/paper.tscn" id="3_s4vfq"]
+[ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="4_p3ufo"]
+[ext_resource type="Texture2D" uid="uid://ypf7p3o4sw08" path="res://assets/sprites/story/theseus_logo.png" id="4_pidwo"]
+[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/story/dependencies/flip_next_page.tscn" id="5_ou87r"]
+[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/story/dependencies/option.tscn" id="6_2nd30"]
+[ext_resource type="Texture2D" uid="uid://cimpkg8o22ivu" path="res://assets/sprites/story/page_arrow.png" id="7_evmui"]
+[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/story/checkbox.png" id="7_vbs6h"]
+[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/story/checkmark.png" id="8_nuehl"]
+[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/story/dependencies/flip_previous_page.tscn" id="9_m82o2"]
+[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/story/dependencies/signature.tscn" id="10_f24fo"]
+[ext_resource type="Texture2D" uid="uid://douec7r0khxdf" path="res://assets/sprites/story/willard.png" id="11_7yh4p"]
+[ext_resource type="Texture2D" uid="uid://dmip40rwq5dow" path="res://assets/sprites/story/rorscharch.png" id="12_5ghxt"]
+[ext_resource type="Texture2D" uid="uid://2b3mcjq2v1tv" path="res://assets/sprites/story/table.png" id="12_fqf8j"]
+[ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="13_klpmc"]
+[ext_resource type="Texture2D" uid="uid://bkgrllfepgu3c" path="res://assets/sprites/story/dialogue_box_animation.png" id="14_n4hmt"]
+[ext_resource type="LabelSettings" uid="uid://ccvdtf650cqs2" path="res://assets/text/dialogue_box.tres" id="15_1a6f7"]
+[ext_resource type="Material" uid="uid://t8ek8x36aomn" path="res://shaders/pause.tres" id="16_jisap"]
+
+[sub_resource type="Animation" id="Animation_loy70"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contract:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contract:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("willard:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 39)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D/Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D/Label2:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D/Label2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimatedSprite2D/Label3:visible_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.96046e-08]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimatedSprite2D/Label3:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimatedSprite2D/Label4:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimatedSprite2D/Label4:visible_ratio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimatedSprite2D/Label5:visible_ratio")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimatedSprite2D/Label5:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AnimatedSprite2D/Label6:visible_ratio")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Contract:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1020)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AnimatedSprite2D2/Label 7:visible_ratio")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AnimatedSprite2D2/Label 7:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("AnimatedSprite2D2/Label 8:visible_ratio")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("AnimatedSprite2D2/Label 8:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("AnimatedSprite2D2/Label 9:visible_ratio")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.96046e-08]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("AnimatedSprite2D2/Label 9:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AnimatedSprite2D:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("AnimatedSprite2D2:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("BGBlurManual:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("willard:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_60pvg"]
+resource_name = "end_cutscene"
+length = 20.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contract:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(486, 1097)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contract:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D2/Label 7:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(11.8, 14.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D2/Label 7:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D2/Label 8:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.9, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D2/Label 8:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D2/Label 9:visible_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.5, 9.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.96046e-08, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimatedSprite2D2/Label 9:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(11.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimatedSprite2D2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2, 17.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BGBlurManual:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("willard:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(17, 17.4, 17.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yjyev"]
+resource_name = "start_scene"
+length = 40.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contract:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 29.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contract:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(30, 30.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.41473, 3.91473),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("willard:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 5, 10, 15, 20, 25, 30, 35, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 40), Vector2(0, 50), Vector2(0, 40), Vector2(0, 50), Vector2(0, 40), Vector2(0, 50), Vector2(0, 40), Vector2(0, 50), Vector2(0, 40)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D/Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.41473),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D/Label2:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(6.41473, 8.41473),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D/Label2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(10.4147),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimatedSprite2D/Label3:visible_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10.4147, 11.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.96046e-08, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimatedSprite2D/Label3:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(14.4147),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimatedSprite2D/Label4:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(14.4147, 16.4147),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimatedSprite2D/Label4:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(19.4147),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimatedSprite2D/Label5:visible_ratio")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(19.4147, 21.4147),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimatedSprite2D/Label5:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(24.4147),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AnimatedSprite2D/Label6:visible_ratio")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(24.4147, 26.4147),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Contract:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(30, 30.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-230, 1020), Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AnimatedSprite2D:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(3.4, 29.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("BGBlurManual:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(30, 30.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("willard:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(1.38256, 1.78256, 2.18256),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb478"]
+_data = {
+"RESET": SubResource("Animation_loy70"),
+"end_cutscene": SubResource("Animation_60pvg"),
+"start_scene": SubResource("Animation_yjyev")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_78uo7"]
+load_path = "res://.godot/imported/paper.png-ced8d2e327805c6f6211a44ec406dc34.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ybn1"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4r1k"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="GDScript" id="GDScript_gfnb8"]
+script/source = "extends Area2D
+@export var checkmark: Sprite2D
+
+func choose_alternative(_viewport: Node, event: InputEvent, _shape_idx: int):
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			print (\"bruh\")
+			if checkmark.visible == false:
+				checkmark.visible = true
+			elif checkmark.visible == true:
+				checkmark.visible = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lavu6"]
+size = Vector2(38, 34)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dv4do"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n8sed"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jx5kl"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6f4u"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_igbdh"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8as0r"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0yku"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l52nl"]
+atlas = ExtResource("14_n4hmt")
+region = Rect2(0, 0, 571, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb5ih"]
+atlas = ExtResource("14_n4hmt")
+region = Rect2(0, 190, 571, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y68st"]
+atlas = ExtResource("14_n4hmt")
+region = Rect2(0, 380, 571, 190)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4e4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l52nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb5ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y68st")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mlhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l52nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb5ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y68st")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
+
+[node name="IntershipContract" type="Node2D"]
+script = ExtResource("1_cjqpq")
+
+[node name="CutsceneMain" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pb478")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qsytd")
+
+[node name="Contract" type="Node2D" parent="."]
+position = Vector2(0, 1020)
+scale = Vector2(0.796, 0.916)
+
+[node name="Paper 01" parent="Contract" node_paths=PackedStringArray("next_page") instance=ExtResource("3_s4vfq")]
+z_index = 10
+position = Vector2(0, 1.09167)
+scale = Vector2(1.305, 1.1)
+next_page = NodePath("../Paper 02")
+
+[node name="Logo" type="Sprite2D" parent="Contract/Paper 01"]
+position = Vector2(-22.1414, -291.782)
+scale = Vector2(0.319649, 0.319649)
+texture = ExtResource("4_pidwo")
+
+[node name="Text2" type="Label" parent="Contract/Paper 01"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -453.0
+offset_top = -207.424
+offset_right = -47.0
+offset_bottom = -442.424
+grow_horizontal = 2
+grow_vertical = 2
+text = "This admission questionnaire is the first step towards a bright and exciting future.
+
+Be as open minded and truthful as possible, each answer will be carefully assessed by our HR specialists.
+
+Best of luck in your evaluation."
+label_settings = ExtResource("4_p3ufo")
+autowrap_mode = 2
+
+[node name="Flip Next Page" parent="Contract/Paper 01" instance=ExtResource("5_ou87r")]
+
+[node name="Arrow" type="Sprite2D" parent="Contract/Paper 01"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127115, 0.127115)
+texture = ExtResource("7_evmui")
+
+[node name="Paper 02" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+texture = SubResource("CompressedTexture2D_78uo7")
+previous_page = NodePath("../Paper 01")
+next_page = NodePath("../Paper 03")
+
+[node name="Text" type="Label" parent="Contract/Paper 02"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -453.0
+offset_top = -342.0
+offset_right = -47.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Are you good at handling animals?"
+label_settings = SubResource("LabelSettings_8ybn1")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Yes" type="Label" parent="Contract/Paper 02"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = 95.0
+offset_right = -249.0
+offset_bottom = -375.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Yes"
+label_settings = SubResource("LabelSettings_s4r1k")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="No" type="Label" parent="Contract/Paper 02"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = 192.0
+offset_right = -249.0
+offset_bottom = -375.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No"
+label_settings = SubResource("LabelSettings_8ybn1")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Option 01" parent="Contract/Paper 02" instance=ExtResource("6_2nd30")]
+
+[node name="Option 02" type="Area2D" parent="Contract/Paper 02" node_paths=PackedStringArray("checkmark")]
+position = Vector2(-56.5327, 213.568)
+scale = Vector2(1.25628, 1.25628)
+script = SubResource("GDScript_gfnb8")
+checkmark = NodePath("Checkmark")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Contract/Paper 02/Option 02"]
+shape = SubResource("RectangleShape2D_lavu6")
+
+[node name="Checkbox" type="Sprite2D" parent="Contract/Paper 02/Option 02"]
+scale = Vector2(0.437501, 0.437501)
+texture = ExtResource("7_vbs6h")
+
+[node name="Checkmark" type="Sprite2D" parent="Contract/Paper 02/Option 02"]
+visible = false
+scale = Vector2(0.498892, 0.498892)
+texture = ExtResource("8_nuehl")
+
+[node name="Flip Previous Page" parent="Contract/Paper 02" instance=ExtResource("9_m82o2")]
+
+[node name="Flip Next Page" parent="Contract/Paper 02" instance=ExtResource("5_ou87r")]
+
+[node name="Arrow Previous" type="Sprite2D" parent="Contract/Paper 02"]
+position = Vector2(-206.974, 346.368)
+scale = Vector2(-0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Arrow Next" type="Sprite2D" parent="Contract/Paper 02"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Paper 03" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+previous_page = NodePath("../Paper 02")
+next_page = NodePath("../Paper 04")
+
+[node name="Text" type="Label" parent="Contract/Paper 03"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -453.0
+offset_top = -342.0
+offset_right = -47.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Are you confortable with strong odors?"
+label_settings = SubResource("LabelSettings_8ybn1")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Option 01" parent="Contract/Paper 03" instance=ExtResource("6_2nd30")]
+
+[node name="Yes" type="Label" parent="Contract/Paper 03"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = 95.0
+offset_right = -249.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Yes"
+label_settings = SubResource("LabelSettings_s4r1k")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Option 02" parent="Contract/Paper 03" instance=ExtResource("6_2nd30")]
+position = Vector2(-56.5327, 213.568)
+
+[node name="No" type="Label" parent="Contract/Paper 03"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = 192.0
+offset_right = -249.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No"
+label_settings = SubResource("LabelSettings_8ybn1")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Flip Next Page" parent="Contract/Paper 03" instance=ExtResource("5_ou87r")]
+
+[node name="Flip Previous Page" parent="Contract/Paper 03" instance=ExtResource("9_m82o2")]
+
+[node name="Arrow Previous" type="Sprite2D" parent="Contract/Paper 03"]
+position = Vector2(-206.974, 346.368)
+scale = Vector2(-0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Arrow Next" type="Sprite2D" parent="Contract/Paper 03"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Paper 04" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+previous_page = NodePath("../Paper 03")
+next_page = NodePath("../Paper 05")
+
+[node name="Text" type="Label" parent="Contract/Paper 04"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -453.0
+offset_top = -342.0
+offset_right = -47.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "How do you feel when you see blood?"
+label_settings = SubResource("LabelSettings_dv4do")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Option 01" parent="Contract/Paper 04" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.809, -112.207)
+
+[node name="Option 02" parent="Contract/Paper 04" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.809, -20.901)
+
+[node name="Option 03" parent="Contract/Paper 04" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.809, 69.8651)
+
+[node name="Option 04" parent="Contract/Paper 04" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.809, 163.696)
+
+[node name="Option 05" parent="Contract/Paper 04" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.809, 255.002)
+
+[node name="Flip Next Page" parent="Contract/Paper 04" instance=ExtResource("5_ou87r")]
+
+[node name="Flip Previous Page" parent="Contract/Paper 04" instance=ExtResource("9_m82o2")]
+
+[node name="Arrow Previous" type="Sprite2D" parent="Contract/Paper 04"]
+position = Vector2(-206.974, 346.368)
+scale = Vector2(-0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Arrow Next" type="Sprite2D" parent="Contract/Paper 04"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contract/Paper 04"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -327.0
+offset_top = -135.967
+offset_right = -172.0
+offset_bottom = -475.967
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Indifferent" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+text = "Indifferent"
+label_settings = SubResource("LabelSettings_n8sed")
+
+[node name="Space" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n8sed")
+
+[node name="Disgusted" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+text = "Disgusted"
+label_settings = SubResource("LabelSettings_jx5kl")
+
+[node name="Space2" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n8sed")
+
+[node name="Nauseous" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+text = "Nauseous"
+label_settings = SubResource("LabelSettings_jx5kl")
+
+[node name="Space3" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n8sed")
+
+[node name="Terrified" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+text = "Terrified"
+label_settings = SubResource("LabelSettings_jx5kl")
+
+[node name="Space4" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n8sed")
+
+[node name="Hungry" type="Label" parent="Contract/Paper 04/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+text = "Hungry
+"
+label_settings = SubResource("LabelSettings_jx5kl")
+
+[node name="Paper 05" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+previous_page = NodePath("../Paper 04")
+next_page = NodePath("../Paper 06")
+
+[node name="Text" type="Label" parent="Contract/Paper 05"]
+anchors_preset = -1
+anchor_left = 0.499035
+anchor_top = 0.000490153
+anchor_right = 0.499035
+anchor_bottom = 0.847157
+offset_left = -453.518
+offset_top = -346.368
+offset_right = -47.5176
+offset_bottom = -259.368
+grow_horizontal = 2
+grow_vertical = 2
+text = "Have you ever not felt like yourself?"
+label_settings = SubResource("LabelSettings_dv4do")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Yes" type="Label" parent="Contract/Paper 05"]
+anchors_preset = -1
+anchor_left = 0.308974
+anchor_top = -0.000126668
+anchor_right = 0.690974
+anchor_bottom = 0.999873
+offset_left = -219.709
+offset_top = 27.8838
+offset_right = -218.709
+offset_bottom = 69.8838
+grow_horizontal = 2
+grow_vertical = 2
+text = "Yes
+"
+label_settings = SubResource("LabelSettings_n8sed")
+metadata/_edit_use_anchors_ = true
+
+[node name="No" type="Label" parent="Contract/Paper 05"]
+anchors_preset = -1
+anchor_left = 0.315438
+anchor_top = 0.00029479
+anchor_right = 0.683438
+anchor_bottom = 1.00029
+offset_left = -215.941
+offset_top = 114.568
+offset_right = -214.941
+offset_bottom = 156.568
+grow_horizontal = 2
+grow_vertical = 2
+text = "No"
+label_settings = SubResource("LabelSettings_jx5kl")
+metadata/_edit_use_anchors_ = true
+
+[node name="All the time" type="Label" parent="Contract/Paper 05"]
+anchors_preset = -1
+anchor_left = 0.318924
+anchor_top = 0.000422119
+anchor_right = 0.680924
+anchor_bottom = 0.000422119
+offset_left = -214.684
+offset_top = 198.472
+offset_right = -213.684
+offset_bottom = 240.472
+grow_horizontal = 2
+grow_vertical = 2
+text = "All the time"
+label_settings = SubResource("LabelSettings_jx5kl")
+metadata/_edit_use_anchors_ = true
+
+[node name="Option 01" parent="Contract/Paper 05" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.669, 138.887)
+
+[node name="Option 02" parent="Contract/Paper 05" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.669, 224.238)
+
+[node name="Option 03" parent="Contract/Paper 05" instance=ExtResource("6_2nd30")]
+position = Vector2(-111.291, 49.5655)
+
+[node name="Flip Next Page" parent="Contract/Paper 05" instance=ExtResource("5_ou87r")]
+
+[node name="Flip Previous Page" parent="Contract/Paper 05" instance=ExtResource("9_m82o2")]
+
+[node name="Arrow Previous" type="Sprite2D" parent="Contract/Paper 05"]
+position = Vector2(-206.974, 346.368)
+scale = Vector2(-0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Arrow Next" type="Sprite2D" parent="Contract/Paper 05"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Paper 06" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+previous_page = NodePath("../Paper 05")
+next_page = NodePath("../Paper 07")
+
+[node name="Flip Next Page" parent="Contract/Paper 06" instance=ExtResource("5_ou87r")]
+
+[node name="Flip Previous Page" parent="Contract/Paper 06" instance=ExtResource("9_m82o2")]
+
+[node name="Text" type="Label" parent="Contract/Paper 06"]
+anchors_preset = -1
+anchor_left = 0.499035
+anchor_top = -0.00038798
+anchor_right = 0.499035
+anchor_bottom = 0.834279
+offset_left = -453.518
+offset_top = -341.709
+offset_right = -47.5176
+offset_bottom = -254.709
+grow_horizontal = 2
+grow_vertical = 2
+text = "What do you see?"
+label_settings = SubResource("LabelSettings_u6f4u")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contract/Paper 06"]
+offset_left = -64.07
+offset_top = 69.0955
+offset_right = -24.07
+offset_bottom = 109.096
+
+[node name="Animal" type="Label" parent="Contract/Paper 06/VBoxContainer"]
+layout_mode = 2
+text = "Animal"
+label_settings = SubResource("LabelSettings_igbdh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Space2" type="Label" parent="Contract/Paper 06/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n8sed")
+
+[node name="Blood" type="Label" parent="Contract/Paper 06/VBoxContainer"]
+layout_mode = 2
+text = "Blood Smear"
+label_settings = SubResource("LabelSettings_8as0r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Space" type="Label" parent="Contract/Paper 06/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n8sed")
+
+[node name="Face" type="Label" parent="Contract/Paper 06/VBoxContainer"]
+layout_mode = 2
+text = "Face"
+label_settings = SubResource("LabelSettings_o0yku")
+metadata/_edit_use_anchors_ = true
+
+[node name="Option 01" parent="Contract/Paper 06" instance=ExtResource("6_2nd30")]
+position = Vector2(-114.557, 91.306)
+
+[node name="Option 02" parent="Contract/Paper 06" instance=ExtResource("6_2nd30")]
+position = Vector2(-114.557, 182.612)
+
+[node name="Option 03" parent="Contract/Paper 06" instance=ExtResource("6_2nd30")]
+position = Vector2(-114.557, 275.903)
+
+[node name="Arrow Previous" type="Sprite2D" parent="Contract/Paper 06"]
+position = Vector2(-206.974, 346.368)
+scale = Vector2(-0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Arrow Next" type="Sprite2D" parent="Contract/Paper 06"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Rorscharch" type="Sprite2D" parent="Contract/Paper 06"]
+position = Vector2(0, -131.997)
+scale = Vector2(0.518932, 0.518932)
+texture = ExtResource("12_5ghxt")
+
+[node name="Paper 07" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+previous_page = NodePath("../Paper 06")
+next_page = NodePath("../Paper 08")
+
+[node name="Text" type="Label" parent="Contract/Paper 07"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -453.518
+offset_top = -304.02
+offset_right = -47.5176
+offset_bottom = -217.02
+grow_horizontal = 2
+grow_vertical = 2
+text = "No sensitive information pertaining company staff and affairs shall be disclosed or discussed out of company premises.
+
+In the event of not compliance with the terms above, appropriate legal, psychological and physical actions will take place.
+"
+label_settings = SubResource("LabelSettings_u6f4u")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Agree" type="Label" parent="Contract/Paper 07"]
+anchors_preset = -1
+anchor_left = 0.308974
+anchor_top = -0.000126668
+anchor_right = 0.690974
+anchor_bottom = 0.999873
+offset_left = -154.487
+offset_top = 233.763
+offset_right = -153.487
+offset_bottom = 275.763
+grow_horizontal = 2
+grow_vertical = 2
+text = "I agree"
+label_settings = SubResource("LabelSettings_igbdh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Option 01" parent="Contract/Paper 07" instance=ExtResource("6_2nd30")]
+position = Vector2(-61.6107, 255.025)
+
+[node name="Flip Next Page" parent="Contract/Paper 07" instance=ExtResource("5_ou87r")]
+
+[node name="Flip Previous Page" parent="Contract/Paper 07" instance=ExtResource("9_m82o2")]
+
+[node name="Arrow Previous" type="Sprite2D" parent="Contract/Paper 07"]
+position = Vector2(-206.974, 346.368)
+scale = Vector2(-0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Arrow Next" type="Sprite2D" parent="Contract/Paper 07"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Paper 08" parent="Contract" node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+previous_page = NodePath("../Paper 07")
+next_page = NodePath("../Paper 09")
+
+[node name="Text" type="Label" parent="Contract/Paper 08"]
+anchors_preset = -1
+anchor_left = 0.499035
+anchor_top = 0.00061084
+anchor_right = 0.499035
+anchor_bottom = 0.83261
+offset_left = -453.518
+offset_top = -334.458
+offset_right = -47.5176
+offset_bottom = -247.458
+grow_horizontal = 2
+grow_vertical = 2
+text = "The company is not responsible for any workplace injuries that may occur due to staff ineptitude."
+label_settings = SubResource("LabelSettings_u6f4u")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Agree" type="Label" parent="Contract/Paper 08"]
+anchors_preset = -1
+anchor_left = 0.308974
+anchor_top = -0.000126668
+anchor_right = 0.690974
+anchor_bottom = 0.999873
+offset_left = -154.487
+offset_top = 233.763
+offset_right = -153.487
+offset_bottom = 275.763
+grow_horizontal = 2
+grow_vertical = 2
+text = "I agree"
+label_settings = SubResource("LabelSettings_igbdh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Flip Next Page" parent="Contract/Paper 08" instance=ExtResource("5_ou87r")]
+
+[node name="Flip Previous Page" parent="Contract/Paper 08" instance=ExtResource("9_m82o2")]
+
+[node name="Arrow Previous" type="Sprite2D" parent="Contract/Paper 08"]
+position = Vector2(-206.974, 346.368)
+scale = Vector2(-0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Arrow Next" type="Sprite2D" parent="Contract/Paper 08"]
+position = Vector2(211.787, 346.368)
+scale = Vector2(0.127, 0.127)
+texture = ExtResource("7_evmui")
+
+[node name="Option 01" parent="Contract/Paper 08" instance=ExtResource("6_2nd30")]
+position = Vector2(-61.6107, 255.025)
+
+[node name="Paper 09" parent="Contract" instance=ExtResource("3_s4vfq")]
+visible = false
+z_index = 10
+scale = Vector2(1.305, 1.1)
+
+[node name="Text" type="Label" parent="Contract/Paper 09"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.005
+offset_left = -220.0
+offset_top = -147.0
+offset_right = -282.0
+offset_bottom = -374.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Just sign here to start working in the best most trustworthy company there is!"
+label_settings = SubResource("LabelSettings_u6f4u")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="sign here" parent="Contract/Paper 09" instance=ExtResource("10_f24fo")]
+position = Vector2(-7.62939e-06, 148.241)
+
+[node name="BGBlurManual" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = ExtResource("16_jisap")
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1041.0
+offset_top = -603.0
+offset_right = 1038.0
+offset_bottom = 620.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="willard" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -20
+position = Vector2(0, 39)
+scale = Vector2(0.679831, 0.679831)
+texture = ExtResource("11_7yh4p")
+
+[node name="table" type="Sprite2D" parent="."]
+z_index = -18
+position = Vector2(0, 438)
+texture = ExtResource("12_fqf8j")
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -50
+texture = ExtResource("13_klpmc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 364)
+sprite_frames = SubResource("SpriteFrames_w4e4r")
+autoplay = "default"
+frame_progress = 0.621517
+
+[node name="Label" type="Label" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -257.0
+offset_top = -83.0
+offset_right = -314.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label2" type="Label" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -74.0
+offset_right = -311.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "My name is James  Willard."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label3" type="Label" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -74.0
+offset_right = -311.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I'm the head of R&D."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 5.96046e-08
+
+[node name="Label4" type="Label" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -74.0
+offset_right = -311.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I'm overseeing your admission process."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label5" type="Label" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -74.0
+offset_right = -311.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Read this form, and answer the questions."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label6" type="Label" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -74.0
+offset_right = -311.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Take your time, this is part of your evaluation."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 364)
+sprite_frames = SubResource("SpriteFrames_3mlhu")
+autoplay = "default"
+
+[node name="Label 8" type="Label" parent="AnimatedSprite2D2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -67.0
+offset_right = -303.63
+offset_bottom = -119.145
+grow_horizontal = 2
+grow_vertical = 2
+text = "Welcome to the company, we are glad to have you."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label 9" type="Label" parent="AnimatedSprite2D2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -259.0
+offset_top = -63.0
+offset_right = -317.995
+offset_bottom = -117.555
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your duties will start immediately."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 5.96046e-08
+
+[node name="Label 7" type="Label" parent="AnimatedSprite2D2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -62.0
+offset_right = -302.425
+offset_bottom = -125.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go to you work post, and wait for instructions."
+label_settings = ExtResource("15_1a6f7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[connection signal="input_event" from="Contract/Paper 01/Flip Next Page" to="Contract/Paper 01" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 02/Option 02" to="Contract/Paper 02/Option 02" method="choose_alternative"]
+[connection signal="input_event" from="Contract/Paper 02/Flip Previous Page" to="Contract/Paper 02" method="turn_previous"]
+[connection signal="input_event" from="Contract/Paper 02/Flip Next Page" to="Contract/Paper 02" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 03/Flip Next Page" to="Contract/Paper 03" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 03/Flip Previous Page" to="Contract/Paper 03" method="turn_previous"]
+[connection signal="input_event" from="Contract/Paper 04/Flip Next Page" to="Contract/Paper 04" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 04/Flip Previous Page" to="Contract/Paper 04" method="turn_previous"]
+[connection signal="input_event" from="Contract/Paper 05/Flip Next Page" to="Contract/Paper 05" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 05/Flip Previous Page" to="Contract/Paper 05" method="turn_previous"]
+[connection signal="input_event" from="Contract/Paper 06/Flip Next Page" to="Contract/Paper 06" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 06/Flip Previous Page" to="Contract/Paper 06" method="turn_previous"]
+[connection signal="input_event" from="Contract/Paper 07/Flip Next Page" to="Contract/Paper 07" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 07/Flip Previous Page" to="Contract/Paper 07" method="turn_previous"]
+[connection signal="input_event" from="Contract/Paper 08/Flip Next Page" to="Contract/Paper 08" method="turn_next"]
+[connection signal="input_event" from="Contract/Paper 08/Flip Previous Page" to="Contract/Paper 08" method="turn_previous"]
+[connection signal="input_event" from="Contract/Paper 09/sign here" to="Contract/Paper 09/sign here" method="ending_signature"]

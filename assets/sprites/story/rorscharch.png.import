@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnhg16nreuk6p"
-path="res://.godot/imported/fingerprint_01.png-dcd022fefea95014f8272eefade1c100.ctex"
+uid="uid://dmip40rwq5dow"
+path="res://.godot/imported/rorscharch.png-fa5bee144dcfef46a1d0793b7fd9f83b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/reports/fingerprint_01.png"
-dest_files=["res://.godot/imported/fingerprint_01.png-dcd022fefea95014f8272eefade1c100.ctex"]
+source_file="res://assets/sprites/story/rorscharch.png"
+dest_files=["res://.godot/imported/rorscharch.png-fa5bee144dcfef46a1d0793b7fd9f83b.ctex"]
 
 [params]
 

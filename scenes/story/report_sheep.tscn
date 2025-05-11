@@ -1,14 +1,14 @@
-[gd_scene load_steps=47 format=3 uid="uid://b0cyujsk781av"]
+[gd_scene load_steps=47 format=3 uid="uid://whelyr2gs7f3"]
 
-[ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_51lqx"]
-[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/reports/dependencies/paper.tscn" id="2_0wbxa"]
-[ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="3_o8hct"]
-[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/reports/dependencies/flip_next_page.tscn" id="4_w2i0h"]
-[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/reports/dependencies/option.tscn" id="5_v3rh6"]
-[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/reports/checkbox.png" id="6_4qq0s"]
-[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/reports/checkmark.png" id="7_7dtxj"]
-[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/reports/dependencies/flip_previous_page.tscn" id="8_lqycf"]
-[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/reports/dependencies/signature.tscn" id="9_3rhrk"]
+[ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_py46a"]
+[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/story/dependencies/paper.tscn" id="2_h1onw"]
+[ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="3_0jjss"]
+[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/story/dependencies/flip_next_page.tscn" id="4_jpgjl"]
+[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/story/dependencies/option.tscn" id="5_jx5c8"]
+[ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/reports/checkbox.png" id="6_7qdmy"]
+[ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/reports/checkmark.png" id="7_dkmoo"]
+[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/story/dependencies/flip_previous_page.tscn" id="8_7nd6j"]
+[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/story/dependencies/signature.tscn" id="9_y52j2"]
 
 [sub_resource type="Animation" id="Animation_s2g41"]
 resource_name = "turn_next"
@@ -1001,9 +1001,9 @@ _data = {
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_51lqx")
+stream = ExtResource("1_py46a")
 
-[node name="Paper 01" parent="." node_paths=PackedStringArray("next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 01" parent="." node_paths=PackedStringArray("next_page", "animator") instance=ExtResource("2_h1onw")]
 z_index = 10
 next_page = NodePath("../Paper 02")
 animator = NodePath("Animator")
@@ -1022,7 +1022,7 @@ grow_vertical = 2
 text = "COMPANY NAME
 
 \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ex ea commodo consequat. Duis reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
-label_settings = ExtResource("3_o8hct")
+label_settings = ExtResource("3_0jjss")
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -1031,9 +1031,9 @@ libraries = {
 "": SubResource("AnimationLibrary_yoeso")
 }
 
-[node name="Flip Next Page" parent="Paper 01" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 01" instance=ExtResource("4_jpgjl")]
 
-[node name="Paper 02" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 02" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_h1onw")]
 visible = false
 z_index = 8
 texture = SubResource("CompressedTexture2D_78uo7")
@@ -1090,7 +1090,7 @@ label_settings = SubResource("LabelSettings_8ybn1")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Option 01" parent="Paper 02" instance=ExtResource("5_v3rh6")]
+[node name="Option 01" parent="Paper 02" instance=ExtResource("5_jx5c8")]
 
 [node name="Option 02" type="Area2D" parent="Paper 02" node_paths=PackedStringArray("checkmark")]
 position = Vector2(-56.5327, 213.568)
@@ -1103,23 +1103,23 @@ shape = SubResource("RectangleShape2D_lavu6")
 
 [node name="Checkbox" type="Sprite2D" parent="Paper 02/Option 02"]
 scale = Vector2(0.437501, 0.437501)
-texture = ExtResource("6_4qq0s")
+texture = ExtResource("6_7qdmy")
 
 [node name="Checkmark" type="Sprite2D" parent="Paper 02/Option 02"]
 visible = false
 scale = Vector2(0.498892, 0.498892)
-texture = ExtResource("7_7dtxj")
+texture = ExtResource("7_dkmoo")
 
 [node name="Animator" type="AnimationPlayer" parent="Paper 02"]
 libraries = {
 "": SubResource("AnimationLibrary_e70ae")
 }
 
-[node name="Flip Previous Page" parent="Paper 02" instance=ExtResource("8_lqycf")]
+[node name="Flip Previous Page" parent="Paper 02" instance=ExtResource("8_7nd6j")]
 
-[node name="Flip Next Page" parent="Paper 02" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 02" instance=ExtResource("4_jpgjl")]
 
-[node name="Paper 03" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 03" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_h1onw")]
 visible = false
 z_index = 6
 previous_page = NodePath("../Paper 02")
@@ -1143,7 +1143,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Paper 03" instance=ExtResource("5_v3rh6")]
+[node name="Option 01" parent="Paper 03" instance=ExtResource("5_jx5c8")]
 
 [node name="Yes" type="Label" parent="Paper 03"]
 anchors_preset = 13
@@ -1162,7 +1162,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 02" parent="Paper 03" instance=ExtResource("5_v3rh6")]
+[node name="Option 02" parent="Paper 03" instance=ExtResource("5_jx5c8")]
 position = Vector2(-56.5327, 213.568)
 
 [node name="No" type="Label" parent="Paper 03"]
@@ -1187,11 +1187,11 @@ libraries = {
 "": SubResource("AnimationLibrary_767ek")
 }
 
-[node name="Flip Next Page" parent="Paper 03" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 03" instance=ExtResource("4_jpgjl")]
 
-[node name="Flip Previous Page" parent="Paper 03" instance=ExtResource("8_lqycf")]
+[node name="Flip Previous Page" parent="Paper 03" instance=ExtResource("8_7nd6j")]
 
-[node name="Paper 04" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 04" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_h1onw")]
 visible = false
 z_index = 4
 previous_page = NodePath("../Paper 03")
@@ -1301,31 +1301,31 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Paper 04" instance=ExtResource("5_v3rh6")]
+[node name="Option 01" parent="Paper 04" instance=ExtResource("5_jx5c8")]
 position = Vector2(-111.809, -158.291)
 
-[node name="Option 02" parent="Paper 04" instance=ExtResource("5_v3rh6")]
+[node name="Option 02" parent="Paper 04" instance=ExtResource("5_jx5c8")]
 position = Vector2(-111.809, -69.0955)
 
-[node name="Option 03" parent="Paper 04" instance=ExtResource("5_v3rh6")]
+[node name="Option 03" parent="Paper 04" instance=ExtResource("5_jx5c8")]
 position = Vector2(-111.809, 16.3317)
 
-[node name="Option 04" parent="Paper 04" instance=ExtResource("5_v3rh6")]
+[node name="Option 04" parent="Paper 04" instance=ExtResource("5_jx5c8")]
 position = Vector2(-111.809, 95.4774)
 
-[node name="Option 05" parent="Paper 04" instance=ExtResource("5_v3rh6")]
+[node name="Option 05" parent="Paper 04" instance=ExtResource("5_jx5c8")]
 position = Vector2(-111.809, 187.186)
 
-[node name="Flip Next Page" parent="Paper 04" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 04" instance=ExtResource("4_jpgjl")]
 
-[node name="Flip Previous Page" parent="Paper 04" instance=ExtResource("8_lqycf")]
+[node name="Flip Previous Page" parent="Paper 04" instance=ExtResource("8_7nd6j")]
 
 [node name="Animator" type="AnimationPlayer" parent="Paper 04"]
 libraries = {
 "": SubResource("AnimationLibrary_rx121")
 }
 
-[node name="Paper 05" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 05" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_h1onw")]
 visible = false
 z_index = 2
 previous_page = NodePath("../Paper 04")
@@ -1398,33 +1398,33 @@ text = "All the time"
 label_settings = SubResource("LabelSettings_jx5kl")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Paper 05" instance=ExtResource("5_v3rh6")]
+[node name="Option 01" parent="Paper 05" instance=ExtResource("5_jx5c8")]
 position = Vector2(-139.965, -67.5477)
 
-[node name="Option 02" parent="Paper 05" instance=ExtResource("5_v3rh6")]
+[node name="Option 02" parent="Paper 05" instance=ExtResource("5_jx5c8")]
 position = Vector2(-139.965, 21.6483)
 
-[node name="Option 03" parent="Paper 05" instance=ExtResource("5_v3rh6")]
+[node name="Option 03" parent="Paper 05" instance=ExtResource("5_jx5c8")]
 position = Vector2(-143.734, 107.075)
 
-[node name="Flip Next Page" parent="Paper 05" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 05" instance=ExtResource("4_jpgjl")]
 
-[node name="Flip Previous Page" parent="Paper 05" instance=ExtResource("8_lqycf")]
+[node name="Flip Previous Page" parent="Paper 05" instance=ExtResource("8_7nd6j")]
 
 [node name="Animatior" type="AnimationPlayer" parent="Paper 05"]
 libraries = {
 "": SubResource("AnimationLibrary_wkyly")
 }
 
-[node name="Paper 06" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 06" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_h1onw")]
 visible = false
 previous_page = NodePath("../Paper 05")
 next_page = NodePath("../Paper 07")
 animator = NodePath("Animatior")
 
-[node name="Flip Next Page" parent="Paper 06" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 06" instance=ExtResource("4_jpgjl")]
 
-[node name="Flip Previous Page" parent="Paper 06" instance=ExtResource("8_lqycf")]
+[node name="Flip Previous Page" parent="Paper 06" instance=ExtResource("8_7nd6j")]
 
 [node name="Text" type="Label" parent="Paper 06"]
 anchors_preset = 13
@@ -1491,13 +1491,13 @@ text = "Face"
 label_settings = SubResource("LabelSettings_o0yku")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Paper 06" instance=ExtResource("5_v3rh6")]
+[node name="Option 01" parent="Paper 06" instance=ExtResource("5_jx5c8")]
 position = Vector2(-116.834, 92.7688)
 
-[node name="Option 02" parent="Paper 06" instance=ExtResource("5_v3rh6")]
+[node name="Option 02" parent="Paper 06" instance=ExtResource("5_jx5c8")]
 position = Vector2(-116.834, 156.523)
 
-[node name="Option 03" parent="Paper 06" instance=ExtResource("5_v3rh6")]
+[node name="Option 03" parent="Paper 06" instance=ExtResource("5_jx5c8")]
 position = Vector2(-116.834, 218.251)
 
 [node name="Animatior" type="AnimationPlayer" parent="Paper 06"]
@@ -1505,7 +1505,7 @@ libraries = {
 "": SubResource("AnimationLibrary_gvu0w")
 }
 
-[node name="Paper 07" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 07" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_h1onw")]
 visible = false
 modulate = Color(0.341176, 0.341176, 0.341176, 1)
 z_index = -12
@@ -1548,19 +1548,19 @@ text = "I agree"
 label_settings = SubResource("LabelSettings_igbdh")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Paper 07" instance=ExtResource("5_v3rh6")]
+[node name="Option 01" parent="Paper 07" instance=ExtResource("5_jx5c8")]
 position = Vector2(-56.5327, 255.025)
 
-[node name="Flip Next Page" parent="Paper 07" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 07" instance=ExtResource("4_jpgjl")]
 
-[node name="Flip Previous Page" parent="Paper 07" instance=ExtResource("8_lqycf")]
+[node name="Flip Previous Page" parent="Paper 07" instance=ExtResource("8_7nd6j")]
 
 [node name="Animator" type="AnimationPlayer" parent="Paper 07"]
 libraries = {
 "": SubResource("AnimationLibrary_f0yju")
 }
 
-[node name="Paper 08" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_0wbxa")]
+[node name="Paper 08" parent="." node_paths=PackedStringArray("previous_page", "next_page", "animator") instance=ExtResource("2_h1onw")]
 visible = false
 z_index = -4
 previous_page = NodePath("../Paper 07")
@@ -1600,19 +1600,19 @@ text = "I agree"
 label_settings = SubResource("LabelSettings_igbdh")
 metadata/_edit_use_anchors_ = true
 
-[node name="Option 01" parent="Paper 08" instance=ExtResource("5_v3rh6")]
+[node name="Option 01" parent="Paper 08" instance=ExtResource("5_jx5c8")]
 position = Vector2(-41.4573, 255.025)
 
-[node name="Flip Next Page" parent="Paper 08" instance=ExtResource("4_w2i0h")]
+[node name="Flip Next Page" parent="Paper 08" instance=ExtResource("4_jpgjl")]
 
-[node name="Flip Previous Page" parent="Paper 08" instance=ExtResource("8_lqycf")]
+[node name="Flip Previous Page" parent="Paper 08" instance=ExtResource("8_7nd6j")]
 
 [node name="Animator" type="AnimationPlayer" parent="Paper 08"]
 libraries = {
 "": SubResource("AnimationLibrary_6rvrr")
 }
 
-[node name="Paper 09" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_0wbxa")]
+[node name="Paper 09" parent="." node_paths=PackedStringArray("previous_page", "next_page") instance=ExtResource("2_h1onw")]
 visible = false
 z_index = -6
 previous_page = NodePath("../Paper 01")
@@ -1634,7 +1634,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="sing here" parent="Paper 09" instance=ExtResource("9_3rhrk")]
+[node name="sing here" parent="Paper 09" instance=ExtResource("9_y52j2")]
 position = Vector2(-7.62939e-06, 148.241)
 
 [connection signal="input_event" from="Paper 01/Flip Next Page" to="Paper 01" method="turn_next"]

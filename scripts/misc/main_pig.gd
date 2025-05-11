@@ -25,7 +25,7 @@ func _ready() -> void:
 func check_solution() -> void:
 	if game_manager.is_subject_acceptable():
 		print("solution accepted")
-		SceneTransition.change_scene_to_file("report_pig.tscn")
+		SceneTransition.change_scene_to_file("res://scenes/story/report_pig.tscn")
 		#get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
 	else:
 		game_manager.clear_list()

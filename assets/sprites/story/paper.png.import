@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://douec7r0khxdf"
-path="res://.godot/imported/willard.png-ee7a76aed329924fed2edc65672126be.ctex"
+uid="uid://dd55yis0ib2mk"
+path="res://.godot/imported/paper.png-7a02ada1f7a7db9fcef8bf995117deb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/reports/willard.png"
-dest_files=["res://.godot/imported/willard.png-ee7a76aed329924fed2edc65672126be.ctex"]
+source_file="res://assets/sprites/story/paper.png"
+dest_files=["res://.godot/imported/paper.png-7a02ada1f7a7db9fcef8bf995117deb4.ctex"]
 
 [params]
 

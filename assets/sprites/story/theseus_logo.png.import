@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmip40rwq5dow"
-path="res://.godot/imported/rorscharch.png-36b956d6d290fbf9fb1de0b87a7b04b6.ctex"
+uid="uid://ypf7p3o4sw08"
+path="res://.godot/imported/theseus_logo.png-04f76a423af2a665bbfc898f25a0a188.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/reports/rorscharch.png"
-dest_files=["res://.godot/imported/rorscharch.png-36b956d6d290fbf9fb1de0b87a7b04b6.ctex"]
+source_file="res://assets/sprites/story/theseus_logo.png"
+dest_files=["res://.godot/imported/theseus_logo.png-04f76a423af2a665bbfc898f25a0a188.ctex"]
 
 [params]
 

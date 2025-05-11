@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c6avlnb01vhue" path="res://scenes/machines/deliver_machine.tscn" id="7_yo04g"]
 [ext_resource type="PackedScene" uid="uid://cqcvf6587433b" path="res://scenes/machines/injector_machine.tscn" id="8_gye4f"]
 [ext_resource type="PackedScene" uid="uid://26c1dnbemt1l" path="res://scenes/specimen/pig.tscn" id="9_40tn1"]
-[ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/reports/user_manual.tscn" id="9_mawuh"]
+[ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/story/user_manual.tscn" id="9_mawuh"]
 [ext_resource type="Texture2D" uid="uid://1cihufc8ljnh" path="res://assets/sprites/machines/oven/oven_inside.png" id="9_usjxp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kevyq"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ypf7p3o4sw08"
-path="res://.godot/imported/theseus_logo.png-15a20381374e4f703fb79a4f1f3e26dc.ctex"
+uid="uid://bnhg16nreuk6p"
+path="res://.godot/imported/fingerprint_01.png-0c4bfecb62daa2b33e3ab2b4dce95648.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/reports/theseus_logo.png"
-dest_files=["res://.godot/imported/theseus_logo.png-15a20381374e4f703fb79a4f1f3e26dc.ctex"]
+source_file="res://assets/sprites/story/fingerprint_01.png"
+dest_files=["res://.godot/imported/fingerprint_01.png-0c4bfecb62daa2b33e3ab2b4dce95648.ctex"]
 
 [params]
 

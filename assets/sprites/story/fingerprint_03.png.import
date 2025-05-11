@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvlni1el0a87j"
-path="res://.godot/imported/checkbox.png-8a833c155641aabdf3595a40c0d04ca4.ctex"
+uid="uid://dx8rtqy5r8xm5"
+path="res://.godot/imported/fingerprint_03.png-c70c140c997a90e849a0ef26e6d4f69e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/reports/checkbox.png"
-dest_files=["res://.godot/imported/checkbox.png-8a833c155641aabdf3595a40c0d04ca4.ctex"]
+source_file="res://assets/sprites/story/fingerprint_03.png"
+dest_files=["res://.godot/imported/fingerprint_03.png-c70c140c997a90e849a0ef26e6d4f69e.ctex"]
 
 [params]
 

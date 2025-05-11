@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baexo6k4idi2v"
-path="res://.godot/imported/dialogue_box.png-7c9ef86b9b9c5d14661033bbedff1644.ctex"
+uid="uid://ndxe23pyiydv"
+path="res://.godot/imported/willard_3.png-4e7044bc05c0be2786cd9218be031a21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/reports/dialogue_box.png"
-dest_files=["res://.godot/imported/dialogue_box.png-7c9ef86b9b9c5d14661033bbedff1644.ctex"]
+source_file="res://assets/sprites/story/willard_3.png"
+dest_files=["res://.godot/imported/willard_3.png-4e7044bc05c0be2786cd9218be031a21.ctex"]
 
 [params]
 

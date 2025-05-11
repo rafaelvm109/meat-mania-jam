@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd55yis0ib2mk"
-path="res://.godot/imported/paper.png-ced8d2e327805c6f6211a44ec406dc34.ctex"
+uid="uid://cimpkg8o22ivu"
+path="res://.godot/imported/page_arrow.png-25a27fa85456b78599c2679317a18012.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/reports/paper.png"
-dest_files=["res://.godot/imported/paper.png-ced8d2e327805c6f6211a44ec406dc34.ctex"]
+source_file="res://assets/sprites/story/page_arrow.png"
+dest_files=["res://.godot/imported/page_arrow.png-25a27fa85456b78599c2679317a18012.ctex"]
 
 [params]
 

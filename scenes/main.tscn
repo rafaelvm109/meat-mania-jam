@@ -1,18 +1,43 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd5nwfg25bfty"]
+[gd_scene load_steps=25 format=3 uid="uid://bd5nwfg25bfty"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_ro855"]
 [ext_resource type="Texture2D" uid="uid://c55gabu8g3jkf" path="res://assets/sprites/machines/background.png" id="2_pu0d8"]
 [ext_resource type="Script" path="res://scripts/misc/game_manager.gd" id="2_xwam5"]
 [ext_resource type="PackedScene" uid="uid://dbc8qbdp6moww" path="res://scenes/machines/mangler_machine.tscn" id="3_7vni7"]
 [ext_resource type="PackedScene" uid="uid://c36au6a2n2ydq" path="res://scenes/machines/press_machine.tscn" id="3_76j7j"]
+[ext_resource type="Texture2D" uid="uid://c77ta4p5f5cey" path="res://assets/sprites/machines/speaker.png" id="3_yb05h"]
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="4_7qfmb"]
 [ext_resource type="PackedScene" uid="uid://bgbx8g7acgq2l" path="res://scenes/specimen/chicken.tscn" id="4_rp8v8"]
 [ext_resource type="Material" uid="uid://t8ek8x36aomn" path="res://shaders/pause.tres" id="5_4ku4w"]
 [ext_resource type="PackedScene" uid="uid://etghli8183xh" path="res://scenes/machines/oven_machine.tscn" id="5_4pg23"]
+[ext_resource type="Shader" path="res://shaders/aberration.gdshader" id="5_m74bc"]
 [ext_resource type="PackedScene" uid="uid://c6avlnb01vhue" path="res://scenes/machines/deliver_machine.tscn" id="6_n7u8f"]
+[ext_resource type="Texture2D" uid="uid://dxql3w22dwyam" path="res://assets/sprites/machines/specimen_inventory.png" id="7_ayffy"]
 [ext_resource type="PackedScene" uid="uid://cqcvf6587433b" path="res://scenes/machines/injector_machine.tscn" id="8_e2byj"]
-[ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/reports/user_manual.tscn" id="9_cta31"]
+[ext_resource type="PackedScene" uid="uid://bvadovdh4j23l" path="res://scenes/story/user_manual.tscn" id="9_cta31"]
 [ext_resource type="Texture2D" uid="uid://1cihufc8ljnh" path="res://assets/sprites/machines/oven/oven_inside.png" id="9_iajgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n12o6"]
+atlas = ExtResource("3_yb05h")
+region = Rect2(0, 0, 798, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywyxd"]
+atlas = ExtResource("3_yb05h")
+region = Rect2(826, 0, 798, 290)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kl20n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n12o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywyxd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_svlm7"]
 shader = ExtResource("4_7qfmb")
@@ -22,6 +47,43 @@ shader_parameter/shake_speed = 1.0
 shader_parameter/shake_block_size = 50.0
 shader_parameter/shake_color_rate = 0.01
 
+[sub_resource type="Shader" id="Shader_t86ca"]
+code = "shader_type canvas_item;
+
+uniform float vignette_intensity = 0.4;
+uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
+uniform vec4 vignette_rgb : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+float vignette(vec2 uv){
+uv *= 1.0 - uv.xy;
+float vignette = uv.x * uv.y * 15.0;
+return pow(vignette, vignette_intensity * vignette_opacity);
+}
+
+void fragment(){
+vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+vec4 text = texture(TEXTURE, UV);
+text.rgba *= (vignette_rgb.rgba);
+text.rgba *= (1.0 - vignette(UV));
+COLOR = vec4((text.rgb)*color.rgb,text.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkk3q"]
+shader = SubResource("Shader_t86ca")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8n7x5"]
+shader = ExtResource("5_m74bc")
+shader_parameter/r_displacement = Vector2(0, 0)
+shader_parameter/g_displacement = Vector2(3, 0)
+shader_parameter/b_displacement = Vector2(3, 0)
+shader_parameter/height = 1.0
+shader_parameter/width = 1.0
+shader_parameter/fade = 0.1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne1mv"]
 bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
 
@@ -29,9 +91,15 @@ bg_color = Color(0.105882, 0.0823529, 0.0823529, 1)
 script = ExtResource("1_ro855")
 
 [node name="Background" type="Sprite2D" parent="."]
-z_index = -10
+z_index = -20
 position = Vector2(959, 540)
 texture = ExtResource("2_pu0d8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(753, 338)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kl20n")
+autoplay = "default"
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_xwam5")
@@ -45,6 +113,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Vignette" type="ColorRect" parent="GameManager"]
+z_index = 100
+material = SubResource("ShaderMaterial_mkk3q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Aberration" type="ColorRect" parent="GameManager"]
+z_index = 90
+material = SubResource("ShaderMaterial_8n7x5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Pause" type="Node" parent="."]
 
@@ -213,6 +301,12 @@ offset_left = 288.0
 offset_right = 383.0
 offset_bottom = 96.0
 size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Inventory"]
+z_index = -10
+position = Vector2(966, 1037)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_ayffy")
 
 [node name="Specimen" type="Node" parent="."]
 

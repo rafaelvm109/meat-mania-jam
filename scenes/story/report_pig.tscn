@@ -1,14 +1,14 @@
 [gd_scene load_steps=47 format=3 uid="uid://mvdow7lhvng1"]
 
 [ext_resource type="AudioStream" uid="uid://ca2r728ws6s0h" path="res://assets/sfx/paper_flip.wav" id="1_qt6qy"]
-[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/reports/dependencies/paper.tscn" id="2_gyrgg"]
+[ext_resource type="PackedScene" uid="uid://djydj4cx1f6o2" path="res://scenes/story/dependencies/paper.tscn" id="2_gyrgg"]
 [ext_resource type="LabelSettings" uid="uid://dtfo6j22frg6g" path="res://assets/text/report_text_style.tres" id="3_r4l2p"]
-[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/reports/dependencies/flip_next_page.tscn" id="4_d17p3"]
-[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/reports/dependencies/option.tscn" id="5_3dtym"]
+[ext_resource type="PackedScene" uid="uid://cgv068txkpnfv" path="res://scenes/story/dependencies/flip_next_page.tscn" id="4_d17p3"]
+[ext_resource type="PackedScene" uid="uid://dbugbkv210d4i" path="res://scenes/story/dependencies/option.tscn" id="5_3dtym"]
 [ext_resource type="Texture2D" uid="uid://dvlni1el0a87j" path="res://assets/sprites/reports/checkbox.png" id="6_shnxe"]
 [ext_resource type="Texture2D" uid="uid://dhwcxjaw8e7w4" path="res://assets/sprites/reports/checkmark.png" id="7_45gio"]
-[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/reports/dependencies/flip_previous_page.tscn" id="8_njhjj"]
-[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/reports/dependencies/signature.tscn" id="9_p6t8x"]
+[ext_resource type="PackedScene" uid="uid://b2r6r0yberd1l" path="res://scenes/story/dependencies/flip_previous_page.tscn" id="8_njhjj"]
+[ext_resource type="PackedScene" uid="uid://dqdgo5sclndwh" path="res://scenes/story/dependencies/signature.tscn" id="9_p6t8x"]
 
 [sub_resource type="Animation" id="Animation_s2g41"]
 resource_name = "turn_next"
